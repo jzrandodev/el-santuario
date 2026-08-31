@@ -1,0 +1,38 @@
+/* El Santuario — shared visual world. Committed colour: Gauchito red carries the surface.
+   Celeste (#75AADB) is WITHHELD everywhere and appears only at a release. */
+:root{
+  --night:#0A0806; --night-2:#12100C;
+  --red:#B01218; --red-faded:#8E3A34; --red-deep:#5E0A0E;
+  --flame:#FFB347; --flame-hot:#FFD9A0; --flame-core:#FFF0D0;
+  --wax:#E8DCC0; --tin:#A8A79E; --tin-hi:#D9D5C8; --tin-lo:#4A4842;
+  --brass:#B8912F; --brass-lo:#6B5518; --brass-hi:#E4C46A;
+  --celeste:#75AADB;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1440px;height:900px;overflow:hidden;background:var(--night)}
+body{font-family:'Chivo',system-ui,sans-serif;position:relative;color:var(--wax)}
+.grain{position:absolute;inset:0;pointer-events:none;z-index:90;opacity:.5;mix-blend-mode:overlay}
+.vig{position:absolute;inset:0;pointer-events:none;z-index:80;
+  background:radial-gradient(120% 100% at 50% 45%,transparent 20%,rgba(0,0,0,.55) 62%,rgba(0,0,0,.94) 100%)}
+.mark{position:absolute;top:38px;left:44px;z-index:95;font-size:11px;letter-spacing:.42em;
+  text-transform:uppercase;color:rgba(232,220,192,.5);font-weight:600}
+.mark b{color:var(--red);font-weight:600}
+.meta{position:absolute;bottom:34px;left:44px;z-index:95;font-size:10px;letter-spacing:.3em;
+  text-transform:uppercase;color:rgba(232,220,192,.3)}
+.count{position:absolute;bottom:34px;right:44px;z-index:95;font-size:10px;letter-spacing:.3em;
+  text-transform:uppercase;color:rgba(232,220,192,.3);text-align:right;line-height:1.9}
+.count s{text-decoration:none;color:var(--red)}
+.count u{text-decoration:none;color:var(--brass-hi)}
+/* engraved plaque type */
+.pl{position:absolute;border-radius:2px;display:flex;flex-direction:column;justify-content:center;
+  align-items:center;text-align:center;overflow:hidden}
+.pl .t{font-size:8px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;line-height:1.5}
+.pl .d{font-size:7px;letter-spacing:.2em;margin-top:3px;font-weight:400;opacity:.8}
+.tin{background:linear-gradient(160deg,#3A3934,#22211D 60%,#2E2D28);
+  border:1px solid rgba(217,213,200,.10);color:rgba(217,213,200,.30);
+  box-shadow:inset 0 1px 0 rgba(217,213,200,.08),0 3px 7px rgba(0,0,0,.65)}
+.tin .t{text-shadow:0 1px 0 rgba(255,255,255,.07)}
+.brass{background:linear-gradient(160deg,#8A6E24,#5A4614 55%,#77601F);
+  border:1px solid rgba(228,196,106,.28);color:#E4C46A;
+  box-shadow:inset 0 1px 0 rgba(228,196,106,.30),0 4px 10px rgba(0,0,0,.7)}
+.brass .t{text-shadow:0 1px 0 rgba(0,0,0,.5)}

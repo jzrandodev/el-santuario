@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.DS_Store
+*.log
+
+# machine-local impeccable override
+.impeccable/config.local.json
+
+# transient decision-page server state
+.impeccable/questions/

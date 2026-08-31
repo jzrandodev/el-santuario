@@ -1,0 +1,27 @@
+{
+  "direction": "714794b2",
+  "world": "El Santuario",
+  "surface": "first viewport, desktop web",
+  "viewport": "1440x900",
+  "name": "El Árbol",
+  "medium": "rendered HTML + Canvas2D, screenshot at 1440x900 — no image model available this session",
+  "topology": "radial orbit",
+  "density": "massed into one silhouette",
+  "focal": "the red ribbon canopy",
+  "fixed_across_comps": [
+    "warm-black ground, not blue-black",
+    "Gauchito red as the committed carrier",
+    "candle-warm key; the visitor carries the light",
+    "brass = gracias / tin = te pido",
+    "celeste withheld from the entire palette until a release is earned",
+    "Chivo for engraved plaque capitals, Alegreya for votive text"
+  ],
+  "must_not_literalize": [
+    "plaque copy and dates are real and load-bearing, but their placement is compositional, not a layout spec",
+    "the offering and plaque counts are illustrative of proportion, not final content",
+    "image slots are deliberately empty or marked SIN IMAGEN — the image ladder is undecided by the user's choice"
+  ],
+  "risk": "One object means one idea; twelve moments must earn their place on a tree.",
+  "approved": false,
+  "prompt": "El Santuario, first viewport, desktop 1440x900. The shrine as one mass the visitor orbits: a bare tree in near-silhouette against warm black, its canopy hung with hundreds of Gauchito-red ribbons falling in a dense curtain, plaques wired into the branches, and offerings heaped at the base -- water bottles, tin charms, three lit candles. A faint elliptical orbit ring on the ground states the radial topology. Chivo engraved capitals. Celeste absent."
+}

@@ -1,0 +1,95 @@
+<meta charset="utf-8">
+<title>El Santuario — Comp B — El Árbol</title>
+<link href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;700;900&family=Alegreya:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_shared.css">
+<style>
+  .sky{position:absolute;inset:0;background:
+    radial-gradient(80% 70% at 50% 88%, rgba(255,168,70,.13), transparent 60%),
+    linear-gradient(180deg,#0A0A0C 0%,#0C0A08 55%,#171009 100%)}
+  #tree{position:absolute;inset:0;z-index:20}
+  .orbit{position:absolute;left:50%;bottom:40px;width:1160px;height:180px;transform:translateX(-50%);
+    border:1px solid rgba(232,220,192,.075);border-radius:50%;z-index:15}
+  .orbit:before{content:"";position:absolute;left:50%;top:-5px;width:11px;height:11px;
+    transform:translateX(-50%);border-radius:50%;background:var(--red);box-shadow:0 0 16px 4px rgba(176,18,24,.65)}
+  .plq{position:absolute;z-index:55}
+  .lbl{position:absolute;z-index:70;font-size:9px;letter-spacing:.26em;text-transform:uppercase;
+    color:rgba(232,220,192,.4);white-space:nowrap}
+  .lbl b{color:var(--brass-hi);font-weight:700}
+  .lbl:before{content:"";position:absolute;left:-26px;top:5px;width:18px;height:1px;background:rgba(232,220,192,.25)}
+  .glow{position:absolute;left:50%;bottom:0;width:900px;height:620px;transform:translateX(-50%);
+    background:radial-gradient(ellipse at 50% 100%,rgba(255,180,90,.26),rgba(255,140,50,.09) 38%,transparent 68%);
+    mix-blend-mode:screen;z-index:40;pointer-events:none}
+</style>
+<div class="sky"></div>
+<canvas id="tree" width="1440" height="900"></canvas>
+<div class="orbit"></div>
+<div id="objs"></div>
+<div class="glow"></div>
+<div class="vig"></div>
+<canvas class="grain" id="g" width="1440" height="900"></canvas>
+<div class="mark">EL SANTUARIO <b>·</b> B&nbsp;&nbsp;EL&nbsp;ÁRBOL</div>
+<div class="meta">TOPOLOGY — RADIAL, YOU ORBIT IT · ONE MASS · OFFERINGS ACCUMULATE AT THE BASE</div>
+<div class="count"><s>■</s> 214 TE PIDO<br><u>■</u> 9 GRACIAS</div>
+<script>
+let s=20211010;const rnd=()=>(s=(s*1664525+1013904223)%4294967296)/4294967296;
+const cx=document.getElementById('tree').getContext('2d');
+// tree
+function branch(x,y,ang,len,w,d){
+  if(d===0||len<6)return;
+  const x2=x+Math.cos(ang)*len, y2=y+Math.sin(ang)*len;
+  cx.strokeStyle='#080706';cx.lineWidth=w;cx.lineCap='round';
+  cx.beginPath();cx.moveTo(x,y);cx.lineTo(x2,y2);cx.stroke();
+  if(d<7&&rnd()<.60){
+    const rl=60+rnd()*210;
+    const g=cx.createLinearGradient(x2,y2,x2,y2+rl);
+    g.addColorStop(0,'#C0141B');g.addColorStop(.62,'#7A0E14');g.addColorStop(1,'rgba(94,10,14,0)');
+    cx.strokeStyle=g;cx.lineWidth=2.5+rnd()*4.5;
+    cx.beginPath();cx.moveTo(x2,y2);
+    cx.quadraticCurveTo(x2+(rnd()-.5)*26,y2+rl*.6,x2+(rnd()-.5)*40,y2+rl);cx.stroke();
+  }
+  const n=rnd()<.28?3:2;
+  for(let i=0;i<n;i++){
+    const off=(i-(n-1)/2)*0.62+(rnd()-.5)*0.30;
+    branch(x2,y2,ang+off,len*(.70+rnd()*.14),w*.68,d-1);
+  }
+}
+cx.globalCompositeOperation='source-over';
+branch(720,872,-Math.PI/2,178,40,9);
+// offerings at base
+const o=document.getElementById('objs');
+for(let i=0;i<120;i++){
+  const a=rnd()*Math.PI*2, r=Math.sqrt(rnd()), x=720+Math.cos(a)*r*430, y=790+Math.sin(a)*r*58;
+  const w=7+rnd()*15,h=13+rnd()*26, lit=Math.max(.14,1-Math.abs(x-720)/560);
+  const e=document.createElement('div');e.className='plq';
+  const bottle=rnd()<.5;
+  e.style.cssText=`left:${x}px;top:${y}px;width:${w}px;height:${h}px;border-radius:${bottle?'3px 3px 1px 1px':'1px'};
+    background:${bottle?'linear-gradient(180deg,rgba(200,214,214,.20),rgba(140,158,158,.07))':'linear-gradient(160deg,#57554E,#2A2924)'};
+    border:1px solid rgba(217,213,200,.13);transform:rotate(${(rnd()-.5)*26}deg);
+    filter:brightness(${(.20+lit*.72).toFixed(2)});z-index:${50+((y-700)|0)}`;
+  o.appendChild(e);
+}
+// three candles
+[[604,822],[726,834],[832,818]].forEach(([x,y],i)=>{
+  const e=document.createElement('div');e.className='plq';
+  e.style.cssText=`left:${x}px;top:${y}px;z-index:70`;
+  e.innerHTML=`<div style="width:${13+i*3}px;height:${30+i*9}px;border-radius:3px;
+      background:linear-gradient(180deg,#EFE3C6,#A99B78)"></div>
+    <div style="position:absolute;left:50%;top:-13px;transform:translateX(-50%);width:9px;height:17px;
+      border-radius:50% 50% 44% 44%;background:radial-gradient(circle at 50% 70%,#FFF6DC,#FFC163 55%,rgba(255,140,40,0) 80%);
+      box-shadow:0 0 30px 12px rgba(255,168,70,.36)"></div>`;
+  o.appendChild(e);});
+// two labelled plaques hung on the tree
+const hang=(x,y,txt,dt,cls,w,h)=>{
+  const e=document.createElement('div');e.className='pl '+cls;
+  e.style.cssText=`left:${x}px;top:${y}px;width:${w}px;height:${h}px;z-index:60;
+    transform:rotate(${(rnd()-.5)*4}deg);filter:brightness(1.16)`;
+  e.innerHTML=`<div class="t">${txt}</div><div class="d">${dt}</div>`;o.appendChild(e);};
+hang(408,352,'TE PIDO','MARACANÁ · 13·VII·2014','tin',186,60);
+hang(898,300,'GRACIAS POR EL FAVOR CONCEDIDO','MARACANÁ · 10·VII·2021','brass',210,68);
+const l1=document.createElement('div');l1.className='lbl';
+l1.style.cssText='left:646px;top:646px';l1.innerHTML='214 PETICIONES &nbsp;·&nbsp; <b>9 GRACIAS</b>';
+o.appendChild(l1);
+const c=document.getElementById('g').getContext('2d'),im=c.createImageData(1440,900);
+for(let i=0;i<im.data.length;i+=4){const v=190+Math.random()*66;im.data[i]=im.data[i+1]=im.data[i+2]=v;im.data[i+3]=30;}
+c.putImageData(im,0,0);
+</script>

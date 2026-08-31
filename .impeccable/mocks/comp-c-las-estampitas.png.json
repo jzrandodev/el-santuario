@@ -1,0 +1,28 @@
+{
+  "direction": "714794b2",
+  "world": "El Santuario",
+  "surface": "first viewport, desktop web",
+  "viewport": "1440x900",
+  "name": "Las Estampitas",
+  "medium": "rendered HTML + Canvas2D, screenshot at 1440x900 — no image model available this session",
+  "topology": "volumetric field",
+  "density": "sparse",
+  "focal": "the one lit gracias panel",
+  "fixed_across_comps": [
+    "warm-black ground, not blue-black",
+    "Gauchito red as the committed carrier",
+    "candle-warm key; the visitor carries the light",
+    "brass = gracias / tin = te pido",
+    "celeste withheld from the entire palette until a release is earned",
+    "Chivo for engraved plaque capitals, Alegreya for votive text"
+  ],
+  "must_not_literalize": [
+    "plaque copy and dates are real and load-bearing, but their placement is compositional, not a layout spec",
+    "the offering and plaque counts are illustrative of proportion, not final content",
+    "image slots are deliberately empty or marked SIN IMAGEN — the image ladder is undecided by the user's choice"
+  ],
+  "risk": "Without a wall or a mass it can read as floating cards in space.",
+  "approved": true,
+  "approved_note": "Chosen by Juan 2026-08-31 over La Pared and El Arbol. Carries the strongest answer to 'no fixed order' and is already shaped for the undecided image ladder. Named risk to solve in the build: the sparse opening is the one most exposed to 'reverence that reads as cold', which he listed as a failure condition.",
+  "prompt": "El Santuario, first viewport, desktop 1440x900. No wall and no centre. Votive panels suspended at different depths in a dark volume, near ones sharp and legible, far ones blurred and dim, movement possible in any direction. Three panels forward: a tin TE PIDO Maracana 13-VII-2014, a brass GRACIAS POR EL FAVOR CONCEDIDO Maracana 10-VII-2021 as the single focal element, and a tin panel whose image slot reads SIN IMAGEN. Red ribbons fall softly out of focus behind. One line of Alegreya italic, 'acercate'. Chivo engraved capitals. Celeste absent."
+}

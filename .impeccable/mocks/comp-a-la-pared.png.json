@@ -1,0 +1,27 @@
+{
+  "direction": "714794b2",
+  "world": "El Santuario",
+  "surface": "first viewport, desktop web",
+  "viewport": "1440x900",
+  "name": "La Pared",
+  "medium": "rendered HTML + Canvas2D, screenshot at 1440x900 — no image model available this session",
+  "topology": "lateral wall",
+  "density": "extreme",
+  "focal": "the single brass plaque inside the candle pool",
+  "fixed_across_comps": [
+    "warm-black ground, not blue-black",
+    "Gauchito red as the committed carrier",
+    "candle-warm key; the visitor carries the light",
+    "brass = gracias / tin = te pido",
+    "celeste withheld from the entire palette until a release is earned",
+    "Chivo for engraved plaque capitals, Alegreya for votive text"
+  ],
+  "must_not_literalize": [
+    "plaque copy and dates are real and load-bearing, but their placement is compositional, not a layout spec",
+    "the offering and plaque counts are illustrative of proportion, not final content",
+    "image slots are deliberately empty or marked SIN IMAGEN — the image ladder is undecided by the user's choice"
+  ],
+  "risk": "Lateral movement is the closest of the three to a scroll.",
+  "approved": false,
+  "prompt": "El Santuario, first viewport, desktop 1440x900. A vast wall of votive plaques running past both edges of frame, hundreds deep, warm-black ground. The visitor carries a single candle: a warm radial pool at 30%/58% brightens five or six plaques and falls off hard into black. Tin plaques read TE PIDO with stadium and date; one brass plaque reads GRACIAS POR EL FAVOR CONCEDIDO, Maracana 10-VII-2021. Tapered Gauchito-red ribbons hang from above frame across the wall. Chivo engraved capitals. No navigation chrome. Celeste absent."
+}

@@ -1,0 +1,78 @@
+<meta charset="utf-8">
+<title>El Santuario — Comp C — Las Estampitas</title>
+<link href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;700;900&family=Alegreya:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_shared.css">
+<style>
+  .void{position:absolute;inset:0;background:
+    radial-gradient(58% 52% at 44% 47%, rgba(255,168,70,.11), transparent 66%),
+    radial-gradient(40% 40% at 82% 74%, rgba(176,18,24,.10), transparent 70%),
+    linear-gradient(180deg,#0A0806,#070605)}
+  .card{position:absolute;border-radius:2px;overflow:hidden;
+    background:linear-gradient(158deg,#2C2A24,#1A1915);
+    border:1px solid rgba(217,213,200,.13);
+    box-shadow:0 14px 34px rgba(0,0,0,.8),inset 0 1px 0 rgba(217,213,200,.10)}
+  .card .img{height:56%;background:
+      radial-gradient(70% 90% at 50% 74%, rgba(176,18,24,.22), transparent 70%),
+      linear-gradient(172deg,#3A362C,#211F1A);
+    border-bottom:1px solid rgba(217,213,200,.10);position:relative}
+  .card .img:after{content:"";position:absolute;inset:0;
+    background:repeating-linear-gradient(46deg,rgba(0,0,0,.22) 0 2px,transparent 2px 6px)}
+  .card .cap{padding:7px 8px 0;text-align:center}
+  .card .cap .t{font-size:7.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;
+    color:rgba(217,213,200,.62);line-height:1.5}
+  .card .cap .d{font-size:6.5px;letter-spacing:.18em;color:rgba(217,213,200,.34);margin-top:3px}
+  .card.gr{background:linear-gradient(158deg,#7E6520,#4E3D11);border-color:rgba(228,196,106,.30)}
+  .card.gr .img{background:radial-gradient(70% 90% at 50% 74%, rgba(255,201,120,.30), transparent 70%),
+      linear-gradient(172deg,#8A6E24,#5A4614);border-bottom-color:rgba(228,196,106,.28)}
+  .card.gr .cap .t{color:#E9CE7E}.card.gr .cap .d{color:rgba(233,206,126,.55)}
+  .card.empty .img{background:linear-gradient(172deg,#221F1A,#141210)}
+  .card.empty .img:before{content:"SIN IMAGEN";position:absolute;inset:0;display:flex;
+    align-items:center;justify-content:center;font-size:6px;letter-spacing:.3em;
+    color:rgba(217,213,200,.16)}
+  .ribbon2{position:absolute;top:-40px;width:11px;z-index:8;
+    background:linear-gradient(180deg,#8E1017,#4A080C 75%,rgba(74,8,12,0));
+    filter:blur(1.2px);opacity:.6}
+  .hint{position:absolute;left:50%;bottom:96px;transform:translateX(-50%);z-index:95;
+    font-family:'Alegreya',serif;font-style:italic;font-size:15px;color:rgba(232,220,192,.34)}
+</style>
+<div class="void"></div>
+<div id="f"></div>
+<div class="vig"></div>
+<canvas class="grain" id="g" width="1440" height="900"></canvas>
+<div class="mark">EL SANTUARIO <b>·</b> C&nbsp;&nbsp;LAS&nbsp;ESTAMPITAS</div>
+<div class="meta">TOPOLOGY — VOLUMETRIC FIELD, MOVE IN ANY DIRECTION · SPARSE · EACH PANEL LEGIBLE</div>
+<div class="count"><s>■</s> 214 TE PIDO<br><u>■</u> 9 GRACIAS</div>
+<div class="hint">acercate</div>
+<script>
+let s=20140713;const rnd=()=>(s=(s*1664525+1013904223)%4294967296)/4294967296;
+const f=document.getElementById('f');
+const near=[
+ {x:196,y:250,w:250,h:330,t:'TE PIDO',d:'MARACANÁ · 13·VII·2014',c:'',b:0},
+ {x:560,y:186,w:288,h:378,t:'GRACIAS POR EL FAVOR CONCEDIDO',d:'MARACANÁ · 10·VII·2021',c:'gr',b:0},
+ {x:962,y:294,w:214,h:284,t:'TE PIDO',d:'EAST RUTHERFORD · 26·VI·2016',c:'empty',b:.4},
+];
+const far=[
+ {x:64,y:498,w:120,h:158,b:2.4},{x:452,y:592,w:96,h:126,b:3.0},
+ {x:806,y:600,w:110,h:144,b:2.6},{x:1206,y:214,w:132,h:174,b:2.2},
+ {x:1250,y:520,w:88,h:116,b:3.4},{x:352,y:96,w:82,h:108,b:3.6},
+ {x:900,y:88,w:96,h:126,b:3.2},{x:1092,y:660,w:76,h:100,b:3.8},
+ {x:236,y:686,w:86,h:112,b:3.5},{x:660,y:702,w:70,h:92,b:4.0}
+];
+far.forEach(o=>{const e=document.createElement('div');
+  e.className='card'+(rnd()<.25?' gr':'');
+  e.style.cssText=`left:${o.x}px;top:${o.y}px;width:${o.w}px;height:${o.h}px;z-index:12;
+    filter:blur(${o.b}px) brightness(${(.30+rnd()*.22).toFixed(2)});transform:rotate(${(rnd()-.5)*7}deg)`;
+  e.innerHTML='<div class="img"></div><div class="cap"></div>';f.appendChild(e);});
+near.forEach(o=>{const e=document.createElement('div');
+  e.className='card '+o.c;
+  e.style.cssText=`left:${o.x}px;top:${o.y}px;width:${o.w}px;height:${o.h}px;z-index:40;
+    filter:blur(${o.b}px) brightness(1.06);transform:rotate(${(rnd()-.5)*3.2}deg)`;
+  e.innerHTML=`<div class="img"></div><div class="cap"><div class="t">${o.t}</div><div class="d">${o.d}</div></div>`;
+  f.appendChild(e);});
+[110,300,742,1030,1330].forEach(x=>{const r=document.createElement('div');r.className='ribbon2';
+  r.style.cssText=`left:${x}px;height:${200+rnd()*380}px;transform:rotate(${(rnd()-.5)*8}deg)`;
+  document.body.appendChild(r);});
+const c=document.getElementById('g').getContext('2d'),im=c.createImageData(1440,900);
+for(let i=0;i<im.data.length;i+=4){const v=190+Math.random()*66;im.data[i]=im.data[i+1]=im.data[i+2]=v;im.data[i+3]=30;}
+c.putImageData(im,0,0);
+</script>

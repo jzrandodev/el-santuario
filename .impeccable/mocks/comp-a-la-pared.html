@@ -1,0 +1,82 @@
+<meta charset="utf-8">
+<title>El Santuario — Comp A — La Pared</title>
+<link href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;700;900&family=Alegreya:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_shared.css">
+<style>
+  .wall{position:absolute;inset:0;
+    background:
+      radial-gradient(70% 60% at 30% 52%, rgba(255,179,71,.10), transparent 62%),
+      linear-gradient(180deg,#141109 0%,#0C0A07 45%,#080605 100%);}
+  .wall:after{content:"";position:absolute;inset:0;opacity:.30;
+    background-image:repeating-linear-gradient(94deg,rgba(0,0,0,.5) 0 2px,transparent 2px 7px),
+                     repeating-linear-gradient(4deg,rgba(255,255,255,.03) 0 1px,transparent 1px 11px);}
+  /* candle pool */
+  .pool{position:absolute;left:30%;top:58%;width:1180px;height:1180px;transform:translate(-50%,-50%);
+    background:radial-gradient(circle,rgba(255,201,120,.30) 0%,rgba(255,168,70,.15) 22%,rgba(180,90,20,.05) 42%,transparent 66%);
+    mix-blend-mode:screen;z-index:40;pointer-events:none}
+  .flame{position:absolute;left:30%;top:74%;z-index:45;transform:translate(-50%,-50%)}
+  .flame .body{width:42px;height:66px;border-radius:6px 6px 4px 4px;
+    background:linear-gradient(180deg,#F0E4C4,#CBB98E);box-shadow:0 -2px 10px rgba(255,180,90,.5)}
+  .flame .fl{position:absolute;left:50%;top:-19px;transform:translateX(-50%);
+    width:13px;height:26px;border-radius:50% 50% 46% 46%;
+    background:radial-gradient(circle at 50% 68%,#FFF6DC,#FFC163 55%,rgba(255,140,40,0) 78%);
+    box-shadow:0 0 34px 14px rgba(255,168,70,.42)}
+  .ribbon{position:absolute;top:-30px;width:18px;z-index:35;transform-origin:top center;
+    clip-path:polygon(18% 0,82% 0,66% 100%,34% 100%);border-radius:0 0 40% 40%;
+    background:linear-gradient(180deg,var(--red) 0%,var(--red-deep) 78%,rgba(94,10,14,0) 100%);
+    box-shadow:1px 0 5px rgba(0,0,0,.7)}
+  .hdr{position:absolute;left:44px;top:0;z-index:96}
+</style>
+<div class="wall"></div>
+<div id="field"></div>
+<div class="pool"></div>
+<div class="flame"><div class="fl"></div><div class="body"></div></div>
+<div class="vig"></div>
+<canvas class="grain" id="g" width="1440" height="900"></canvas>
+<div class="mark">EL SANTUARIO <b>·</b> A&nbsp;&nbsp;LA&nbsp;PARED</div>
+<div class="meta">TOPOLOGY — LATERAL WALL · DENSITY EXTREME · YOU CARRY THE LIGHT</div>
+<div class="count"><s>■</s> 214 TE PIDO<br><u>■</u> 9 GRACIAS</div>
+<script>
+let s=20220118;const rnd=()=>(s=(s*1664525+1013904223)%4294967296)/4294967296;
+const LX=1440*0.30, LY=900*0.58;
+const petition=[["TE PIDO","BERLÍN · 30·VI·2006"],["TE PIDO","MARACANÁ · 13·VII·2014"],
+  ["TE PIDO","SANTIAGO · 04·VII·2015"],["TE PIDO","EAST RUTHERFORD · 26·VI·2016"],
+  ["TE PIDO","CIUDAD DEL CABO · 03·VII·2010"],["TE PIDO","KAZÁN · 30·VI·2018"],
+  ["TE PIDO","MARACANÁ · 15·VII·2007"]];
+const thanks=[["GRACIAS POR EL FAVOR CONCEDIDO","MARACANÁ · 10·VII·2021"],
+  ["GRACIAS","LUSAIL · 18·XII·2022"]];
+const f=document.getElementById('field');
+// dense unreadable field
+for(let i=0;i<300;i++){
+  const w=44+rnd()*104, h=22+rnd()*36, x=rnd()*1440-40, y=60+rnd()*760;
+  const d=Math.hypot(x+w/2-LX,y+h/2-LY), lit=Math.max(.05,Math.min(1,1-(d-90)/560));
+  const el=document.createElement('div');
+  el.className='pl tin';
+  el.style.cssText=`left:${x}px;top:${y}px;width:${w}px;height:${h}px;z-index:${10+((y*.02)|0)};
+    transform:rotate(${(rnd()-.5)*3.4}deg);filter:brightness(${(.22+lit*1.5).toFixed(2)});opacity:${(.5+lit*.5).toFixed(2)}`;
+  f.appendChild(el);
+}
+// legible plaques inside the pool
+const place=(txt,dt,cls,x,y,w,h,rot)=>{
+  const el=document.createElement('div');el.className='pl '+cls;
+  el.style.cssText=`left:${x}px;top:${y}px;width:${w}px;height:${h}px;z-index:60;
+    transform:rotate(${rot}deg);filter:brightness(1.28)`;
+  el.innerHTML=`<div class="t">${txt}</div><div class="d">${dt}</div>`;f.appendChild(el);};
+place(petition[1][0],petition[1][1],'tin',300,352,232,74,-1.1);
+place(thanks[0][0],thanks[0][1],'brass',300,446,232,86,.7);
+place(petition[3][0],petition[3][1],'tin',126,300,160,58,1.6);
+place(petition[2][0],petition[2][1],'tin',556,392,150,56,-2.1);
+place(petition[0][0],petition[0][1],'tin',176,470,116,50,2.4);
+place(petition[5][0],petition[5][1],'tin',556,300,146,52,1.2);
+// ribbons
+[86,208,362,470,614,700,842,918,1044,1180,1290,1392].forEach((x,i)=>{
+  const h=170+rnd()*430, d=Math.abs(x-LX), lit=Math.max(.16,Math.min(1,1-(d-60)/620));
+  const r=document.createElement('div');r.className='ribbon';
+  r.style.cssText=`left:${x}px;height:${h}px;transform:rotate(${(rnd()-.5)*7}deg);
+    filter:brightness(${(.3+lit*1.35).toFixed(2)});opacity:${(.55+lit*.45).toFixed(2)}`;
+  document.body.appendChild(r);});
+// grain
+const c=document.getElementById('g').getContext('2d'),im=c.createImageData(1440,900);
+for(let i=0;i<im.data.length;i+=4){const v=190+Math.random()*66;im.data[i]=im.data[i+1]=im.data[i+2]=v;im.data[i+3]=30;}
+c.putImageData(im,0,0);
+</script>

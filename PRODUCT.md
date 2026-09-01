@@ -104,9 +104,17 @@ Real and available:
   passed since the final, having thought about it a great deal, I want to tell you all that I am retiring
   from the national team" and "I gave everything, I have nothing left to give". **The full source text has
   not been obtained and must not be paraphrased or reconstructed from memory.**
-- **2026 World Cup final:** 19 July 2026, New Jersey. Spain beat Argentina.
-- **Jorge Messi**, his father, died in early August 2026. Sources give 7 and 8 August; unresolved, and it
-  should not appear as a date on the page until it is confirmed.
+- **2026 World Cup final:** 19 July 2026, **MetLife Stadium**, New Jersey. Spain 1–0 after extra time,
+  Ferran Torres 106'. Enzo Fernández sent off late; Emiliano Martínez made a record 11 saves. The venue
+  matters: MetLife is also where the 2016 Copa América Centenario final was lost and where he first said
+  he was finished. Same stadium, ten years apart.
+- **Jorge Messi**, his father and lifelong agent, died **8 August 2026**, aged 68, in Rosario, after a
+  long illness (verified 2026-09-01 across four outlets). He published a separate open letter to his
+  father on **12 August 2026**, three weeks before the letter to the country. **His father is not to be
+  depicted.** He was a private individual, he died weeks ago, and a generated likeness is indefensible.
+- `ASSETS.md` — the thirteen panels, each with its state, verified facts, plaque line, and image-ladder
+  rung. Five panels carry facts asserted rather than search-verified and are marked inline; none ships
+  until confirmed.
 - The sibling project, live and public — https://la-bombonera-gules.vercel.app and https://github.com/jzrandodev/la-bombonera — including a working manifest-driven asset loader, a bilingual system, and synthesized Web Audio, all of which are proven and re-usable approaches.
 - Messi's Argentina record is verifiable public fact and needs no invention.
 

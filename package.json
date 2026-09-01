@@ -1,0 +1,18 @@
+{
+  "name": "el-santuario",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "A non-linear, explorable WebGL tribute to Lionel Messi in the Argentina shirt.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^7.1.3"
+  },
+  "dependencies": {
+    "three": "^0.180.0"
+  }
+}

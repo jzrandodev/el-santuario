@@ -54,7 +54,8 @@ asymmetry and damage as law; one gate that must be earned.
 - Image ladder: each panel declares its own medium (estampita / painted ex-voto / bare
   plaque / photoreal). Deliberately undecided by the user; loader must stay null-safe.
 - Bilingual EN/ES parity — binding on the sibling project, unconfirmed here.
-- The no-WebGL fallback for a volumetric field. Genuinely unsolved.
+- ~~The no-WebGL fallback for a volumetric field.~~ **Solved 2026-09-01** — authored as a
+  document floor in `src/main.js`, reached by no-context, reduced-motion, and context-lost.
 - Named build risk: a sparse opening is the composition most exposed to
   "reverence that reads as cold", which the user listed as a failure condition. The letter's
   lit-phrase memory is currently the main answer to it.

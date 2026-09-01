@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>El Santuario — Messi y la camiseta</title>
+<meta name="description" content="Un santuario para Lionel Messi y la camiseta argentina. No es una línea de tiempo: es un lugar, y vos elegís qué encender.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chivo:wght@300;400;700;900&family=Alegreya:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+<!--
+THESIS: A shrine you move through, not a timeline you scroll. Thirteen votive objects in the
+  dark, entered in whatever order you choose, lit only by a light you carry. It refuses the
+  full-bleed hero-and-scroll tribute and its museum-white opposite alike.
+OWN-WORLD: Warm-black volume, Gauchito red as the committed carrier, candle-warm point light
+  travelling with the visitor. Tin for te pido, brass for gracias, and two engraved plaques that
+  carry no image at all. Chivo engraved capitals; Alegreya italic for the room's own voice.
+  Celeste is withheld from the entire palette until a release is earned.
+STORY: The visitor understands that the asking went on far longer than the thanks, because they
+  can see the proportion before they read a word. They believe it because they had to move to
+  find it. They leave having lit a path nobody else will light in the same order.
+FIRST VIEWPORT: No hero, no nav, no scroll affordance. Panels suspended at depth, the nearest
+  legible and the rest falling away into fog. One flame under the cursor. Moving IS the action.
+FORM: Las Estampitas (composition C), candidate 3 of the grounded list. Seed key 714794b2.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the
+  verdict, DESIGN.md, and every shipping raster carrying its provenance.
+-->
+<canvas id="scene"></canvas>
+
+<noscript class="fallback">
+  <h1>El Santuario</h1>
+  <p>Un santuario para Lionel Messi y la camiseta argentina. Esta versión no necesita JavaScript.</p>
+</noscript>
+
+<div id="ui" hidden>
+  <div class="mark">EL SANTUARIO <b>·</b> <span id="markSub">MESSI Y LA CAMISETA</span></div>
+  <div class="tally">
+    <span class="t-pido"><i></i> <b id="nPido">0</b> TE PIDO</span>
+    <span class="t-grac"><i></i> <b id="nGrac">0</b> GRACIAS</span>
+    <span class="t-fin"><i></i> <b id="nFin">0</b> <em>SIN NOMBRE</em></span>
+  </div>
+  <div class="hint" id="hint">movete · la vela va con vos</div>
+  <div class="found"><b id="nFound">0</b> DE <span id="nTotal">13</span> ENCENDIDAS</div>
+  <div class="colophon">
+    BORRADOR · SIN IMÁGENES TODAVÍA — CADA PANEL ESPERA SU LÁMINA.<br>
+    NO AFILIADO NI AUTORIZADO POR LA AFA, LA FIFA NI NINGÚN CLUB.
+  </div>
+</div>
+
+<div id="readout" hidden aria-live="polite"></div>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

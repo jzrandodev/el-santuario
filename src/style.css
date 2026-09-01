@@ -1,0 +1,52 @@
+:root{
+  --night:#0A0806; --red:#B01218;
+  --wax:#E8DCC0; --brass-hi:#E4C46A; --tin-hi:#D9D5C8; --celeste:#75AADB;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow:hidden;background:var(--night)}
+body{font-family:'Chivo',system-ui,sans-serif;color:var(--wax);
+  -webkit-font-smoothing:antialiased;touch-action:none}
+#scene{position:fixed;inset:0;width:100%;height:100%;display:block;cursor:none}
+@media (hover:none){#scene{cursor:auto}}
+
+#ui{position:fixed;inset:0;pointer-events:none;z-index:10}
+#ui>*{position:absolute}
+.mark{top:34px;left:40px;font-size:10px;letter-spacing:.42em;text-transform:uppercase;
+  font-weight:700;color:rgba(232,220,192,.52)}
+.mark b{color:var(--red)}
+.tally{top:34px;right:40px;text-align:right;font-size:9px;letter-spacing:.28em;
+  text-transform:uppercase;line-height:2.1;display:flex;flex-direction:column;
+  color:rgba(232,220,192,.34)}
+.tally i{display:inline-block;width:6px;height:6px;margin-right:5px;vertical-align:middle}
+.t-pido i{background:var(--tin-hi);opacity:.5} .t-grac i{background:var(--brass-hi)}
+.t-fin i{background:var(--red)}
+.tally b{color:var(--wax);font-weight:700}
+.tally em{font-style:normal;opacity:.62}
+.hint{left:50%;bottom:88px;transform:translateX(-50%);font-family:'Alegreya',serif;
+  font-style:italic;font-size:16px;color:rgba(232,220,192,.42);transition:opacity .8s ease}
+.found{left:50%;bottom:56px;transform:translateX(-50%);font-size:9px;letter-spacing:.3em;
+  text-transform:uppercase;color:rgba(232,220,192,.3)}
+.found b{color:var(--brass-hi)}
+.colophon{left:40px;bottom:34px;font-size:8px;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(232,220,192,.24);line-height:2.2;max-width:430px}
+
+/* the no-WebGL / no-JS floor: the same shrine, as a document */
+.fallback,#readout{position:fixed;inset:0;overflow-y:auto;background:var(--night);
+  padding:72px 24px 96px;z-index:50}
+.fallback h1,#readout h1{font-size:13px;letter-spacing:.44em;text-transform:uppercase;
+  font-weight:700;margin-bottom:18px;color:rgba(232,220,192,.6)}
+.fallback p,#readout p.lede{font-family:'Alegreya',serif;font-size:19px;line-height:1.6;
+  color:rgba(232,220,192,.55);max-width:60ch;margin-bottom:40px}
+#readout ol{list-style:none;max-width:60ch}
+#readout li{border-top:1px solid rgba(232,220,192,.14);padding:18px 0}
+#readout .st{font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--red)}
+#readout li.gracias .st{color:var(--brass-hi)}
+#readout .nm{font-size:20px;font-weight:700;margin:6px 0 4px}
+#readout .fx{font-size:12px;line-height:1.8;color:rgba(232,220,192,.5)}
+
+@media (max-width:760px){
+  .mark{left:20px;top:22px;font-size:9px}
+  .tally{right:20px;top:22px;font-size:8px}
+  .colophon{left:20px;right:20px;bottom:20px;max-width:none}
+  .hint{bottom:104px} .found{bottom:76px}
+}

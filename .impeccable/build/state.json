@@ -28,7 +28,12 @@
       "openedAt": "2026-08-31T20:18:24.646Z",
       "closedAt": null,
       "attempts": 0,
-      "notes": [],
+      "notes": [
+        {
+          "at": "2026-09-01T13:25:27.879Z",
+          "text": "Draft room built ahead of the spec phase at the user's request: drafts/la-carta.html. The letter's full text is NOT obtained; LETTER[] renders unsourced lines as empty rules and forbids paraphrase. Verified desktop 1440x900 and mobile 375x812; reduced-motion path lights the whole letter."
+        }
+      ],
       "gate": null,
       "forced": null
     },

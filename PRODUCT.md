@@ -19,7 +19,7 @@ Deploy target is Vercel by precedent (account `JuanZamora`, Hobby plan, at its p
 1. **Hiring managers and design directors** evaluating Juan Zamora professionally. They arrive from a portfolio index or a shared link, usually with several tabs open, and decide within seconds whether to keep going. They are judging capability, not reading documentation. The first viewport carries a five-second bar.
 2. **Juan himself.** This is also a passion project. Work that serves only the first audience at the expense of the second is a failed trade.
 
-**Success is conversations**, not traffic and not peer recognition. He is job hunting and sending links now.
+**Success is conversations**, not traffic and not peer recognition. The piece is shared as a link and judged fast, so the first viewport carries a five-second bar.
 
 ## Product Purpose
 

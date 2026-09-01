@@ -16,10 +16,28 @@ a passion project. Success is conversations, not traffic.
 
 **Action.** There is no CTA. The visitor's job is to move inward and find something.
 
-**Content.** Twelve moments, thematic not chronological, split by the shrine's own two
-states: *te pido* (2006, 2007, 2010, 2014, 2015, 2016, 2018) and *gracias por el favor
-concedido* (2021, 2022), plus the shirt itself. The proportion — overwhelmingly petition —
-is load-bearing and must stay legible. Maracanã appears in both states, 2014 and 2021.
+**Content.** Moments are thematic, not chronological, split by the shrine's own states:
+*te pido* (2006, 2007, 2010, 2014, 2015, 2016, 2018), *gracias por el favor concedido*
+(2021 Maracanã, 2022 Lusail), and — added 2026-09-01 — **the ending**: the 19 July 2026
+final, the handwritten letter published 31 August, and his father. The proportion across
+the states is load-bearing and must stay legible before a word is read.
+
+Two rhymes that are factual rather than authored, and should not be underlined as if clever:
+Maracanã is both the 2014 wound and the 2021 release; MetLife/New Jersey is both the
+2016 first retirement and the 2026 real one, ten years apart.
+
+**The letter is the piece's ending and its densest object.** Interaction, proposed:
+the visitor already carries the light, so the letter is legible only where the candle
+falls — a few words at a time across three pages, read by moving rather than by scrolling.
+Phrases already lit stay lit, so each visitor burns a different path through it and leaves
+with a different letter. If the reported crossings-out and corrections hold up against a
+primary source, revealing what he struck out is the strongest single interaction available
+to this project. Blocked on obtaining the source text — it must be quoted, never rebuilt
+from a news paraphrase.
+
+**Audio.** Quotes are set as type; ambience is synthesized. No broadcast interview
+recordings — copyrighted sound recordings, and against the boundary the user set on the
+sibling project. A shrine is a quiet place and set type does more here than playback.
 
 **Direction.** El Santuario (seed 714794b2, chosen as the pick card).
 **Composition.** C — Las Estampitas. Approved comp:
@@ -38,4 +56,9 @@ asymmetry and damage as law; one gate that must be earned.
 - Bilingual EN/ES parity — binding on the sibling project, unconfirmed here.
 - The no-WebGL fallback for a volumetric field. Genuinely unsolved.
 - Named build risk: a sparse opening is the composition most exposed to
-  "reverence that reads as cold", which the user listed as a failure condition.
+  "reverence that reads as cold", which the user listed as a failure condition. The letter's
+  lit-phrase memory is currently the main answer to it.
+- The naming of the third state. It should use Messi's own words rather than a liturgical
+  term — he is alive, and a remembrance plaque would be false.
+- Source text of the letter, and whether the physical description (three pages, notepad,
+  black capitals, visible corrections) survives checking.

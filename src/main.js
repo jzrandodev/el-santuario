@@ -75,12 +75,12 @@ function start(){
   let release = 0, releaseAim = 0;
   const WARM = new THREE.Color(0xFFD2A0), WHITE = new THREE.Color(0xFFFFFF),
         CELESTE = new THREE.Color(0x75AADB);
-  function light(m){
+  function light(m, quiet){
     m.userData.lit = true;
     const c = m.userData.panel.celeste;
     if (c && c > releaseAim) { releaseAim = c; document.body.classList.add('released'); }
     const P = m.userData.panel;
-    said.textContent = [P.name, [P.place, P.date].filter(Boolean).join(', '), P.fact,
+    if (!quiet) said.textContent = [P.name, [P.place, P.date].filter(Boolean).join(', '), P.fact,
       P.room ? 'Enter para abrirla.' : ''].filter(Boolean).join('. ');
     found[m.userData.panel.state]++; total++;
     counts[m.userData.panel.state].textContent = found[m.userData.panel.state];
@@ -96,16 +96,20 @@ function start(){
   addEventListener('resize', resize); resize();
 
   /* MOVEMENT — free, and never a scroll. Pointer drifts the camera laterally and vertically,
-   * the wheel travels through depth (down goes deeper, as a page would), and a click flies to whatever was clicked. Keyboard does
-   * all of it so the shrine is navigable without a pointer at all. */
+   * the wheel travels through depth (down goes deeper, as a page would), and a click flies
+   * to whatever was clicked. Keyboard does all of it so the shrine is navigable without a
+   * pointer at all. */
   const aim = { x: 0, y: 0, z: F.camera.position.z };
   const cur = { x: 0, y: 0, z: F.camera.position.z };
   let px = 0.5, py = 0.5, moved = false;
 
   const back = readLedger();
-  if (back) {
-    for (const m of F.meshes) if (back.lit.includes(m.userData.panel.id)) light(m);
-    Object.assign(aim, back.at); Object.assign(cur, back.at);
+  if (back && Array.isArray(back.lit)) {
+    // restored quietly: a screen reader already heard these on the way in
+    for (const m of F.meshes) if (back.lit.includes(m.userData.panel.id)) light(m, true);
+    if (back.at && [back.at.x, back.at.y, back.at.z].every(Number.isFinite)) {
+      Object.assign(aim, back.at); Object.assign(cur, back.at);
+    }
     moved = true; hint.style.opacity = '0';
   }
   function enter(m){

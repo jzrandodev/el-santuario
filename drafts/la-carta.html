@@ -67,6 +67,8 @@ body{font-family:'Chivo',system-ui,sans-serif;color:var(--wax);cursor:none}
 .mark{position:fixed;top:34px;left:40px;z-index:70;font-size:10px;letter-spacing:.42em;
   text-transform:uppercase;color:rgba(232,220,192,.5);font-weight:700}
 .mark b{color:var(--red)}
+a.mark{text-decoration:none;cursor:pointer}
+a.mark:hover,a.mark:focus-visible{color:var(--wax)}
 .state{position:fixed;top:34px;right:40px;z-index:70;font-size:9px;letter-spacing:.3em;
   text-transform:uppercase;color:rgba(232,220,192,.34);text-align:right;line-height:2}
 .state u{text-decoration:none;color:var(--brass-hi)}
@@ -139,7 +141,7 @@ page approximates, paraphrases or reconstructs Messi's words. See LETTER[] below
 <div id="vig"></div>
 <canvas id="grain"></canvas>
 
-<div class="mark">EL SANTUARIO <b>·</b> LA CARTA</div>
+<a class="mark" href="../" title="volver al santuario">EL SANTUARIO <b>·</b> LA CARTA</a>
 <div class="state">TE PIDO · GRACIAS<br><u>· EL TERCER ESTADO ·</u><br>SIN NOMBRE TODAVÍA</div>
 <div class="cap" id="cap">acercá la vela</div>
 <div class="meter"><i id="litN">0</i> DE <span id="totN">0</span> PALABRAS ENCENDIDAS</div>

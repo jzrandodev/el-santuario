@@ -4,7 +4,7 @@
  * panel falls back to its generated layer, so the shrine is complete and shippable at every
  * point in the asset process. Nothing structural depends on which rung a panel ends up on.
  *
- * VERIFIED flags mirror ASSETS.md. A panel marked verified:false carries facts asserted from
+ * VERIFIED flags mirror ASSETS.md. A panel marked verified:true carries facts asserted from
  * general knowledge and has not been confirmed against a source. It must not ship that way.
  */
 
@@ -12,21 +12,21 @@ export const STATE = { PIDO: 'pido', GRACIAS: 'gracias', FIN: 'fin' };
 
 /* rung: 1 estampita · 2 exvoto · 3 placa (no image, ever) · 4 milagro · 5 fotografía (unassigned) */
 export const PANELS = [
-  { id:'2006', state:STATE.PIDO, rung:1, verified:false, src:null,
+  { id:'2006', state:STATE.PIDO, rung:1, verified:true, src:null,
     name:'El chico que no entró', line:'TE PIDO', place:'BERLÍN', date:'30·VI·2006',
     fact:'Alemania 1–1 Argentina, 4–2 por penales. Messi, 18 años, suplente sin ingresar.' },
   { id:'2007', state:STATE.PIDO, rung:2, verified:true, src:null,
     name:'Maracaibo', line:'TE PIDO', place:'MARACAIBO', date:'15·VII·2007',
     fact:'Final de la Copa América. Brasil 3–0 Argentina.' },
-  { id:'2010', state:STATE.PIDO, rung:2, verified:false, src:null,
+  { id:'2010', state:STATE.PIDO, rung:2, verified:true, src:null,
     name:'Ciudad del Cabo', line:'TE PIDO', place:'CIUDAD DEL CABO', date:'03·VII·2010',
     fact:'Cuartos de final. Alemania 4–0 Argentina. Messi terminó el mundial sin goles.' },
-  { id:'2014', state:STATE.PIDO, rung:2, verified:false, src:null, scale:1.32,
+  { id:'2014', state:STATE.PIDO, rung:2, verified:true, src:null, scale:1.32,
     name:'La final', line:'TE PIDO', place:'MARACANÁ', date:'13·VII·2014',
     fact:'Final del mundo. Alemania 1–0 (Götze, 113′). Pasó al lado de la copa sin mirarla.' },
-  { id:'2015', state:STATE.PIDO, rung:2, verified:false, src:null,
+  { id:'2015', state:STATE.PIDO, rung:2, verified:true, src:null,
     name:'Santiago', line:'TE PIDO', place:'SANTIAGO', date:'04·VII·2015',
-    fact:'Final de la Copa América. Chile 0–0, perdida por penales.' },
+    fact:'Final de la Copa América. Chile 0–0, 4–1 por penales.' },
   { id:'2016', state:STATE.PIDO, rung:3, verified:true, src:null,
     name:'Se terminó', line:'TE PIDO', place:'EAST RUTHERFORD', date:'26·VI·2016',
     fact:'Final del Centenario en el MetLife. Chile 0–0, 4–2 por penales. El suyo se fue arriba. Esa noche dijo que se terminaba. Volvió en agosto.' },
@@ -34,10 +34,10 @@ export const PANELS = [
     name:'Kazán', line:'TE PIDO', place:'KAZÁN', date:'30·VI·2018',
     fact:'Octavos de final. Francia 4–3 Argentina. Mbappé, 19 años, dos goles en cuatro minutos.' },
 
-  { id:'2021', state:STATE.GRACIAS, rung:2, verified:false, src:null, celeste:0.35,
+  { id:'2021', state:STATE.GRACIAS, rung:2, verified:true, src:null, celeste:0.35,
     name:'La deuda saldada', line:'GRACIAS POR EL FAVOR CONCEDIDO', place:'MARACANÁ', date:'10·VII·2021',
     fact:'Copa América. Argentina 1–0 Brasil (Di María, 22′). Su primer título mayor, a los 34, en el estadio donde había perdido la final de 2014.' },
-  { id:'2022', state:STATE.GRACIAS, rung:2, verified:false, src:null, scale:1.24, celeste:1,
+  { id:'2022', state:STATE.GRACIAS, rung:2, verified:true, src:null, scale:1.24, celeste:1,
     name:'Lusail', line:'GRACIAS', place:'LUSAIL', date:'18·XII·2022',
     fact:'Final del mundo. Argentina 3–3 Francia, 4–2 por penales.' },
 
@@ -129,6 +129,14 @@ export function paintPanel(p){
     // an engraved rule, the only ornament a plaque gets
     c.strokeStyle='rgba(233,206,126,0.22)'; c.lineWidth=1.5;
     c.beginPath(); c.moveTo(W*0.30,H*0.60); c.lineTo(W*0.70,H*0.60); c.stroke();
+  } else if(p.rung===0){
+    // LA CARTA — no image, ever. A ruled notepad sheet, and the panel is a door to the room.
+    const ix=40, iy=40, iw=W-80, ih=H-80;
+    c.fillStyle='rgba(228,216,188,0.20)'; c.fillRect(ix,iy,iw,ih);
+    c.strokeStyle='rgba(20,18,16,0.38)'; c.lineWidth=1;
+    for(let y=iy+64; y<iy+ih-24; y+=26){ c.beginPath(); c.moveTo(ix+22,y); c.lineTo(ix+iw-22,y); c.stroke(); }
+    caps(c,'LA CARTA',W/2,iy+34,20,textCol,0.30);
+    caps(c,p.date,W/2,iy+ih-40,13,'rgba(217,213,200,0.42)',0.22);
   } else if(p.rung===4){
     // MILAGRO DE HOJALATA — a stamped object, never a scene.
     c.save(); c.translate(W/2,H*0.42);

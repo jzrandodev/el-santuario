@@ -42,6 +42,7 @@ body{font-family:'Chivo',system-ui,sans-serif;color:var(--wax);
 #readout .st{font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--red)}
 #readout li.gracias .st{color:var(--brass-hi)}
 #readout .nm{font-size:20px;font-weight:700;margin:6px 0 4px}
+#readout .nm a{color:inherit;text-decoration:underline;text-decoration-color:var(--red);text-underline-offset:4px}
 #readout .fx{font-size:12px;line-height:1.8;color:rgba(232,220,192,.5)}
 
 @media (max-width:760px){

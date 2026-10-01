@@ -6,6 +6,15 @@ const canvas = document.getElementById('scene');
 const ui = document.getElementById('ui');
 const readout = document.getElementById('readout');
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const ROOM = { 'la-carta': import.meta.env.BASE_URL + 'drafts/la-carta.html' };
+
+/* THE LEDGER — what this visitor has lit, and where they stood, survives a trip into the
+ * letter room and back. Session only: a new visit is a new path. */
+const LEDGER = 'santuario:ledger';
+function readLedger(){
+  try { return JSON.parse(sessionStorage.getItem(LEDGER)) || null; } catch (_) { return null; }
+}
+function writeLedger(v){ try { sessionStorage.setItem(LEDGER, JSON.stringify(v)); } catch (_) {} }
 
 /* ---- the floor: if WebGL is unavailable, or motion is refused, the shrine is a document ----
  * This is not a degraded version. It is the same thirteen objects, the same three states and
@@ -18,7 +27,7 @@ function documentFloor(reasonClass){
     <li class="${p.state}">
       <div class="st">${p.state === STATE.PIDO ? 'TE PIDO'
         : p.state === STATE.GRACIAS ? 'GRACIAS POR EL FAVOR CONCEDIDO' : 'SIN NOMBRE TODAVÍA'}</div>
-      <div class="nm">${p.name}</div>
+      <div class="nm">${p.room ? `<a href="${ROOM[p.room]}">${p.name}</a>` : p.name}</div>
       <div class="fx">${[p.place, p.date].filter(Boolean).join(' · ')}${
         (p.place || p.date) ? '<br>' : ''}${p.fact}</div>
     </li>`).join('');
@@ -53,6 +62,12 @@ function start(){
 
   const found = { pido: 0, gracias: 0, fin: 0 };
   let total = 0;
+  function light(m){
+    m.userData.lit = true;
+    found[m.userData.panel.state]++; total++;
+    counts[m.userData.panel.state].textContent = found[m.userData.panel.state];
+    nFound.textContent = total;
+  }
 
   function resize(){
     const w = innerWidth, h = innerHeight;
@@ -68,6 +83,20 @@ function start(){
   const aim = { x: 0, y: 0, z: F.camera.position.z };
   const cur = { x: 0, y: 0, z: F.camera.position.z };
   let px = 0.5, py = 0.5, moved = false;
+
+  const back = readLedger();
+  if (back) {
+    for (const m of F.meshes) if (back.lit.includes(m.userData.panel.id)) light(m);
+    Object.assign(aim, back.at); Object.assign(cur, back.at);
+    moved = true; hint.style.opacity = '0';
+  }
+  function enter(m){
+    writeLedger({ lit: F.meshes.filter(x => x.userData.lit).map(x => x.userData.panel.id),
+                  at: { x: aim.x, y: aim.y, z: aim.z } });
+    location.href = ROOM[m.userData.panel.room];
+  }
+  // a room opens only once you have reached its panel; from afar a click just travels there
+  const near = m => m.userData.lit && Math.abs(cur.z - m.position.z) < 11;
 
   addEventListener('pointermove', e => {
     px = e.clientX / innerWidth; py = e.clientY / innerHeight;
@@ -86,6 +115,11 @@ function start(){
     else if (k === 'ArrowDown' || k === 's') aim.z += 4;
     else if (k === 'ArrowLeft' || k === 'a') aim.x -= 3;
     else if (k === 'ArrowRight' || k === 'd') aim.x += 3;
+    else if (k === 'Enter') {
+      const m = F.meshes.find(x => x.userData.panel.room && near(x));
+      if (m) enter(m);
+      return;
+    }
     else return;
     e.preventDefault();
     aim.z = THREE.MathUtils.clamp(aim.z, F.depth.far, F.depth.near);
@@ -106,11 +140,19 @@ function start(){
   }, { passive: true });
 
   const ray = new THREE.Raycaster();
+  let hover = null;
+  addEventListener('pointermove', e => {
+    ray.setFromCamera(new THREE.Vector2((e.clientX / innerWidth) * 2 - 1,
+      -(e.clientY / innerHeight) * 2 + 1), F.camera);
+    hover = ray.intersectObjects(F.meshes)[0]?.object || null;
+  }, { passive: true });
   addEventListener('click', e => {
     const p = new THREE.Vector2((e.clientX / innerWidth) * 2 - 1, -(e.clientY / innerHeight) * 2 + 1);
     ray.setFromCamera(p, F.camera);
     const hit = ray.intersectObjects(F.meshes)[0];
-    if (hit) aim.z = hit.object.position.z + 7.4;
+    if (!hit) return;
+    if (hit.object.userData.panel.room && near(hit.object)) enter(hit.object);
+    else aim.z = hit.object.position.z + 7.4;
   });
 
   /* ONE CLOCK — every motion in the piece runs off this loop and nothing free-runs. */
@@ -134,13 +176,11 @@ function start(){
     // a panel the light has reached stays found, permanently
     for (const m of F.meshes) {
       if (m.userData.lit) continue;
-      if (m.position.distanceTo(F.candle.position) < 8.0) {
-        m.userData.lit = true;
-        found[m.userData.panel.state]++; total++;
-        counts[m.userData.panel.state].textContent = found[m.userData.panel.state];
-        nFound.textContent = total;
-      }
+      if (m.position.distanceTo(F.candle.position) < 8.0) light(m);
     }
+
+    // the cursor says when a panel is a door
+    canvas.style.cursor = hover && hover.userData.panel.room && near(hover) ? 'pointer' : '';
 
     renderer.render(F.scene, F.camera);
     requestAnimationFrame(frame);

@@ -60,6 +60,10 @@ function start(){
                    gracias: document.getElementById('nGrac'), fin: document.getElementById('nFin') };
   const hint = document.getElementById('hint');
   const said = document.getElementById('said');
+  // a door says it is a door, but only once you are standing at it
+  const door = document.getElementById('door');
+  door.textContent = matchMedia('(hover: none)').matches
+    ? 'tocá la carta para abrirla' : 'click o enter · abrí la carta';
   nTotal.textContent = TOTAL;
 
   const found = { pido: 0, gracias: 0, fin: 0 };
@@ -205,6 +209,9 @@ function start(){
 
     // the cursor says when a panel is a door
     canvas.style.cursor = hover && hover.userData.panel.room && near(hover) ? 'pointer' : '';
+    const atDoor = F.meshes.some(m => m.userData.panel.room && near(m));
+    door.classList.toggle('on', atDoor);
+    if (atDoor) hint.style.opacity = '0';
 
     renderer.render(F.scene, F.camera);
     requestAnimationFrame(frame);

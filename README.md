@@ -1,6 +1,6 @@
 # El Santuario
 
-A non-linear, explorable WebGL tribute to Lionel Messi in the Argentina shirt.
+A non-linear, explorable WebGL tribute to Lionel Messi's football life, from Rosario to the letter.
 
 Not a timeline and not a highlight reel. The piece is built as a roadside shrine —
 the Argentine folk-devotional form of the *santuario popular* — where moments are
@@ -9,19 +9,19 @@ to light and in what order.
 
 The shrine's own two states carry the story:
 
-- **Te pido** — the petitions. 2006, 2007, 2010, 2014, 2015, 2016, 2018.
-- **Gracias por el favor concedido** — the thanks. 2021, 2022.
+- **Te pido** — the petitions: every loss and every asking, country and club.
+- **Gracias por el favor concedido** — the thanks: every title, youth to Miami.
 
-The wall is overwhelmingly petition. That proportion is the point, and it is
-readable before a single word is.
+Celeste is withheld from all of it until the Argentina shirt's senior release in 2021.
+That is the line the piece draws, and it is readable before a single word is.
 
 ## Status
 
-The field is built: Vite + Three.js, thirteen panels, null-safe asset loading, so every panel
+The field is built: Vite + Three.js, twenty-nine panels, null-safe asset loading, so every panel
 falls back to a generated layer until its art lands. Deploys to Vercel and GitHub Pages from one build.
 
 - `PRODUCT.md` — product truth, constraints, and the decisions deliberately left open
-- `ASSETS.md` — the thirteen panels, their verified facts and image briefs
+- `ASSETS.md` — the twenty-nine panels, their verified facts and image briefs
 - `drafts/la-carta.html` — the letter room, waiting on the letter's original text
 - `.impeccable/` — direction seed `714794b2`, build-phase state, composition studies
 

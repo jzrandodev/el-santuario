@@ -23,7 +23,9 @@ Deploy target is Vercel by precedent (account `JuanZamora`, Hobby plan, at its p
 
 ## Product Purpose
 
-A **non-linear, explorable WebGL space** about Lionel Messi in the Argentina shirt.
+A **non-linear, explorable WebGL space** about Lionel Messi's whole football life, from Rosario to the letter.
+
+**Updated 2026-10-01, by the user.** The scope widened from "Messi in the Argentina shirt" to the whole career: the growth-hormone years in Rosario, Barcelona, PSG and Inter Miami hang beside the national team. The Argentina shirt stays the spine: it carries the ending and it alone carries celeste.
 
 The content spine is **thematic, not chronological** — the weight of the 10, the crowd, the exile years, the homecoming. It is not a timeline and does not march 2005 → 2026.
 
@@ -57,14 +59,23 @@ Both are WebGL. That is not the axis of difference and must not be treated as on
 ## Capabilities and Constraints
 
 - **Non-linear structure is binding.** No fixed chapter order, no single scripted camera path. The visitor arrives at moments in an order they choose, and a second visit need not match the first.
-- **Thematic, not chronological.** The four themes above are the user's chosen framing. The actual set of moments, and how many, is **not yet decided**.
+- **Thematic, not chronological.** The four themes above are the user's chosen framing. The set is twenty-nine moments as of 2026-10-01 (see `ASSETS.md`).
 - **Three states, not two.** The shrine's own vocabulary carries the structure:
-  - **te pido** — the petitions: 2006, 2007, 2010, 2014, 2015, 2016, 2018.
-  - **gracias por el favor concedido** — the thanks: 2021 (Maracanã), 2022 (Lusail).
+  - **te pido** — the petitions. Argentina: debut red card 2005, 2006, 2007, 2010, 2014, 2015,
+    2016, 2018. Club and origin: the hormone treatment, the napkin, the 2020 burofax, the 2021
+    Barcelona farewell, the last PSG match.
+  - **gracias por el favor concedido** — the thanks. Argentina: U20 2005, Beijing 2008, 2021,
+    Finalissima 2022, Lusail 2022, Copa América 2024. Club: first goal 2005, Rome 2009, Wembley
+    2011, Berlin 2015, Miami, the eighth Ballon d'Or.
+  - **The rule, set by the user 2026-10-01:** every loss or asking is te pido and every title is
+    gracias, youth titles included. The wall is now close to even (13 · 12 · 4), so "the asking
+    outweighs the thanks" no longer reads at a glance. What still reads is **celeste**: it belongs
+    to the Argentina shirt's senior releases alone (2021 on). Club and youth thanks hang in brass
+    without it.
   - **the ending** — 19 July 2026, the letter, and his father. The naming of this third state is
     **undecided**; it should probably use Messi's own words rather than a liturgical term, since he
     is alive and a remembrance plaque would be false. Do not settle it without the user.
-  The proportion across the three is load-bearing and must stay legible without reading a word.
+  The three states must stay legible without reading a word: tin, brass, and the unnamed ending.
 - **The MetLife rhyme is factual, not a device.** He announced his first retirement after losing the
   Copa América Centenario final at MetLife Stadium, East Rutherford, New Jersey, on 26 June 2016
   (0–0, lost 4–2 on penalties to Chile, his own penalty over the bar). He retired for real after
@@ -79,6 +90,7 @@ Carried from the sibling project, where the user set them, and extended to this 
 
 - **Messi's name and the documented facts of his Argentina career are usable.** Matches, dates, scorelines, minutes, competitions and published quotes are public record, and naming the subject of a non-commercial fan tribute is ordinary expressive use.
 - **Agency photography is the real exposure**, more than the name or the facts. Getty, AP and Reuters images are straight copyright and are not cleared by a tribute framing.
+- **Club names are used as fact; club crests, kit sponsors and badges are never drawn.** Barcelona, PSG and Inter Miami appear by name in plaque text only. Club figures wear plain colours, no crest.
 - **Claude does not draw club or federation crests.** The AFA crest, the FIFA World Cup trophy and adidas marks are registered trademarks. Precedent: build any emblem behind an `EMBLEMS[]`-style array of original invented marks so the user can swap in real artwork himself as a one-line change.
 - **Colour and simple geometry are fine.** Sky blue and white stripes are not a trademark. Crests, sponsor logos and manufacturer marks are.
 - **Audio is synthesized, never sampled.** No chant recordings, no anthem recordings, no commentary, no
@@ -112,7 +124,7 @@ Real and available:
   long illness (verified 2026-09-01 across four outlets). He published a separate open letter to his
   father on **12 August 2026**, three weeks before the letter to the country. **His father is not to be
   depicted.** He was a private individual, he died weeks ago, and a generated likeness is indefensible.
-- `ASSETS.md` — the thirteen panels, each with its state, verified facts, plaque line, and image-ladder
+- `ASSETS.md` — the twenty-nine panels, each with its state, verified facts, plaque line, and image-ladder
   rung. Five panels carry facts asserted rather than search-verified and are marked inline; none ships
   until confirmed.
 - The sibling project, live and public — https://la-bombonera-gules.vercel.app and https://github.com/jzrandodev/la-bombonera — including a working manifest-driven asset loader, a bilingual system, and synthesized Web Audio, all of which are proven and re-usable approaches.

@@ -1,11 +1,16 @@
-/* The thirteen panels. Source of truth is ASSETS.md; this file must not drift from it.
+/* The twenty-nine panels. Source of truth is ASSETS.md; this file must not drift from it.
  *
  * `src: null` means the lámina has not been made yet. A null path is NEVER requested and the
  * panel falls back to its generated layer, so the shrine is complete and shippable at every
  * point in the asset process. Nothing structural depends on which rung a panel ends up on.
  *
- * VERIFIED flags mirror ASSETS.md. A panel marked verified:true carries facts asserted from
+ * VERIFIED flags mirror ASSETS.md. A panel marked verified:false carries facts asserted from
  * general knowledge and has not been confirmed against a source. It must not ship that way.
+ *
+ * The whole career hangs here, country and club alike, under the same rule: a loss or an
+ * asking is TE PIDO, a thing given is GRACIAS. Celeste belongs to the Argentina shirt alone,
+ * and only to its senior releases (2021 on). Club panels never carry it, and neither do the
+ * youth titles: the debt they could not pay was the senior one.
  */
 
 export const STATE = { PIDO: 'pido', GRACIAS: 'gracias', FIN: 'fin' };
@@ -15,18 +20,45 @@ export const PANELS = [
   { id:'2006', state:STATE.PIDO, rung:1, verified:true, src:null,
     name:'El chico que no entró', line:'TE PIDO', place:'BERLÍN', date:'30·VI·2006',
     fact:'Alemania 1–1 Argentina, 4–2 por penales. Messi, 18 años, suplente sin ingresar.' },
+  { id:'tratamiento', state:STATE.PIDO, rung:4, verified:true, src:null,
+    name:'El tratamiento', line:'TE PIDO', place:'ROSARIO', date:'',
+    fact:'A los 10 años, en las inferiores de Newell’s, le diagnosticaron déficit de hormona de crecimiento. Medía 1,27 m.' },
+  { id:'servilleta', state:STATE.PIDO, rung:2, verified:true, src:null,
+    name:'La servilleta', line:'TE PIDO', place:'BARCELONA', date:'14·XII·2000',
+    fact:'Carles Rexach firmó su compromiso de ficharlo en una servilleta de papel. Messi tenía 13 años; el club pagaba el tratamiento.' },
+  { id:'albacete', state:STATE.GRACIAS, rung:1, verified:true, src:null,
+    name:'El primer gol', line:'GRACIAS', place:'CAMP NOU', date:'01·V·2005',
+    fact:'Barcelona 2–0 Albacete. Entró en el 87′; a los 91′ picó la pelota sobre el arquero, con pase de Ronaldinho. Tenía 17 años.' },
+  { id:'sub20', state:STATE.GRACIAS, rung:1, verified:true, src:null,
+    name:'Utrecht', line:'GRACIAS', place:'UTRECHT', date:'02·VII·2005',
+    fact:'Final del Mundial Sub-20. Argentina 2–1 Nigeria, los dos goles suyos de penal. Balón de Oro y Botín de Oro del torneo.' },
+  { id:'debut', state:STATE.PIDO, rung:1, verified:true, src:null,
+    name:'Cuarenta segundos', line:'TE PIDO', place:'BUDAPEST', date:'17·VIII·2005',
+    fact:'Su debut en la Selección mayor. Entró en el 64′ y a los cuarenta segundos lo expulsaron. Hungría 1–2 Argentina.' },
   { id:'2007', state:STATE.PIDO, rung:2, verified:true, src:null,
     name:'Maracaibo', line:'TE PIDO', place:'MARACAIBO', date:'15·VII·2007',
     fact:'Final de la Copa América. Brasil 3–0 Argentina.' },
+  { id:'pekin', state:STATE.GRACIAS, rung:2, verified:true, src:null,
+    name:'Pekín', line:'GRACIAS', place:'PEKÍN', date:'23·VIII·2008',
+    fact:'Final olímpica. Argentina 1–0 Nigeria: él habilitó a Di María, que la picó. Medalla de oro.' },
+  { id:'roma', state:STATE.GRACIAS, rung:2, verified:true, src:null,
+    name:'Roma', line:'GRACIAS', place:'ROMA', date:'27·V·2009',
+    fact:'Final de la Champions. Barcelona 2–0 Manchester United. Su gol de cabeza, y después el botín en la mano.' },
   { id:'2010', state:STATE.PIDO, rung:2, verified:true, src:null,
     name:'Ciudad del Cabo', line:'TE PIDO', place:'CIUDAD DEL CABO', date:'03·VII·2010',
     fact:'Cuartos de final. Alemania 4–0 Argentina. Messi terminó el mundial sin goles.' },
+  { id:'wembley', state:STATE.GRACIAS, rung:2, verified:true, src:null,
+    name:'Wembley', line:'GRACIAS', place:'WEMBLEY', date:'28·V·2011',
+    fact:'Final de la Champions. Barcelona 3–1 Manchester United. Hizo el segundo y fue la figura.' },
   { id:'2014', state:STATE.PIDO, rung:2, verified:true, src:null, scale:1.32,
     name:'La final', line:'TE PIDO', place:'MARACANÁ', date:'13·VII·2014',
     fact:'Final del mundo. Alemania 1–0 (Götze, 113′). Pasó al lado de la copa sin mirarla.' },
   { id:'2015', state:STATE.PIDO, rung:2, verified:true, src:null,
     name:'Santiago', line:'TE PIDO', place:'SANTIAGO', date:'04·VII·2015',
     fact:'Final de la Copa América. Chile 0–0, 4–1 por penales.' },
+  { id:'berlin2015', state:STATE.GRACIAS, rung:2, verified:true, src:null,
+    name:'Berlín, otra vez', line:'GRACIAS', place:'BERLÍN', date:'06·VI·2015',
+    fact:'Final de la Champions en el Olympiastadion, el estadio donde en 2006 se quedó en el banco. Barcelona 3–1 Juventus; el triplete.' },
   { id:'2016', state:STATE.PIDO, rung:3, verified:true, src:null,
     name:'Se terminó', line:'TE PIDO', place:'EAST RUTHERFORD', date:'26·VI·2016',
     fact:'Final del Centenario en el MetLife. Chile 0–0, 4–2 por penales. El suyo se fue arriba. Esa noche dijo que se terminaba. Volvió en agosto.' },
@@ -37,10 +69,31 @@ export const PANELS = [
   { id:'2021', state:STATE.GRACIAS, rung:2, verified:true, src:null, celeste:0.35,
     name:'La deuda saldada', line:'GRACIAS POR EL FAVOR CONCEDIDO', place:'MARACANÁ', date:'10·VII·2021',
     fact:'Copa América. Argentina 1–0 Brasil (Di María, 22′). Su primer título mayor, a los 34, en el estadio donde había perdido la final de 2014.' },
+  { id:'burofax', state:STATE.PIDO, rung:2, verified:true, src:null,
+    name:'El burofax', line:'TE PIDO', place:'BARCELONA', date:'VIII·2020',
+    fact:'Después del 2–8 con el Bayern pidió irse por burofax. El club no lo dejó y se quedó un año más.' },
+  { id:'despedida', state:STATE.PIDO, rung:2, verified:true, src:null,
+    name:'La despedida', line:'TE PIDO', place:'CAMP NOU', date:'08·VIII·2021',
+    fact:'El club no pudo renovarle. Se despidió llorando en una conferencia de prensa, después de 21 años.' },
+  { id:'finalissima', state:STATE.GRACIAS, rung:2, verified:true, src:null, celeste:0.5,
+    name:'La Finalissima', line:'GRACIAS', place:'WEMBLEY', date:'01·VI·2022',
+    fact:'Argentina 3–0 Italia. Dos asistencias y la figura del partido. Wembley otra vez, once años después.' },
   { id:'2022', state:STATE.GRACIAS, rung:2, verified:true, src:null, scale:1.24, celeste:1,
     name:'Lusail', line:'GRACIAS', place:'LUSAIL', date:'18·XII·2022',
     fact:'Final del mundo. Argentina 3–3 Francia, 4–2 por penales.' },
 
+  { id:'paris', state:STATE.PIDO, rung:2, verified:true, src:null,
+    name:'París', line:'TE PIDO', place:'PARÍS', date:'03·VI·2023',
+    fact:'Su último partido en el PSG. PSG 2–3 Clermont, y parte del Parque de los Príncipes lo silbó.' },
+  { id:'miami', state:STATE.GRACIAS, rung:1, verified:true, src:null,
+    name:'Miami', line:'GRACIAS', place:'NASHVILLE', date:'19·VIII·2023',
+    fact:'Leagues Cup: su gol y el primer penal de la tanda, 10–9. El primer título del Inter Miami. En 2025 llegó la MLS Cup, 3–1 a Vancouver.' },
+  { id:'ocho', state:STATE.GRACIAS, rung:4, verified:true, src:null,
+    name:'Ocho', line:'GRACIAS', place:'PARÍS', date:'30·X·2023',
+    fact:'Su octavo Balón de Oro, un récord. Lo ganó por el Mundial.' },
+  { id:'2024', state:STATE.GRACIAS, rung:2, verified:true, src:null, celeste:0.6,
+    name:'Llorar en el banco', line:'GRACIAS', place:'MIAMI GARDENS', date:'14·VII·2024',
+    fact:'Final de la Copa América. Se rompió el tobillo a los 64′ y lloró en el banco. Argentina 1–0 Colombia, Lautaro en el 112′.' },
   { id:'2026', state:STATE.FIN, rung:3, verified:true, src:null,
     name:'MetLife, otra vez', line:'', place:'EAST RUTHERFORD', date:'19·VII·2026',
     fact:'Final del mundo. España 1–0 en tiempo suplementario (Ferran Torres, 106′). El mismo estadio que en 2016, diez años después.' },
@@ -141,10 +194,18 @@ export function paintPanel(p){
     // MILAGRO DE HOJALATA — a stamped object, never a scene.
     c.save(); c.translate(W/2,H*0.42);
     c.strokeStyle='rgba(217,213,200,0.44)'; c.lineWidth=6; c.lineJoin='round';
-    if(p.id==='camiseta'){
+    if(p.id==='camiseta' || p.id==='ocho'){
+      const n = p.id==='ocho' ? '8' : '10';
       c.font='900 210px Chivo, system-ui, sans-serif'; c.textAlign='center'; c.textBaseline='middle';
-      c.fillStyle='rgba(217,213,200,0.30)'; c.fillText('10',0,0);
-      c.strokeStyle='rgba(217,213,200,0.40)'; c.lineWidth=3; c.strokeText('10',0,0);
+      c.fillStyle='rgba(217,213,200,0.30)'; c.fillText(n,0,0);
+      c.strokeStyle='rgba(217,213,200,0.40)'; c.lineWidth=3; c.strokeText(n,0,0);
+    } else if(p.id==='tratamiento'){
+      // a stamped tin figure of a child, the oldest kind of milagro: a body asked for
+      c.fillStyle='rgba(217,213,200,0.24)';
+      c.beginPath(); c.arc(0,-78,26,0,Math.PI*2); c.fill(); c.stroke();
+      c.beginPath(); c.moveTo(-34,-44); c.lineTo(34,-44); c.lineTo(26,40); c.lineTo(-26,40); c.closePath();
+      c.fill(); c.stroke();
+      c.beginPath(); c.moveTo(-20,40); c.lineTo(-22,112); c.moveTo(20,40); c.lineTo(22,112); c.stroke();
     } else {
       // a candle: the only mark El Padre ever gets
       c.fillStyle='rgba(232,220,192,0.26)'; c.fillRect(-26,-10,52,150);
@@ -156,6 +217,8 @@ export function paintPanel(p){
     }
     c.restore();
     let y=H*0.74;
+    // the state line, so a tin object still says whether it asks or thanks
+    if(p.line){ caps(c,p.line,W/2,y-36,15,textCol,0.30); }
     if(p.place){ caps(c,p.place,W/2,y,18,textCol,0.22); y+=32; }
     if(p.date) caps(c,p.date,W/2,y,15,'rgba(217,213,200,0.40)',0.24);
   } else {

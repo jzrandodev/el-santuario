@@ -2,6 +2,8 @@ import * as THREE from 'three';
 import { PANELS, STATE, paintPanel } from './panels.js';
 
 const NIGHT = 0x0A0806;
+// depth between panels. Tighter than it was at thirteen, so twenty-nine is still a walk, not a trek
+const GAP = 5.6;
 
 /* Deterministic layout: the same shrine every visit, entered in a different order.
  * Randomness here is seeded, never Math.random, so a panel's place in the volume is a fact
@@ -54,7 +56,7 @@ export function buildField(renderer){
      * environment map in this scene. High metalness with no envMap renders black. */
     const mat = new THREE.MeshPhongMaterial({
       map: tex,
-      specular: brass ? 0x6B5518 : 0x2A2925,
+      specular: brass ? 0x4A3A10 : 0x2A2925,  // brass glints, it should not glare
       shininess: brass ? 42 : 14,
       transparent: true
     });
@@ -72,7 +74,7 @@ export function buildField(renderer){
     mesh.position.set(
       Math.cos(ang) * rad * (first ? 0.5 : 1),
       Math.sin(ang) * rad * (first ? 0.4 : 0.56) + (first ? 0.4 : (rnd() - 0.5) * 2.6),
-      first ? -6.5 : -2 - i * 6.4 - rnd() * 3.2
+      first ? -6.5 : -2 - i * GAP - rnd() * 3.2
     );
     mesh.rotation.set((rnd() - 0.5) * 0.16, (rnd() - 0.5) * 0.42, (rnd() - 0.5) * 0.07);
 
@@ -101,6 +103,6 @@ export function buildField(renderer){
   }
   scene.add(ribbons);
 
-  const depth = { near: 6, far: -PANELS.length * 6.4 - 16 };
+  const depth = { near: 6, far: -PANELS.length * GAP - 16 };
   return { scene, camera, candle, flame, meshes, ribbons, depth };
 }

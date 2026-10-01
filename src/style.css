@@ -9,6 +9,9 @@ body{font-family:'Chivo',system-ui,sans-serif;color:var(--wax);
 #scene{position:fixed;inset:0;width:100%;height:100%;display:block;cursor:none}
 @media (hover:none){#scene{cursor:auto}}
 
+/* read by assistive tech, never drawn */
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+
 #ui{position:fixed;inset:0;pointer-events:none;z-index:10}
 #ui>*{position:absolute}
 .mark{top:34px;left:40px;font-size:10px;letter-spacing:.42em;text-transform:uppercase;
@@ -24,9 +27,12 @@ body{font-family:'Chivo',system-ui,sans-serif;color:var(--wax);
 .tally em{font-style:normal;opacity:.62}
 .hint{left:50%;bottom:88px;transform:translateX(-50%);font-family:'Alegreya',serif;
   font-style:italic;font-size:16px;color:rgba(232,220,192,.42);transition:opacity .8s ease}
+.door{opacity:0;color:rgba(232,220,192,.62)} .door.on{opacity:1}
 .found{left:50%;bottom:56px;transform:translateX(-50%);font-size:9px;letter-spacing:.3em;
   text-transform:uppercase;color:rgba(232,220,192,.3)}
-.found b{color:var(--brass-hi)}
+.found b{color:var(--brass-hi);transition:color 4s ease}
+/* after the release, the count of what you have lit takes the colour that was withheld */
+body.released .found b{color:var(--celeste)}
 .colophon{left:40px;bottom:34px;font-size:8px;letter-spacing:.16em;text-transform:uppercase;
   color:rgba(232,220,192,.24);line-height:2.2;max-width:430px}
 
@@ -42,11 +48,13 @@ body{font-family:'Chivo',system-ui,sans-serif;color:var(--wax);
 #readout .st{font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--red)}
 #readout li.gracias .st{color:var(--brass-hi)}
 #readout .nm{font-size:20px;font-weight:700;margin:6px 0 4px}
+#readout .nm a{color:inherit;text-decoration:underline;text-decoration-color:var(--red);text-underline-offset:4px}
 #readout .fx{font-size:12px;line-height:1.8;color:rgba(232,220,192,.5)}
 
 @media (max-width:760px){
-  .mark{left:20px;top:22px;font-size:9px}
-  .tally{right:20px;top:22px;font-size:8px}
-  .colophon{left:20px;right:20px;bottom:20px;max-width:none}
-  .hint{bottom:104px} .found{bottom:76px}
+  .mark{left:20px;right:20px;top:22px;font-size:9px;letter-spacing:.32em}
+  /* the tally drops under the mark as one row, so the two never collide */
+  .tally{left:20px;right:auto;top:48px;text-align:left;flex-direction:row;gap:16px;font-size:8px}
+  .colophon{left:20px;right:20px;bottom:20px;max-width:none;font-size:7px;line-height:1.9}
+  .hint{bottom:132px;white-space:nowrap} .found{bottom:104px;white-space:nowrap}
 }

@@ -67,6 +67,8 @@ body{font-family:'Chivo',system-ui,sans-serif;color:var(--wax);cursor:none}
 .mark{position:fixed;top:34px;left:40px;z-index:70;font-size:10px;letter-spacing:.42em;
   text-transform:uppercase;color:rgba(232,220,192,.5);font-weight:700}
 .mark b{color:var(--red)}
+a.mark{text-decoration:none;cursor:pointer}
+a.mark:hover,a.mark:focus-visible{color:var(--wax)}
 .state{position:fixed;top:34px;right:40px;z-index:70;font-size:9px;letter-spacing:.3em;
   text-transform:uppercase;color:rgba(232,220,192,.34);text-align:right;line-height:2}
 .state u{text-decoration:none;color:var(--brass-hi)}
@@ -127,8 +129,8 @@ FORM: Las Estampitas (composition C), candidate 3 of the grounded list. Seed key
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the
   verdict, DESIGN.md, and every shipping raster carrying its provenance.
 
-DRAFT STATUS — the letter's full text has NOT been obtained. Only fragments verified against
-published reporting are set as words. Every other line renders as an empty rule. Nothing on this
+DRAFT STATUS — the letter's full text has NOT been set. No line is set as words until it is
+copied from the published Spanish original. Every line renders as an empty rule. Nothing on this
 page approximates, paraphrases or reconstructs Messi's words. See LETTER[] below.
 -->
 <div id="stage">
@@ -139,13 +141,13 @@ page approximates, paraphrases or reconstructs Messi's words. See LETTER[] below
 <div id="vig"></div>
 <canvas id="grain"></canvas>
 
-<div class="mark">EL SANTUARIO <b>·</b> LA CARTA</div>
+<a class="mark" href="../" title="volver al santuario">EL SANTUARIO <b>·</b> LA CARTA</a>
 <div class="state">TE PIDO · GRACIAS<br><u>· EL TERCER ESTADO ·</u><br>SIN NOMBRE TODAVÍA</div>
 <div class="cap" id="cap">acercá la vela</div>
 <div class="meter"><i id="litN">0</i> DE <span id="totN">0</span> PALABRAS ENCENDIDAS</div>
 <div class="src">
   <em>BORRADOR</em> — CARTA ESCRITA 21·VII·2026, PUBLICADA 31·VIII·2026.<br>
-  SÓLO SE MUESTRAN FRAGMENTOS VERIFICADOS. LAS LÍNEAS VACÍAS ESPERAN EL TEXTO ORIGINAL.
+  LAS LÍNEAS VACÍAS ESPERAN EL TEXTO ORIGINAL.
 </div>
 
 <script>
@@ -161,18 +163,13 @@ page approximates, paraphrases or reconstructs Messi's words. See LETTER[] below
 --------------------------------------------------------------------------- */
 const LETTER = [
   { page:0, lines:[
-    null, null,
-    "DESPUÉS DEL TIEMPO QUE PASÓ",           // verified fragment (translated reporting)
-    "DESDE LA FINAL, Y DE HABERLO",
-    "PENSADO MUCHÍSIMO, QUIERO",
-    "DECIRLES A TODOS QUE ME",
-    "RETIRO DE LA SELECCIÓN.",
+    // Lines 2-6 previously held a back-translation from English reporting. It did not match
+    // the Spanish published 31·VIII·2026, so it was removed. See ASSETS.md, panel 11.
+    null, null, null, null, null, null, null,
     null, null, null, null, null, null, null, null
   ]},
   { page:1, lines:[
-    null, null, null, null, null,
-    "LO DI TODO, NO ME QUEDA",               // verified fragment
-    "NADA MÁS PARA DAR.",
+    null, null, null, null, null, null, null,
     null, null, null, null, null, null, null, null
   ]},
   { page:2, lines:[

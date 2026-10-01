@@ -50,7 +50,7 @@ a printed holy card beside a stamped tin charm, and the heterogeneity is the aut
 - Plaque: `TE PIDO · BERLÍN · 30·VI·2006`
 - **Rung 1 — estampita.** A boy in stripes on a printed card, gold-edged, slightly off-register,
   as if bought at a kiosk in 2006 by someone who believed. It should look cheap and hopeful.
-- *Verification: date/venue/result asserted from general knowledge, NOT search-verified. Confirm before ship.*
+- *Verified by search 2026-10-01. Messi did not play; Cruz was the last substitute used.*
 
 ### 02 · Maracaibo
 - **15 July 2007** · Estadio José Pachencho Romero, Maracaibo, Venezuela · Brazil 3–0 Argentina
@@ -62,11 +62,11 @@ a printed holy card beside a stamped tin charm, and the heterogeneity is the aut
 
 ### 03 · Ciudad del Cabo
 - **3 July 2010** · Cape Town · Germany 4–0 Argentina
-- Messi finished the tournament without a goal.
+- Messi finished the tournament without a goal: five starts, 29 shots, none scored.
 - Plaque: `TE PIDO · CIUDAD DEL CABO · 03·VII·2010`
 - **Rung 2 — ex-voto pintado**, the darkest of the painted set. Four marks. Empty net at the
   wrong end. Heavy oxidation on the tin.
-- *Verification: asserted, NOT search-verified. Confirm before ship.*
+- *Verified by search 2026-10-01.*
 
 ### 04 · La final
 - **13 July 2014** · Maracanã, Rio de Janeiro · Germany 1–0 Argentina (Götze 113')
@@ -74,14 +74,14 @@ a printed holy card beside a stamped tin charm, and the heterogeneity is the aut
 - Plaque: `TE PIDO · MARACANÁ · 13·VII·2014`
 - **Rung 2 — ex-voto pintado, the largest panel in the field.** The subject is *the walk past*,
   not the goal. A small striped figure passing a gold shape without looking at it.
-- *Verification: asserted, NOT search-verified. Confirm before ship.*
+- *Verified by search 2026-10-01.*
 
 ### 05 · Santiago
-- **4 July 2015** · Estadio Nacional, Santiago · Chile 0–0 Argentina, lost on penalties
+- **4 July 2015** · Estadio Nacional, Santiago · Chile 0–0 Argentina a.e.t., 4–1 on penalties
 - Plaque: `TE PIDO · SANTIAGO · 04·VII·2015`
 - **Rung 2 — ex-voto pintado.** Small, plain, almost perfunctory — the second of four finals,
   painted by someone running out of ways to ask.
-- *Verification: asserted, NOT search-verified. Confirm before ship.*
+- *Verified by search 2026-10-01.*
 
 ### 06 · Se terminó
 - **26 June 2016** · MetLife Stadium, East Rutherford, New Jersey · Chile 0–0 Argentina,
@@ -111,14 +111,14 @@ a printed holy card beside a stamped tin charm, and the heterogeneity is the aut
 - **Rung 2 — ex-voto pintado, in the thanks palette.** Brass ground, gold leaf on the lettering.
   Same hand as the petition panels, different materials — the debt is being paid, not begged.
   **This is the first panel in the whole field permitted a trace of celeste.**
-- *Verification: asserted, NOT search-verified. Confirm before ship.*
+- *Verified by search 2026-10-01.*
 
 ### 09 · Lusail
 - **18 December 2022** · Lusail Stadium · Argentina 3–3 France, 4–2 on penalties
 - Plaque: `GRACIAS · LUSAIL · 18·XII·2022`
 - **Rung 2 (or 5 — see open decision).** The full retablo treatment: gold leaf, ornamental
   border, the most elaborate object in the shrine. Celeste at full strength for the only time.
-- *Verification: asserted, NOT search-verified. Confirm before ship.*
+- *Verified by search 2026-10-01.*
 
 ---
 
@@ -144,9 +144,15 @@ would be false. It should use his own words. Undecided by the user, deliberately
   and corrections left visible — *single-source, unverified, and load-bearing if true.*
 - **No generated image. This panel is the letter itself** — it opens the room already built at
   `drafts/la-carta.html`.
-- **BLOCKED: the full source text has not been obtained.** `LETTER[]` currently holds two
-  verified fragments; every other line renders as an empty rule. Do not paraphrase, translate
-  back, or reconstruct. Needs his published post or images.
+- **BLOCKED: the full source text has not been set.** The Spanish text was published 31·VIII·2026
+  and is reprinted in full by La Nación, Infobae, El Cronista, Forbes Argentina and CNN en Español.
+  It has not been copied in yet because it must come from the original, character for character,
+  not from a search summary. `LETTER[]` is all `null` until then.
+- The two fragments previously set in `LETTER[]` were back-translated from English reporting and
+  did not match the published Spanish. They were removed 2026-10-01.
+- The published text opens *"Después de este tiempo que pasó desde la final..."* and the date
+  line confirms it was written 21 July and that his father's death made him more certain.
+  Line breaks and page splits still need the images of the handwritten pages.
 - *Dates verified by search 2026-09-01.*
 
 ### 12 · El padre
@@ -178,8 +184,8 @@ would be false. It should use his own words. Undecided by the user, deliberately
    painted field, it is defensible art direction rather than a shortcut. Used across the field it
    is the thing to avoid. **User's call.**
 2. **The name of the third state.**
-3. **Five panels carry facts asserted from knowledge rather than search-verified** — 01, 03, 04,
-   05, 08, 09. They are marked inline. None ships until confirmed.
+3. ~~Six panels carried facts asserted from knowledge~~ — 01, 03, 04, 05, 08, 09 were all
+   search-verified 2026-10-01. Every dated panel is now verified.
 4. **Bilingual EN/ES.** Binding on the sibling project, unconfirmed here. Hand-lettered text
    inside a painted panel cannot be swapped at runtime, so if parity is wanted, each painted
    panel needs either two versions or no lettering in the art at all. **This decision has to be

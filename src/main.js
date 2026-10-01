@@ -78,7 +78,7 @@ function start(){
   addEventListener('resize', resize); resize();
 
   /* MOVEMENT — free, and never a scroll. Pointer drifts the camera laterally and vertically,
-   * the wheel travels through depth, and a click flies to whatever was clicked. Keyboard does
+   * the wheel travels through depth (down goes deeper, as a page would), and a click flies to whatever was clicked. Keyboard does
    * all of it so the shrine is navigable without a pointer at all. */
   const aim = { x: 0, y: 0, z: F.camera.position.z };
   const cur = { x: 0, y: 0, z: F.camera.position.z };
@@ -105,7 +105,7 @@ function start(){
   }, { passive: true });
 
   addEventListener('wheel', e => {
-    aim.z = THREE.MathUtils.clamp(aim.z + e.deltaY * 0.035, F.depth.far, F.depth.near);
+    aim.z = THREE.MathUtils.clamp(aim.z - e.deltaY * 0.035, F.depth.far, F.depth.near);
     if (!moved) { moved = true; hint.style.opacity = '0'; }
   }, { passive: true });
 
@@ -126,18 +126,21 @@ function start(){
     if (!moved) { moved = true; hint.style.opacity = '0'; }
   });
 
-  // touch: drag to travel
+  // touch: drag to travel. Swiping up goes deeper, the same gesture as reading down a page.
   let tLast = null;
   addEventListener('touchstart', e => { tLast = e.touches[0]; }, { passive: true });
   addEventListener('touchmove', e => {
     const t = e.touches[0];
     if (tLast) {
       aim.x = THREE.MathUtils.clamp(aim.x - (t.clientX - tLast.clientX) * 0.05, -14, 14);
-      aim.z = THREE.MathUtils.clamp(aim.z - (t.clientY - tLast.clientY) * 0.09, F.depth.far, F.depth.near);
+      aim.z = THREE.MathUtils.clamp(aim.z + (t.clientY - tLast.clientY) * 0.05, F.depth.far, F.depth.near);
       if (!moved) { moved = true; hint.style.opacity = '0'; }
     }
     tLast = t;
   }, { passive: true });
+  // when the finger lifts, the candle goes back to the middle of the view instead of
+  // staying parked wherever the touch ended
+  addEventListener('touchend', () => { tLast = null; px = 0.5; py = 0.5; }, { passive: true });
 
   const ray = new THREE.Raycaster();
   let hover = null;

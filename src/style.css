@@ -46,8 +46,9 @@ body{font-family:'Chivo',system-ui,sans-serif;color:var(--wax);
 #readout .fx{font-size:12px;line-height:1.8;color:rgba(232,220,192,.5)}
 
 @media (max-width:760px){
-  .mark{left:20px;top:22px;font-size:9px}
-  .tally{right:20px;top:22px;font-size:8px}
-  .colophon{left:20px;right:20px;bottom:20px;max-width:none}
-  .hint{bottom:104px} .found{bottom:76px}
+  .mark{left:20px;right:20px;top:22px;font-size:9px;letter-spacing:.32em}
+  /* the tally drops under the mark as one row, so the two never collide */
+  .tally{left:20px;right:auto;top:48px;text-align:left;flex-direction:row;gap:16px;font-size:8px}
+  .colophon{left:20px;right:20px;bottom:20px;max-width:none;font-size:7px;line-height:1.9}
+  .hint{bottom:132px;white-space:nowrap} .found{bottom:104px;white-space:nowrap}
 }

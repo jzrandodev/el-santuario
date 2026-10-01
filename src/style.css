@@ -26,7 +26,9 @@ body{font-family:'Chivo',system-ui,sans-serif;color:var(--wax);
   font-style:italic;font-size:16px;color:rgba(232,220,192,.42);transition:opacity .8s ease}
 .found{left:50%;bottom:56px;transform:translateX(-50%);font-size:9px;letter-spacing:.3em;
   text-transform:uppercase;color:rgba(232,220,192,.3)}
-.found b{color:var(--brass-hi)}
+.found b{color:var(--brass-hi);transition:color 4s ease}
+/* after the release, the count of what you have lit takes the colour that was withheld */
+body.released .found b{color:var(--celeste)}
 .colophon{left:40px;bottom:34px;font-size:8px;letter-spacing:.16em;text-transform:uppercase;
   color:rgba(232,220,192,.24);line-height:2.2;max-width:430px}
 

@@ -62,8 +62,17 @@ function start(){
 
   const found = { pido: 0, gracias: 0, fin: 0 };
   let total = 0;
+  /* THE RELEASE — celeste is withheld from the whole palette until a thanks panel is lit.
+   * 2021 lets a trace into the light the visitor carries; Lusail lets it in fully. Once
+   * earned it stays for the rest of the visit, and it is computed from what is lit, so
+   * it survives a trip into the letter room. */
+  let release = 0, releaseAim = 0;
+  const WARM = new THREE.Color(0xFFD2A0), WHITE = new THREE.Color(0xFFFFFF),
+        CELESTE = new THREE.Color(0x75AADB);
   function light(m){
     m.userData.lit = true;
+    const c = m.userData.panel.celeste;
+    if (c && c > releaseAim) { releaseAim = c; document.body.classList.add('released'); }
     found[m.userData.panel.state]++; total++;
     counts[m.userData.panel.state].textContent = found[m.userData.panel.state];
     nFound.textContent = total;
@@ -170,8 +179,15 @@ function start(){
 
     // the candle sits just ahead of the visitor, offset toward where they are looking
     const flick = 0.86 + 0.14 * Math.sin(t * 6.1) * Math.sin(t * 10.7);
+    release += (releaseAim - release) * 0.012;
+    F.candle.color.copy(WARM).lerp(CELESTE, release * 0.28);
+    F.flame.material.color.copy(WHITE).lerp(CELESTE, release * 0.55);
     F.candle.position.set(cur.x + (px - 0.5) * 5.0, cur.y - (py - 0.5) * 3.0, cur.z - 5.2);
-    F.candle.intensity = 118 * flick;
+    // the light falls off with distance squared, so up close it would burn a panel to flat
+    // colour and its lettering would vanish. Hold the brightness steady inside reach.
+    let dMin = Infinity;
+    for (const m of F.meshes) dMin = Math.min(dMin, m.position.distanceTo(F.candle.position));
+    F.candle.intensity = 118 * flick * Math.min(1, Math.pow(dMin / 4.2, 1.4));
     F.flame.position.copy(F.candle.position);
     F.flame.material.opacity = 0.72 + 0.28 * flick;
     F.flame.scale.setScalar(0.28 + 0.05 * flick);

@@ -9,6 +9,9 @@ body{font-family:'Chivo',system-ui,sans-serif;color:var(--wax);
 #scene{position:fixed;inset:0;width:100%;height:100%;display:block;cursor:none}
 @media (hover:none){#scene{cursor:auto}}
 
+/* read by assistive tech, never drawn */
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+
 #ui{position:fixed;inset:0;pointer-events:none;z-index:10}
 #ui>*{position:absolute}
 .mark{top:34px;left:40px;font-size:10px;letter-spacing:.42em;text-transform:uppercase;

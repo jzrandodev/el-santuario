@@ -23,6 +23,7 @@ function writeLedger(v){ try { sessionStorage.setItem(LEDGER, JSON.stringify(v))
 function documentFloor(reasonClass){
   readout.hidden = false;
   readout.classList.add(reasonClass);
+  document.getElementById('howto').hidden = true;  // the floor needs no movement instructions
   const li = PANELS.map(p => `
     <li class="${p.state}">
       <div class="st">${p.state === STATE.PIDO ? 'TE PIDO'
@@ -58,6 +59,7 @@ function start(){
   const counts = { pido: document.getElementById('nPido'),
                    gracias: document.getElementById('nGrac'), fin: document.getElementById('nFin') };
   const hint = document.getElementById('hint');
+  const said = document.getElementById('said');
   nTotal.textContent = TOTAL;
 
   const found = { pido: 0, gracias: 0, fin: 0 };
@@ -73,6 +75,9 @@ function start(){
     m.userData.lit = true;
     const c = m.userData.panel.celeste;
     if (c && c > releaseAim) { releaseAim = c; document.body.classList.add('released'); }
+    const P = m.userData.panel;
+    said.textContent = [P.name, [P.place, P.date].filter(Boolean).join(', '), P.fact,
+      P.room ? 'Enter para abrirla.' : ''].filter(Boolean).join('. ');
     found[m.userData.panel.state]++; total++;
     counts[m.userData.panel.state].textContent = found[m.userData.panel.state];
     nFound.textContent = total;

@@ -15,12 +15,12 @@ export const T = {
     asDoc:'leer como documento', toggle:'EN', toggleLabel:'Read in English',
     doorTouch:'tocá la carta para abrirla', doorKey:'click o enter · abrí la carta',
     howto:'Flechas o W A S D para moverte. Cada objeto que la vela alcanza queda encendido y se anuncia. Frente a la carta, Enter la abre.',
-    canvas:'El santuario: trece objetos votivos suspendidos en la oscuridad, encendidos por una vela que lleva el visitante.',
+    canvas:'El santuario: catorce objetos votivos suspendidos en la oscuridad, encendidos por una vela que lleva el visitante.',
     colophon:'BORRADOR · SIN IMÁGENES TODAVÍA — CADA PANEL ESPERA SU LÁMINA.<br>NO AFILIADO NI AUTORIZADO POR LA AFA, LA FIFA NI NINGÚN CLUB.',
     openIt:'Enter para abrirla.',
     stFin:'SIN NOMBRE TODAVÍA', stGracias:'GRACIAS POR EL FAVOR CONCEDIDO', stPido:'TE PIDO',
     h1:'El Santuario · Messi y la camiseta',
-    lede:'No es una línea de tiempo. Son trece objetos en un santuario, y el orden lo elegís vos. Acá están todos, quietos.',
+    lede:'No es una línea de tiempo. Son catorce objetos en un santuario, y el orden lo elegís vos. Acá están todos, quietos.',
     title:'El Santuario — Messi y la camiseta'
   },
   en: {
@@ -29,12 +29,12 @@ export const T = {
     asDoc:'read as a document', toggle:'ES', toggleLabel:'Leer en español',
     doorTouch:'tap the letter to open it', doorKey:'click or enter · open the letter',
     howto:'Arrow keys or W A S D to move. Every object the candle reaches stays lit and is announced. In front of the letter, Enter opens it.',
-    canvas:'The shrine: thirteen votive objects hanging in the dark, lit by a candle the visitor carries.',
+    canvas:'The shrine: fourteen votive objects hanging in the dark, lit by a candle the visitor carries.',
     colophon:'DRAFT · NO IMAGES YET - EVERY PANEL IS WAITING FOR ITS PLATE.<br>NOT AFFILIATED WITH OR AUTHORIZED BY THE AFA, FIFA OR ANY CLUB.',
     openIt:'Press Enter to open it.',
     stFin:'NOT NAMED YET', stGracias:'THANKS FOR THE FAVOR GRANTED', stPido:'TE PIDO (I ASK OF YOU)',
     h1:'El Santuario · Messi and the shirt',
-    lede:'Not a timeline. Thirteen objects in a shrine, and you choose the order. Here they all are, held still.',
+    lede:'Not a timeline. Fourteen objects in a shrine, and you choose the order. Here they all are, held still.',
     title:'El Santuario — Messi and the shirt'
   }
 };
@@ -62,6 +62,8 @@ export const EN = {
     fact:'Written two days after the final. Published six weeks later, by hand.' },
   'padre': { name:'The father',
     fact:'Jorge Messi, his father and lifelong representative, died aged 68 after a long illness. He is never depicted: a lit object, nothing more.' },
+  'ofrenda': { name:'A fan, 43',
+    fact:"A letter to Messi, left at the shrine. I'm 43 and I've been watching you for as long as I can remember. I saw you come on against Chelsea. I saw you at the U20 World Cup, at the Olympics, in the 5-0 against Real. I went to the Copa América final in New Jersey and came home devastated. I saw you leave and I saw you come back. And I saw Qatar. I own all your shirts. I have nothing else to ask of you. Thank you for the favor granted." },
   'camiseta': { name:'The shirt',
     fact:"Not a match. It is the shirt and the number, and what it costs to carry them." }
 };

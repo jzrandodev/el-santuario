@@ -112,7 +112,7 @@ Real and available:
   long illness (verified 2026-09-01 across four outlets). He published a separate open letter to his
   father on **12 August 2026**, three weeks before the letter to the country. **His father is not to be
   depicted.** He was a private individual, he died weeks ago, and a generated likeness is indefensible.
-- `ASSETS.md` — the thirteen panels, each with its state, verified facts, plaque line, and image-ladder
+- `ASSETS.md` — the fourteen panels, each with its state, verified facts, plaque line, and image-ladder
   rung. Five panels carry facts asserted rather than search-verified and are marked inline; none ships
   until confirmed.
 - The sibling project, live and public — https://la-bombonera-gules.vercel.app and https://github.com/jzrandodev/la-bombonera — including a working manifest-driven asset loader, a bilingual system, and synthesized Web Audio, all of which are proven and re-usable approaches.

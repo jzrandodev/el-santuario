@@ -1,4 +1,4 @@
-# ASSETS — the thirteen panels
+# ASSETS — the fourteen panels
 
 Every moment in the field is one panel. This file is the commission: what each panel is,
 which state it belongs to, its verified facts, the plaque line it carries, and which rung
@@ -173,6 +173,14 @@ would be false. It should use his own words. Undecided by the user, deliberately
   It is the one object in the field with no date attached, and it should be findable from
   anywhere in the volume.
 
+### 14 · Un hincha de 43 años
+- **Not Messi's and not a moment: an offering from the visitor-author**, last in the volume so the
+  other thirteen keep their places. State: thanks (it ends on the shrine's own phrase).
+- Plaque line: none. The panel is the letter itself, set verbatim in the author's words.
+- **Rung 6 — ofrenda.** A ruled paper sheet, drawn in code, no image. It is the one panel in the
+  field written by the person who made the shrine rather than documented from the record, and
+  the page should never imply otherwise.
+
 ---
 
 ## Open decisions
@@ -186,7 +194,8 @@ would be false. It should use his own words. Undecided by the user, deliberately
 2. **The name of the third state.**
 3. ~~Six panels carried facts asserted from knowledge~~ — 01, 03, 04, 05, 08, 09 were all
    search-verified 2026-10-01. Every dated panel is now verified.
-4. **Bilingual EN/ES.** Binding on the sibling project, unconfirmed here. Hand-lettered text
+4. **Bilingual EN/ES.** Decided: Spanish default, English toggle (shipped). Plaque lettering stays
+   Spanish. Original note, kept for the art: Binding on the sibling project, unconfirmed here. Hand-lettered text
    inside a painted panel cannot be swapped at runtime, so if parity is wanted, each painted
    panel needs either two versions or no lettering in the art at all. **This decision has to be
    made before the images are generated, not after.**

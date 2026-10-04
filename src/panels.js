@@ -1,4 +1,4 @@
-/* The thirteen panels. Source of truth is ASSETS.md; this file must not drift from it.
+/* The fourteen panels. Source of truth is ASSETS.md; this file must not drift from it.
  *
  * `src: null` means the lámina has not been made yet. A null path is NEVER requested and the
  * panel falls back to its generated layer, so the shrine is complete and shippable at every
@@ -52,7 +52,20 @@ export const PANELS = [
     fact:'Jorge Messi, su padre y representante de toda la vida, murió a los 68 años tras una larga enfermedad. Nunca se lo representa: un objeto encendido, nada más.' },
   { id:'camiseta', state:STATE.FIN, rung:4, verified:true, src:null,
     name:'La camiseta', line:'', place:'', date:'',
-    fact:'No es un partido. Es la camiseta y el número, y lo que cuesta llevarlos.' }
+    fact:'No es un partido. Es la camiseta y el número, y lo que cuesta llevarlos.' },
+
+  /* Not Messi's, and not a moment: an offering left by a visitor. Last in the volume, so the
+   * other thirteen keep their places. The words are the visitor's own and are set verbatim. */
+  { id:'ofrenda', state:STATE.GRACIAS, rung:6, verified:true, src:null, scale:1.12,
+    name:'Un hincha de 43 años', line:'', place:'', date:'',
+    letter:[
+      'Leo:',
+      'Tengo 43 años y te miro desde que tengo memoria. Te vi entrar contra el Chelsea. Te vi en el Sub-20, en los Juegos, en el 5-0 al Real. Fui a la final de la Copa América en Nueva Jersey y volví destruido. Te vi irte y te vi volver. Y vi Qatar.',
+      'Tengo todas tus camisetas. No tengo nada más para pedirte.',
+      'Gracias por el favor concedido.',
+      'Un hincha de 43 años'
+    ],
+    fact:'Una carta a Messi, dejada en el santuario. Tengo 43 años y te miro desde que tengo memoria. Te vi entrar contra el Chelsea. Te vi en el Sub-20, en los Juegos, en el 5-0 al Real. Fui a la final de la Copa América en Nueva Jersey y volví destruido. Te vi irte y te vi volver. Y vi Qatar. Tengo todas tus camisetas. No tengo nada más para pedirte. Gracias por el favor concedido.' }
 ];
 
 export const TOTAL = PANELS.length;
@@ -102,6 +115,19 @@ function wrapCaps(c,text,x,y,size,color,maxW,lh){
   c.restore(); return yy;
 }
 
+/* wrapped running text in the visitor's own hand: sentence case, never tracked caps */
+function wrapPlain(c,text,x,y,size,color,maxW,lh,style='italic 400'){
+  c.save(); c.fillStyle=color; c.textAlign='left'; c.textBaseline='alphabetic';
+  c.font=`${style} ${size}px Alegreya, Georgia, serif`;
+  let line='', yy=y;
+  for(const w of text.split(/\s+/)){
+    const t=line?line+' '+w:w;
+    if(c.measureText(t).width>maxW && line){ c.fillText(line,x,yy); line=w; yy+=lh; } else line=t;
+  }
+  if(line){ c.fillText(line,x,yy); yy+=lh; }
+  c.restore(); return yy;
+}
+
 /** Paint one panel. Returns an HTMLCanvasElement ready to become a texture. */
 export function paintPanel(p){
   const cv=document.createElement('canvas'); cv.width=W; cv.height=H;
@@ -137,6 +163,21 @@ export function paintPanel(p){
     for(let y=iy+64; y<iy+ih-24; y+=26){ c.beginPath(); c.moveTo(ix+22,y); c.lineTo(ix+iw-22,y); c.stroke(); }
     caps(c,'LA CARTA',W/2,iy+34,20,textCol,0.30);
     caps(c,p.date,W/2,iy+ih-40,13,'rgba(217,213,200,0.42)',0.22);
+  } else if(p.rung===6){
+    // OFRENDA — a sheet left at the shrine by a visitor. Their words, nothing around them.
+    const ix=30, iy=30, iw=W-60, ih=H-60, ink='#2A251C';
+    c.fillStyle='rgba(228,216,188,0.80)'; c.fillRect(ix,iy,iw,ih);
+    c.strokeStyle='rgba(20,18,16,0.14)'; c.lineWidth=1;
+    for(let y=iy+70; y<iy+ih-20; y+=30){ c.beginPath(); c.moveTo(ix+20,y); c.lineTo(ix+iw-20,y); c.stroke(); }
+    caps(c,'OFRENDA',W/2,iy+34,13,'rgba(20,18,16,0.46)',0.34);
+    let y=iy+84;
+    p.letter.forEach((t,i)=>{
+      if(i===p.letter.length-2) caps(c,t.toUpperCase(),W/2,y-8,14,'#6B5518',0.2);
+      else if(i===p.letter.length-1){ c.save(); c.font='italic 400 20px Alegreya, Georgia, serif';
+        c.fillStyle=ink; c.textAlign='right'; c.fillText(t,ix+iw-26,y); c.restore(); }
+      else y=wrapPlain(c,t,ix+26,y,21,ink,iw-52,30)+0;
+      if(i<p.letter.length-2) y+=8; else y+=24;
+    });
   } else if(p.rung===4){
     // MILAGRO DE HOJALATA — a stamped object, never a scene.
     c.save(); c.translate(W/2,H*0.42);

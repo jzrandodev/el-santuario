@@ -17,11 +17,11 @@ readable before a single word is.
 
 ## Status
 
-The field is built: Vite + Three.js, thirteen panels, null-safe asset loading, so every panel
+The field is built: Vite + Three.js, fourteen panels, null-safe asset loading, so every panel
 falls back to a generated layer until its art lands. Deploys to Vercel and GitHub Pages from one build.
 
 - `PRODUCT.md` — product truth, constraints, and the decisions deliberately left open
-- `ASSETS.md` — the thirteen panels, their verified facts and image briefs
+- `ASSETS.md` — the fourteen panels, their verified facts and image briefs
 - `drafts/la-carta.html` — the letter room, waiting on the letter's original text
 - `.impeccable/` — direction seed `714794b2`, build-phase state, composition studies
 

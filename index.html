@@ -41,8 +41,8 @@ FORM: Las Estampitas (composition C), candidate 3 of the grounded list. Seed key
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the
   verdict, DESIGN.md, and every shipping raster carrying its provenance.
 -->
-<canvas id="scene" role="img" aria-label="El santuario: trece objetos votivos suspendidos en la oscuridad, encendidos por una vela que lleva el visitante."></canvas>
-<p class="sr" id="howto">Flechas o W A S D para moverte. Cada objeto que la vela alcanza queda encendido y se anuncia. Frente a la carta, Enter la abre.</p>
+<canvas id="scene" role="img" data-i-aria="canvas" aria-label="El santuario: trece objetos votivos suspendidos en la oscuridad, encendidos por una vela que lleva el visitante."></canvas>
+<p class="sr" id="howto" data-i="howto">Flechas o W A S D para moverte. Cada objeto que la vela alcanza queda encendido y se anuncia. Frente a la carta, Enter la abre.</p>
 <p class="sr" id="said" aria-live="polite"></p>
 
 <noscript class="fallback">
@@ -51,22 +51,23 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 </noscript>
 
 <div id="ui" hidden>
-  <div class="mark">EL SANTUARIO <b>·</b> <span id="markSub">MESSI Y LA CAMISETA</span></div>
+  <div class="mark">EL SANTUARIO <b>·</b> <span id="markSub" data-i="sub">MESSI Y LA CAMISETA</span></div>
   <div class="tally">
-    <span class="t-pido"><i></i> <b id="nPido">0</b> TE PIDO</span>
-    <span class="t-grac"><i></i> <b id="nGrac">0</b> GRACIAS</span>
-    <span class="t-fin"><i></i> <b id="nFin">0</b> <em>SIN NOMBRE</em></span>
+    <span class="t-pido"><i></i> <b id="nPido">0</b> <span data-i="pido">TE PIDO</span></span>
+    <span class="t-grac"><i></i> <b id="nGrac">0</b> <span data-i="gracias">GRACIAS</span></span>
+    <span class="t-fin"><i></i> <b id="nFin">0</b> <em data-i="fin">SIN NOMBRE</em></span>
   </div>
-  <div class="hint" id="hint">movete · la vela va con vos</div>
+  <div class="hint" id="hint" data-i="hint">movete · la vela va con vos</div>
   <div class="hint door" id="door" aria-hidden="true"></div>
-  <div class="found"><b id="nFound">0</b> DE <span id="nTotal">13</span> ENCENDIDAS</div>
-  <div class="colophon">
-    BORRADOR · SIN IMÁGENES TODAVÍA — CADA PANEL ESPERA SU LÁMINA.<br>
-    NO AFILIADO NI AUTORIZADO POR LA AFA, LA FIFA NI NINGÚN CLUB.
+  <button class="asdoc" id="asDoc" type="button" data-i="asDoc">leer como documento</button>
+  <div class="found"><b id="nFound">0</b> <span data-i="found">DE</span> <span id="nTotal">13</span> <span data-i="foundEnd">ENCENDIDAS</span></div>
+  <div class="colophon" id="colophon" data-i="colophon" data-html>
+    BORRADOR
   </div>
 </div>
 
 <div id="readout" hidden aria-live="polite"></div>
+<button class="lang" id="lang" type="button" lang="en">EN</button>
 <script type="module" src="/src/main.js"></script>
 </body>
 </html>

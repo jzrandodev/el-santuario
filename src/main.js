@@ -20,7 +20,9 @@ function writeLedger(v){ try { sessionStorage.setItem(LEDGER, JSON.stringify(v))
  * This is not a degraded version. It is the same thirteen objects, the same three states and
  * the same facts, held still and readable. A volumetric field has no natural linear fallback,
  * so one is authored rather than pretended. */
+let floorOn = false;
 function documentFloor(reasonClass){
+  floorOn = true;
   readout.hidden = false;
   readout.classList.add(reasonClass);
   document.getElementById('howto').hidden = true;  // the floor needs no movement instructions
@@ -38,6 +40,7 @@ function documentFloor(reasonClass){
     elegís vos. Acá están todos, quietos.</p>
     <ol>${li}</ol>`;
   canvas.style.display = 'none';
+  ui.hidden = true;
 }
 
 let gl = null;
@@ -48,7 +51,10 @@ else { start(); }
 
 function start(){
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' });
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  /* the ratio is a ceiling, not a promise: if frames run long it steps down, once the
+   * slow stretch has been sustained, and never climbs back (no flicker between sizes) */
+  let dpr = Math.min(devicePixelRatio, 2), slow = 0;
+  renderer.setPixelRatio(dpr);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
 
   const F = buildField(renderer);
@@ -132,6 +138,7 @@ function start(){
   }, { passive: true });
 
   addEventListener('keydown', e => {
+    if (e.ctrlKey || e.metaKey || e.altKey) return;  // browser shortcuts stay the browser's
     const k = e.key;
     if (k === 'ArrowUp' || k === 'w') aim.z -= 4;
     else if (k === 'ArrowDown' || k === 's') aim.z += 4;
@@ -182,7 +189,16 @@ function start(){
 
   /* ONE CLOCK — every motion in the piece runs off this loop and nothing free-runs. */
   const clock = new THREE.Clock();
+  let last = performance.now();
   function frame(){
+    if (floorOn) return;
+    const now = performance.now(), dt = now - last; last = now;
+    // a hidden tab pauses rAF, so a huge dt is a return, not a slow frame
+    if (dt > 34 && dt < 250) slow++; else slow = Math.max(0, slow - 1);
+    if (slow > 45 && dpr > 1) {
+      dpr = Math.max(1, dpr - 0.5); slow = 0;
+      renderer.setPixelRatio(dpr); resize();
+    }
     const t = clock.getElapsedTime();
     cur.x += (aim.x - cur.x) * 0.055;
     cur.y += (aim.y - cur.y) * 0.055;
@@ -224,8 +240,9 @@ function start(){
 
   // lost context must not leave a black rectangle: fall back to the document floor
   canvas.addEventListener('webglcontextlost', e => {
-    e.preventDefault(); ui.hidden = true; documentFloor('context-lost');
+    e.preventDefault(); documentFloor('context-lost');
   });
+  document.getElementById('asDoc').addEventListener('click', () => documentFloor('chosen'));
 
   window.__santuario = { F, aim, cur, renderer, frame };
 }

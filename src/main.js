@@ -43,6 +43,7 @@ function documentFloor(reasonClass){
   readout.innerHTML = `
     <h1>${tt('h1')}</h1>
     <p class="lede">${tt('lede')}</p>
+    <a class="nums" href="${import.meta.env.BASE_URL}numeros.html">${tt('numbers')}</a>
     <ol>${li}</ol>`;
   canvas.style.display = 'none';
   ui.hidden = true;

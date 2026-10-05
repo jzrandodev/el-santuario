@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>El Santuario — Los números</title>
+<meta name="description" content="Diez números de Lionel Messi con la Selección, y una vela por cada lugar donde jugó.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#0A0806">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chivo:wght@300;400;700;900&family=Alegreya:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/src/numeros.css">
+</head>
+<body>
+<!--
+THESIS: The counts kept the way a shrine keeps them: stamped into tin, and a candle for every
+  place he played. Not a dashboard; a wall of numbers in the same dark as the rest of the piece.
+-->
+<header class="top">
+  <a class="mark" id="back" href="./">EL SANTUARIO <b>·</b> <span id="mark">LOS NÚMEROS</span></a>
+  <button class="lang" id="lang" type="button" lang="en">EN</button>
+</header>
+
+<main>
+  <p class="lede" id="lede"></p>
+  <ol class="plates" id="plates"></ol>
+
+  <section class="world" aria-labelledby="mapH">
+    <div class="k" id="mapK"></div>
+    <h2 id="mapH"></h2>
+    <p class="t" id="mapT"></p>
+    <div class="map" id="map"><div class="tip" id="tip" hidden></div></div>
+    <h3 id="listH"></h3>
+    <ol class="sedes" id="sedes"></ol>
+  </section>
+
+  <p class="src" id="src"></p>
+</main>
+<script type="module" src="/src/numeros.js"></script>
+</body>
+</html>

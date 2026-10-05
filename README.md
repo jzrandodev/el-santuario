@@ -23,6 +23,7 @@ falls back to a generated layer until its art lands. Deploys to Vercel and GitHu
 - `PRODUCT.md` — product truth, constraints, and the decisions deliberately left open
 - `ASSETS.md` — the thirty panels, their verified facts and image briefs
 - `drafts/la-carta.html` — the letter room, waiting on the letter's original text
+- `numeros.html` — Los números: ten counts on tin plates and a candle map of the 36 places he played
 - `.impeccable/` — direction seed `714794b2`, build-phase state, composition studies
 
 Run it with `npm install && npm run dev`.

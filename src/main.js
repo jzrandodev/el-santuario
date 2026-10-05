@@ -1,11 +1,14 @@
 import * as THREE from 'three';
 import { buildField } from './field.js';
 import { PANELS, STATE, TOTAL } from './panels.js';
+import { T, getLang, setLang, panelText } from './i18n.js';
 
 const canvas = document.getElementById('scene');
 const ui = document.getElementById('ui');
 const readout = document.getElementById('readout');
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let lang = getLang();
+const tt = k => T[lang][k];
 const ROOM = { 'la-carta': import.meta.env.BASE_URL + 'drafts/la-carta.html' };
 
 /* THE LEDGER — what this visitor has lit, and where they stood, survives a trip into the
@@ -20,35 +23,58 @@ function writeLedger(v){ try { sessionStorage.setItem(LEDGER, JSON.stringify(v))
  * This is not a degraded version. It is the same twenty-nine objects, the same three states and
  * the same facts, held still and readable. A volumetric field has no natural linear fallback,
  * so one is authored rather than pretended. */
+let floorOn = false, floorWhy = '';
 function documentFloor(reasonClass){
+  floorOn = true; floorWhy = reasonClass;
   readout.hidden = false;
   readout.classList.add(reasonClass);
   document.getElementById('howto').hidden = true;  // the floor needs no movement instructions
-  const li = PANELS.map(p => `
+  const li = PANELS.map(p => { const x = panelText(p, lang); return `
     <li class="${p.state}">
-      <div class="st">${p.state === STATE.PIDO ? 'TE PIDO'
-        : p.state === STATE.GRACIAS ? 'GRACIAS POR EL FAVOR CONCEDIDO' : 'SIN NOMBRE TODAVÍA'}</div>
-      <div class="nm">${p.room ? `<a href="${ROOM[p.room]}">${p.name}</a>` : p.name}</div>
+      <div class="st">${p.state === STATE.PIDO ? tt('stPido')
+        : p.state === STATE.GRACIAS ? tt('stGracias') : tt('stFin')}</div>
+      <div class="nm">${p.room ? `<a href="${ROOM[p.room]}">${x.name}</a>` : x.name}</div>
       <div class="fx">${[p.place, p.date].filter(Boolean).join(' · ')}${
-        (p.place || p.date) ? '<br>' : ''}${p.fact}</div>
-    </li>`).join('');
+        (p.place || p.date) ? '<br>' : ''}${x.fact}</div>
+    </li>`; }).join('');
   readout.innerHTML = `
-    <h1>El Santuario · Messi y la camiseta</h1>
-    <p class="lede">No es una línea de tiempo. Son veintinueve objetos en un santuario, y el orden lo
-    elegís vos. Acá están todos, quietos.</p>
+    <h1>${tt('h1')}</h1>
+    <p class="lede">${tt('lede')}</p>
     <ol>${li}</ol>`;
   canvas.style.display = 'none';
+  ui.hidden = true;
 }
+
+/* ---- language: Spanish is the default; English is a toggle that sticks for the browser ---- */
+const langBtn = document.getElementById('lang');
+function applyLang(){
+  document.documentElement.lang = lang;
+  document.title = tt('title');
+  for (const el of document.querySelectorAll('[data-i]')) {
+    el[el.hasAttribute('data-html') ? 'innerHTML' : 'textContent'] = tt(el.dataset.i);
+  }
+  canvas.setAttribute('aria-label', tt('canvas'));
+  langBtn.textContent = tt('toggle'); langBtn.setAttribute('aria-label', tt('toggleLabel'));
+  langBtn.lang = lang === 'es' ? 'en' : 'es';
+  const door = document.getElementById('door');
+  door.textContent = matchMedia('(hover: none)').matches ? tt('doorTouch') : tt('doorKey');
+  if (floorOn) documentFloor(floorWhy);
+}
+langBtn.addEventListener('click', () => { lang = lang === 'es' ? 'en' : 'es'; setLang(lang); applyLang(); });
 
 let gl = null;
 try { gl = canvas.getContext('webgl2') || canvas.getContext('webgl'); } catch (_) { gl = null; }
 if (!gl) { documentFloor('no-webgl'); }
 else if (reduce) { documentFloor('reduced'); }
 else { start(); }
+applyLang();
 
 function start(){
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' });
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  /* the ratio is a ceiling, not a promise: if frames run long it steps down, once the
+   * slow stretch has been sustained, and never climbs back (no flicker between sizes) */
+  let dpr = Math.min(devicePixelRatio, 2), slow = 0;
+  renderer.setPixelRatio(dpr);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
 
   const F = buildField(renderer);
@@ -62,8 +88,6 @@ function start(){
   const said = document.getElementById('said');
   // a door says it is a door, but only once you are standing at it
   const door = document.getElementById('door');
-  door.textContent = matchMedia('(hover: none)').matches
-    ? 'tocá la carta para abrirla' : 'click o enter · abrí la carta';
   nTotal.textContent = TOTAL;
 
   const found = { pido: 0, gracias: 0, fin: 0 };
@@ -80,8 +104,9 @@ function start(){
     const c = m.userData.panel.celeste;
     if (c && c > releaseAim) { releaseAim = c; document.body.classList.add('released'); }
     const P = m.userData.panel;
-    if (!quiet) said.textContent = [P.name, [P.place, P.date].filter(Boolean).join(', '), P.fact,
-      P.room ? 'Enter para abrirla.' : ''].filter(Boolean).join('. ');
+    if (!quiet) { const x = panelText(P, lang);
+      said.textContent = [x.name, [P.place, P.date].filter(Boolean).join(', '), x.fact,
+        P.room ? tt('openIt') : ''].filter(Boolean).join('. '); }
     found[m.userData.panel.state]++; total++;
     counts[m.userData.panel.state].textContent = found[m.userData.panel.state];
     nFound.textContent = total;
@@ -132,6 +157,7 @@ function start(){
   }, { passive: true });
 
   addEventListener('keydown', e => {
+    if (e.ctrlKey || e.metaKey || e.altKey) return;  // browser shortcuts stay the browser's
     const k = e.key;
     if (k === 'ArrowUp' || k === 'w') aim.z -= 4;
     else if (k === 'ArrowDown' || k === 's') aim.z += 4;
@@ -182,7 +208,16 @@ function start(){
 
   /* ONE CLOCK — every motion in the piece runs off this loop and nothing free-runs. */
   const clock = new THREE.Clock();
+  let last = performance.now();
   function frame(){
+    if (floorOn) return;
+    const now = performance.now(), dt = now - last; last = now;
+    // a hidden tab pauses rAF, so a huge dt is a return, not a slow frame
+    if (dt > 34 && dt < 250) slow++; else slow = Math.max(0, slow - 1);
+    if (slow > 45 && dpr > 1) {
+      dpr = Math.max(1, dpr - 0.5); slow = 0;
+      renderer.setPixelRatio(dpr); resize();
+    }
     const t = clock.getElapsedTime();
     cur.x += (aim.x - cur.x) * 0.055;
     cur.y += (aim.y - cur.y) * 0.055;
@@ -224,8 +259,9 @@ function start(){
 
   // lost context must not leave a black rectangle: fall back to the document floor
   canvas.addEventListener('webglcontextlost', e => {
-    e.preventDefault(); ui.hidden = true; documentFloor('context-lost');
+    e.preventDefault(); documentFloor('context-lost');
   });
+  document.getElementById('asDoc').addEventListener('click', () => documentFloor('chosen'));
 
   window.__santuario = { F, aim, cur, renderer, frame };
 }

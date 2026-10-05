@@ -84,6 +84,12 @@ export function buildField(renderer){
 
   scene.add(group);
 
+  // panels are painted before the webfonts arrive; repaint once they have
+  Promise.all([document.fonts.load('italic 21px Alegreya'), document.fonts.load('700 20px Chivo')])
+    .then(() => meshes.forEach(m => {
+      m.material.map.image = paintPanel(m.userData.panel); m.material.map.needsUpdate = true;
+    })).catch(() => {});
+
   // red ribbons: the only colour in the volume that is not carried light
   const ribbons = new THREE.Group();
   for (let i = 0; i < 42; i++) {

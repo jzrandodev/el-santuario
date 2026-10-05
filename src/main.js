@@ -147,10 +147,17 @@ function start(){
   }
   // a panel opens only once you have reached it; from afar a click just travels there
   const near = m => m.userData.lit && Math.abs(cur.z - m.position.z) < 11;
+  /* Enter opens what the light is on: of the reached panels, the one whose centre sits closest
+   * on screen to the candle. Nearest in 3D picked a neighbour hanging beside the one in view. */
+  const _a = new THREE.Vector3(), _b = new THREE.Vector3();
   const nearest = () => {
+    _b.copy(F.candle.position).project(F.camera);
     let best = null, bd = Infinity;
     for (const m of F.meshes) if (near(m)) {
-      const d = m.position.distanceTo(F.candle.position); if (d < bd) { bd = d; best = m; }
+      _a.copy(m.position).project(F.camera);
+      if (_a.z > 1) continue;  // behind the camera
+      const d = Math.hypot((_a.x - _b.x) * F.camera.aspect, _a.y - _b.y);
+      if (d < bd) { bd = d; best = m; }
     }
     return best;
   };

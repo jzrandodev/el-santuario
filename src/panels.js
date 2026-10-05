@@ -10,6 +10,15 @@
 
 export const STATE = { PIDO: 'pido', GRACIAS: 'gracias', FIN: 'fin' };
 
+/* the visitor's letter, set verbatim; the panel's spoken and document text derive from it */
+const OFRENDA = [
+  'Leo:',
+  'Tengo 43 años y te miro desde que tengo memoria. Te vi entrar contra el Chelsea. Te vi en el Sub-20, en los Juegos, en el 5-0 al Real. Fui a la final de la Copa América en Nueva Jersey y volví destruido. Te vi irte y te vi volver. Y vi Qatar.',
+  'Tengo todas tus camisetas. No tengo nada más para pedirte.',
+  'Gracias por el favor concedido.',
+  'Un hincha de 43 años'
+];
+
 /* rung: 1 estampita · 2 exvoto · 3 placa (no image, ever) · 4 milagro · 5 fotografía (unassigned) */
 export const PANELS = [
   { id:'2006', state:STATE.PIDO, rung:1, verified:true, src:null,
@@ -56,18 +65,11 @@ export const PANELS = [
 
   /* Not Messi's, and not a moment: an offering left by a visitor. Last in the volume, so the
    * other thirteen keep their places. The words are the visitor's own and are set verbatim. */
-  { id:'ofrenda', state:STATE.GRACIAS, rung:6, verified:true, src:null, scale:1.12,
+  { id:'ofrenda', state:STATE.GRACIAS, rung:6, src:null, scale:1.12,
     name:'Un hincha de 43 años', line:'', place:'', date:'',
-    letter:[
-      'Leo:',
-      'Tengo 43 años y te miro desde que tengo memoria. Te vi entrar contra el Chelsea. Te vi en el Sub-20, en los Juegos, en el 5-0 al Real. Fui a la final de la Copa América en Nueva Jersey y volví destruido. Te vi irte y te vi volver. Y vi Qatar.',
-      'Tengo todas tus camisetas. No tengo nada más para pedirte.',
-      'Gracias por el favor concedido.',
-      'Un hincha de 43 años'
-    ],
-    fact:'Una carta a Messi, dejada en el santuario. Tengo 43 años y te miro desde que tengo memoria. Te vi entrar contra el Chelsea. Te vi en el Sub-20, en los Juegos, en el 5-0 al Real. Fui a la final de la Copa América en Nueva Jersey y volví destruido. Te vi irte y te vi volver. Y vi Qatar. Tengo todas tus camisetas. No tengo nada más para pedirte. Gracias por el favor concedido.' }
+    letter: OFRENDA,
+    fact:'Una carta a Messi, dejada en el santuario. ' + OFRENDA.slice(1, -1).join(' ') }
 ];
-
 export const TOTAL = PANELS.length;
 
 /* ---------- generated layers ----------------------------------------------------------------
@@ -175,7 +177,7 @@ export function paintPanel(p){
       if(i===p.letter.length-2) caps(c,t.toUpperCase(),W/2,y-8,14,'#6B5518',0.2);
       else if(i===p.letter.length-1){ c.save(); c.font='italic 400 20px Alegreya, Georgia, serif';
         c.fillStyle=ink; c.textAlign='right'; c.fillText(t,ix+iw-26,y); c.restore(); }
-      else y=wrapPlain(c,t,ix+26,y,21,ink,iw-52,30)+0;
+      else y=wrapPlain(c,t,ix+26,y,21,ink,iw-52,30);
       if(i<p.letter.length-2) y+=8; else y+=24;
     });
   } else if(p.rung===4){

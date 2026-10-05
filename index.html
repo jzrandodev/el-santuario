@@ -25,7 +25,7 @@
 </head>
 <body>
 <!--
-THESIS: A shrine you move through, not a timeline you scroll. Twenty-nine votive objects in the
+THESIS: A shrine you move through, not a timeline you scroll. Thirty votive objects in the
   dark, entered in whatever order you choose, lit only by a light you carry. It refuses the
   full-bleed hero-and-scroll tribute and its museum-white opposite alike.
 OWN-WORLD: Warm-black volume, Gauchito red as the committed carrier, candle-warm point light
@@ -41,8 +41,8 @@ FORM: Las Estampitas (composition C), candidate 3 of the grounded list. Seed key
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the
   verdict, DESIGN.md, and every shipping raster carrying its provenance.
 -->
-<canvas id="scene" role="img" data-i-aria="canvas" aria-label="El santuario: veintinueve objetos votivos suspendidos en la oscuridad, encendidos por una vela que lleva el visitante."></canvas>
-<p class="sr" id="howto" data-i="howto">Flechas o W A S D para moverte. Cada objeto que la vela alcanza queda encendido y se anuncia. Frente a la carta, Enter la abre.</p>
+<canvas id="scene" role="img" data-i-aria="canvas" aria-label="El santuario: treinta objetos votivos suspendidos en la oscuridad, encendidos por una vela que lleva el visitante."></canvas>
+<p class="sr" id="howto" data-i="howto">Flechas o W A S D para moverte. Cada objeto que la vela alcanza queda encendido y se anuncia. Frente a un objeto, Enter abre su historia; Escape la cierra.</p>
 <p class="sr" id="said" aria-live="polite"></p>
 
 <noscript class="fallback">
@@ -60,13 +60,25 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   <div class="hint" id="hint" data-i="hint">movete · la vela va con vos</div>
   <div class="hint door" id="door" aria-hidden="true"></div>
   <button class="asdoc" id="asDoc" type="button" data-i="asDoc">leer como documento</button>
-  <div class="found"><b id="nFound">0</b> <span data-i="found">DE</span> <span id="nTotal">29</span> <span data-i="foundEnd">ENCENDIDAS</span></div>
+  <div class="found"><b id="nFound">0</b> <span data-i="found">DE</span> <span id="nTotal">30</span> <span data-i="foundEnd">ENCENDIDAS</span></div>
   <div class="colophon" id="colophon" data-i="colophon" data-html>
     BORRADOR
   </div>
 </div>
 
 <div id="readout" hidden aria-live="polite"></div>
+<!-- a panel, opened: its era, its state, and the longer story of the moment -->
+<div id="ficha" role="dialog" aria-modal="true" aria-labelledby="fichaName" hidden>
+  <div class="ficha-card">
+    <button class="ficha-x" id="fichaClose" type="button" data-i-aria="close" aria-label="cerrar">×</button>
+    <div class="ficha-era" id="fichaEra"></div>
+    <div class="ficha-st" id="fichaSt"></div>
+    <h2 id="fichaName"></h2>
+    <div class="ficha-pd" id="fichaPd"></div>
+    <p class="ficha-story" id="fichaStory"></p>
+    <button class="ficha-go" id="fichaGo" type="button" data-i="openLetter" hidden>abrir la carta</button>
+  </div>
+</div>
 <button class="lang" id="lang" type="button" lang="en">EN</button>
 <script type="module" src="/src/main.js"></script>
 </body>

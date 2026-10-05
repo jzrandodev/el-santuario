@@ -159,7 +159,7 @@ function start(){
    * still while it is open; Escape, the ×, or a click outside closes it. */
   const ficha = document.getElementById('ficha'), fichaCard = ficha.querySelector('.ficha-card');
   const fichaGo = document.getElementById('fichaGo');
-  let fichaOpen = false, fichaMesh = null;
+  let fichaOpen = false, fichaMesh = null, fichaFrom = null;
   function openFicha(m){
     const P = m.userData.panel, x = panelText(P, lang);
     fichaMesh = m;
@@ -171,13 +171,16 @@ function start(){
     document.getElementById('fichaPd').textContent = [P.place, P.date].filter(Boolean).join(' · ');
     document.getElementById('fichaStory').textContent = STORY[P.id]?.[lang] || x.fact;
     fichaGo.hidden = !P.room;
+    fichaFrom = document.activeElement;
     ficha.hidden = false; fichaOpen = true;
     document.getElementById('fichaClose').focus();
   }
   function closeFicha(){
     if (!fichaOpen) return;
     ficha.hidden = true; fichaOpen = false; fichaMesh = null;
-    canvas.focus?.();
+    // give focus back to wherever it was before the card opened
+    if (fichaFrom && fichaFrom !== document.body && document.contains(fichaFrom)) fichaFrom.focus();
+    fichaFrom = null;
   }
   document.getElementById('fichaClose').addEventListener('click', closeFicha);
   ficha.addEventListener('click', e => { if (e.target === ficha) closeFicha(); });
@@ -198,7 +201,17 @@ function start(){
 
   addEventListener('keydown', e => {
     if (e.ctrlKey || e.metaKey || e.altKey) return;  // browser shortcuts stay the browser's
-    if (fichaOpen) { if (e.key === 'Escape') { e.preventDefault(); closeFicha(); } return; }
+    if (fichaOpen) {
+      if (e.key === 'Escape') { e.preventDefault(); closeFicha(); }
+      else if (e.key === 'Tab') {
+        // a modal keeps focus inside it: cycle between its own buttons
+        const f = [...ficha.querySelectorAll('button')].filter(b => !b.hidden);
+        const i = f.indexOf(document.activeElement);
+        e.preventDefault();
+        f[(i + (e.shiftKey ? -1 : 1) + f.length) % f.length].focus();
+      }
+      return;
+    }
     const k = e.key;
     if (k === 'ArrowUp' || k === 'w') aim.z -= 4;
     else if (k === 'ArrowDown' || k === 's') aim.z += 4;

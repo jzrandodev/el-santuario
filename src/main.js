@@ -33,10 +33,11 @@ function documentFloor(reasonClass){
   const li = PANELS.map(p => { const x = panelText(p, lang); return `
     <li class="${p.state}">
       <div class="st">${p.state === STATE.PIDO ? tt('stPido')
-        : p.state === STATE.GRACIAS ? tt('stGracias') : tt('stFin')}</div>
+        : p.state === STATE.GRACIAS ? tt('stGracias') : tt('stFin')}${
+        ERAS[ERA_OF[p.id]] ? `<span class="era"> · ${ERAS[ERA_OF[p.id]][lang]}</span>` : ''}</div>
       <div class="nm">${p.room ? `<a href="${ROOM[p.room]}">${x.name}</a>` : x.name}</div>
       <div class="fx">${[p.place, p.date].filter(Boolean).join(' · ')}${
-        (p.place || p.date) ? '<br>' : ''}${x.fact}</div>
+        (p.place || p.date) && !STORY[p.id] ? '<br>' : ''}${STORY[p.id] ? '' : x.fact}</div>
       ${STORY[p.id] ? `<p class="story">${STORY[p.id][lang]}</p>` : ''}
     </li>`; }).join('');
   readout.innerHTML = `

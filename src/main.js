@@ -20,7 +20,7 @@ function readLedger(){
 function writeLedger(v){ try { sessionStorage.setItem(LEDGER, JSON.stringify(v)); } catch (_) {} }
 
 /* ---- the floor: if WebGL is unavailable, or motion is refused, the shrine is a document ----
- * This is not a degraded version. It is the same thirteen objects, the same three states and
+ * This is not a degraded version. It is the same twenty-nine objects, the same three states and
  * the same facts, held still and readable. A volumetric field has no natural linear fallback,
  * so one is authored rather than pretended. */
 let floorOn = false, floorWhy = '';

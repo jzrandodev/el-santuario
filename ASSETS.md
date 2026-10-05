@@ -1,4 +1,4 @@
-# ASSETS — the thirteen panels
+# ASSETS — the twenty-nine panels
 
 Every moment in the field is one panel. This file is the commission: what each panel is,
 which state it belongs to, its verified facts, the plaque line it carries, and which rung
@@ -172,6 +172,109 @@ would be false. It should use his own words. Undecided by the user, deliberately
 - **Rung 4 — milagro de hojalata.** A stamped tin `10`, worn at the edges, hung on a ribbon.
   It is the one object in the field with no date attached, and it should be findable from
   anywhere in the volume.
+
+---
+
+## THE WHOLE CAREER — added 2026-10-01
+
+*Scope widened by the user from the Argentina shirt to the whole football life. Same rule for
+every panel: a loss or an asking is TE PIDO, a title is GRACIAS (youth titles included). Celeste
+stays with the Argentina shirt's senior releases only; club and youth thanks hang in brass
+without it. Club names appear in text only: no crests, no kit sponsors, plain colours.*
+*All facts below verified by search 2026-10-01.*
+
+### Origins
+
+#### 14 · El tratamiento — TE PIDO
+- Diagnosed with growth hormone deficiency at about 10, in Newell's youth teams. 1.27 m tall.
+- Plaque: `TE PIDO · ROSARIO` — **no date**: no reliable source dates the diagnosis.
+- **Rung 4 — milagro de hojalata.** A stamped tin child figure, the oldest form of milagro: a
+  body asked for. No likeness; a generic votive shape.
+
+#### 15 · La servilleta — TE PIDO
+- **14 December 2000**, Barcelona. Carles Rexach wrote the commitment to sign him on a paper
+  napkin, witnessed by Minguella and Gaggioli. He was 13; the club paid for the treatment.
+- Plaque: `TE PIDO · BARCELONA · 14·XII·2000`
+- **Rung 2.** The napkin on a café table. Hand-lettered text inside the art must not reproduce the
+  napkin's real wording.
+
+### Barcelona
+
+#### 16 · El primer gol — GRACIAS
+- **1 May 2005**, Camp Nou. Barcelona 2–0 Albacete. On in the 87th, a lob over the keeper in the
+  91st from Ronaldinho's pass. Age 17.
+- Plaque: `GRACIAS · CAMP NOU · 01·V·2005` · **Rung 1 — estampita.**
+
+#### 17 · Roma — GRACIAS
+- **27 May 2009**, Stadio Olimpico. Champions League final, Barcelona 2–0 Manchester United. His
+  header in the 70th; the celebration with a boot in his hand.
+- Plaque: `GRACIAS · ROMA · 27·V·2009` · **Rung 2.** The boot held up is the subject.
+
+#### 18 · Wembley — GRACIAS
+- **28 May 2011**. Champions League final, Barcelona 3–1 Manchester United; he scored the second
+  and was man of the match.
+- Plaque: `GRACIAS · WEMBLEY · 28·V·2011` · **Rung 2.**
+- *Factual rhyme, not underlined:* he returned to Wembley with Argentina in 2022 (panel 25).
+
+#### 19 · Berlín, otra vez — GRACIAS
+- **6 June 2015**, Olympiastadion. Champions League final, Barcelona 3–1 Juventus; the treble.
+  He did not score; the panel must not imply he did.
+- Plaque: `GRACIAS · BERLÍN · 06·VI·2015` · **Rung 2.**
+- *Factual rhyme:* the same stadium where he sat unused in 2006 (panel 01).
+
+#### 20 · El burofax — TE PIDO
+- **August 2020**, after the 2–8 against Bayern, he asked to leave by burofax. The club refused;
+  he stayed one more year.
+- Plaque: `TE PIDO · BARCELONA · VIII·2020` — month only: reports differ on the 24th vs 25th.
+- **Rung 2.**
+
+#### 21 · La despedida — TE PIDO
+- **8 August 2021**, Camp Nou. The club could not renew him; a tearful farewell press conference
+  after 21 years.
+- Plaque: `TE PIDO · CAMP NOU · 08·VIII·2021` · **Rung 2.** A lectern and an empty room.
+
+### Paris and Miami
+
+#### 22 · París — TE PIDO
+- **3 June 2023**, Parc des Princes. Last PSG match, a 2–3 loss to Clermont; part of the crowd
+  booed him.
+- Plaque: `TE PIDO · PARÍS · 03·VI·2023` · **Rung 2.**
+
+#### 23 · Miami — GRACIAS
+- **19 August 2023**, Nashville. Leagues Cup final: his goal and the first kick of a 10–9
+  shootout. Inter Miami's first trophy. MLS Cup followed on 6 December 2025, 3–1 Vancouver.
+- Plaque: `GRACIAS · NASHVILLE · 19·VIII·2023` · **Rung 1 — estampita.**
+
+#### 24 · Ocho — GRACIAS
+- **30 October 2023**, Paris. His eighth Ballon d'Or, a record, won on the World Cup.
+- Plaque: `GRACIAS · PARÍS · 30·X·2023` · **Rung 4 — milagro.** A stamped tin `8`, the pair to
+  panel 13's `10`. **No trophy is drawn**; the Ballon d'Or design is not ours to reproduce.
+
+### Argentina, the gaps filled
+
+#### 25 · Cuarenta segundos — TE PIDO
+- **17 August 2005**, Budapest. Senior debut vs Hungary; on in the 64th, sent off after about
+  forty seconds. Argentina won 2–1.
+- Plaque: `TE PIDO · BUDAPEST · 17·VIII·2005` · **Rung 1 — estampita.**
+
+#### 26 · Utrecht — GRACIAS (youth)
+- **2 July 2005**. U20 World Cup final, Argentina 2–1 Nigeria, both his from the spot. Golden
+  Ball and Golden Boot.
+- Plaque: `GRACIAS · UTRECHT · 02·VII·2005` · **Rung 1.** No celeste: youth title.
+
+#### 27 · Pekín — GRACIAS (youth)
+- **23 August 2008**. Olympic final, Argentina 1–0 Nigeria; he set up Di María's chip. Gold.
+- Plaque: `GRACIAS · PEKÍN · 23·VIII·2008` · **Rung 2.** No celeste: youth title.
+
+#### 28 · La Finalissima — GRACIAS
+- **1 June 2022**, Wembley. Argentina 3–0 Italy; two assists, man of the match.
+- Plaque: `GRACIAS · WEMBLEY · 01·VI·2022` · **Rung 2.** Celeste permitted (after 2021).
+
+#### 29 · Llorar en el banco — GRACIAS
+- **14 July 2024**, Hard Rock Stadium, Miami Gardens. Copa América final, Argentina 1–0
+  Colombia (Lautaro 112'). He went off injured at 64' and wept on the bench.
+- Plaque: `GRACIAS · MIAMI GARDENS · 14·VII·2024` · **Rung 2.** Celeste permitted. The subject is
+  the bench, not the trophy.
 
 ---
 

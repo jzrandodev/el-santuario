@@ -12,7 +12,8 @@ export const T = {
   es: {
     sub:'MESSI Y LA CAMISETA', gracias:'GRACIAS', fin:'SIN NOMBRE', pido:'TE PIDO',
     hint:'movete · la vela va con vos', found:'DE', foundEnd:'ENCENDIDAS',
-    asDoc:'leer como documento', numbers:'los números', toggle:'EN', toggleLabel:'Read in English',
+    asDoc:'leer como documento', numbers:'los números',
+    koIn:'Faltan', koH:'h', koM:'min', koLive:'Se está jugando ahora.', koDone:'Ya se jugó. El panel espera su resultado.', toggle:'EN', toggleLabel:'Read in English',
     doorTouch:'tocá el objeto para conocer su historia', doorKey:'click o enter · conocé su historia',
     close:'cerrar', openLetter:'abrir la carta', era:'época',
     howto:'Flechas o W A S D para moverte. Cada objeto que la vela alcanza queda encendido y se anuncia. Frente a un objeto, Enter abre su historia; Escape la cierra.',
@@ -27,7 +28,8 @@ export const T = {
   en: {
     sub:'MESSI AND THE SHIRT', gracias:'THANKS', fin:'UNNAMED', pido:'TE PIDO',
     hint:'move · the candle goes with you', found:'OF', foundEnd:'LIT',
-    asDoc:'read as a document', numbers:'the numbers', toggle:'ES', toggleLabel:'Leer en español',
+    asDoc:'read as a document', numbers:'the numbers',
+    koIn:'Kick-off in', koH:'h', koM:'min', koLive:'It is being played now.', koDone:'It has been played. The panel is waiting for its result.', toggle:'ES', toggleLabel:'Leer en español',
     doorTouch:'tap the object to read its story', doorKey:'click or enter · read its story',
     close:'close', openLetter:'open the letter', era:'era',
     howto:'Arrow keys or W A S D to move. Every object the candle reaches stays lit and is announced. In front of an object, Enter opens its story; Escape closes it.',

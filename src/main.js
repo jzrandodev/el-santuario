@@ -179,6 +179,16 @@ function start(){
     document.getElementById('fichaName').textContent = x.name;
     document.getElementById('fichaPd').textContent = [P.place, P.date].filter(Boolean).join(' · ');
     document.getElementById('fichaStory').textContent = STORY[P.id]?.[lang] || x.fact;
+    // a panel hung before its match keeps time: how long until kick-off, then live, then played
+    const ko = document.getElementById('fichaKo');
+    ko.hidden = !P.kickoff;
+    if (P.kickoff) {
+      const ms = Date.parse(P.kickoff) - Date.now();
+      if (ms > 0) {
+        const h = Math.floor(ms / 3.6e6), m = Math.floor(ms % 3.6e6 / 6e4);
+        ko.textContent = `${tt('koIn')} ${h ? h + ' ' + tt('koH') + ' ' : ''}${m} ${tt('koM')}.`;
+      } else ko.textContent = ms > -2.5 * 3.6e6 ? tt('koLive') : tt('koDone');
+    }
     fichaGo.hidden = !P.room;
     fichaFrom = document.activeElement;
     ficha.hidden = false; fichaOpen = true;

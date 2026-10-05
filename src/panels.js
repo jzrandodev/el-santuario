@@ -106,6 +106,7 @@ export const PANELS = [
     name:'El padre', line:'', place:'ROSARIO', date:'08·VIII·2026',
     fact:'Jorge Messi, su padre y representante de toda la vida, murió a los 68 años tras una larga enfermedad. Nunca se lo representa: un objeto encendido, nada más.' },
   { id:'monumental', state:STATE.FIN, rung:0, verified:true, src:null, pending:true,
+    kickoff:'2026-10-06T23:00:00Z',  // 20:00 in Buenos Aires
     name:'El último partido', line:'', place:'MONUMENTAL', date:'06·X·2026',
     fact:'Partido despedida ante Benín, su número 208 con la Selección. Todavía no se jugó: este panel espera.' },
   { id:'camiseta', state:STATE.FIN, rung:4, verified:true, src:null,

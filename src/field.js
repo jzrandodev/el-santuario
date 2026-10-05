@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { PANELS, STATE, paintPanel } from './panels.js';
+import { buildAtmosphere } from './atmosphere.js';
 
 const NIGHT = 0x0A0806;
 // depth between panels. Tighter than it was at thirteen, so twenty-nine is still a walk, not a trek
@@ -86,23 +87,8 @@ export function buildField(renderer){
 
   scene.add(group);
 
-  // red ribbons: the only colour in the volume that is not carried light
-  const ribbons = new THREE.Group();
-  for (let i = 0; i < 42; i++) {
-    const h = 3 + rnd() * 11;
-    const m = new THREE.Mesh(
-      new THREE.PlaneGeometry(0.05 + rnd() * 0.06, h),
-      new THREE.MeshBasicMaterial({
-        color: 0xB01218, transparent: true, opacity: 0.10 + rnd() * 0.16, side: THREE.DoubleSide, depthWrite: false
-      })
-    );
-    const a = rnd() * Math.PI * 2, r = 13 + rnd() * 17;
-    m.position.set(Math.cos(a) * r, Math.sin(a) * r * 0.5 + (rnd() - 0.5) * 8, 6 - rnd() * 90);
-    m.rotation.z = (rnd() - 0.5) * 0.5;
-    ribbons.add(m);
-  }
-  scene.add(ribbons);
-
   const depth = { near: 6, far: -PANELS.length * GAP - 16 };
-  return { scene, camera, candle, flame, meshes, ribbons, depth };
+  // a separate seed, so the room can change without moving a single panel
+  const atmos = buildAtmosphere(scene, seeded(20260831), depth);
+  return { scene, camera, candle, flame, meshes, ribbons: atmos.ribbons, atmos, depth };
 }

@@ -252,6 +252,7 @@ function start(){
     door.classList.toggle('on', atDoor);
     if (atDoor) hint.style.opacity = '0';
 
+    F.atmos.update(t, F.candle.position, renderer, F.camera);
     renderer.render(F.scene, F.camera);
     requestAnimationFrame(frame);
   }

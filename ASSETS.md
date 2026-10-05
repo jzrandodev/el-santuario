@@ -1,4 +1,4 @@
-# ASSETS — the twenty-nine panels
+# ASSETS — the thirty panels
 
 Every moment in the field is one panel. This file is the commission: what each panel is,
 which state it belongs to, its verified facts, the plaque line it carries, and which rung
@@ -275,6 +275,35 @@ without it. Club names appear in text only: no crests, no kit sponsors, plain co
   Colombia (Lautaro 112'). He went off injured at 64' and wept on the bench.
 - Plaque: `GRACIAS · MIAMI GARDENS · 14·VII·2024` · **Rung 2.** Celeste permitted. The subject is
   the bench, not the trophy.
+
+#### 30 · El último partido — THE ENDING (pending)
+- **6 October 2026, 20:00 ART**, Estadio Monumental, Buenos Aires. Farewell friendly against
+  Benin, called by the AFA after the letter; his 208th match for Argentina. *Verified by search
+  2026-10-05 (Al Jazeera, La Nación, Yahoo Sports). Not yet played.*
+- Plaque: `MONUMENTAL · 06·X·2026`
+- **A placeholder by design:** an empty dashed frame lettered `TODAVÍA NO`. Once the match is
+  played, give it its result, its story, and a rung, and remove `pending`.
+
+---
+
+## Eras — how each panel is made (added 2026-10-05)
+
+Every panel is made by a different hand depending on when it happened, the way a real shrine
+collects objects over decades. Older eras are more worn. Tin vs brass and the state line never
+change; the era changes only the making and the ageing. Defined in `src/stories.js` (`ERA_OF`)
+and painted in `src/panels.js` (`eraDress`).
+
+| Era | Years | Made as | Wear |
+|---|---|---|---|
+| Rosario · el origen | to 2000 | hand-tinted card, sepia, edge chewed by handling | heaviest |
+| La promesa | 2004–2008 | kiosk estampita, gold double edge printed off register | heavy |
+| La cumbre | 2009–2015 | beaten tin nailed to the wall, a nail at each corner | medium |
+| El quiebre | 2016–2020 | taped back up after a fall, scratched | medium |
+| La liberación | 2021–2023 | retablo, arched top, turned corner ornaments | light |
+| El final | 2024–2026 | barely touched, thin black edge of mourning | almost none |
+
+Each panel also opens to a longer story (`STORY` in `src/stories.js`, Spanish and English),
+written only from facts verified in this file.
 
 ---
 

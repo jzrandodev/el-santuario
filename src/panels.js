@@ -1,4 +1,4 @@
-/* The twenty-nine panels. Source of truth is ASSETS.md; this file must not drift from it.
+/* The thirty panels. Source of truth is ASSETS.md; this file must not drift from it.
  *
  * `src: null` means the lámina has not been made yet. A null path is NEVER requested and the
  * panel falls back to its generated layer, so the shrine is complete and shippable at every
@@ -12,6 +12,8 @@
  * and only to its senior releases (2021 on). Club panels never carry it, and neither do the
  * youth titles: the debt they could not pay was the senior one.
  */
+
+import { ERA_OF } from './stories.js';
 
 export const STATE = { PIDO: 'pido', GRACIAS: 'gracias', FIN: 'fin' };
 
@@ -103,6 +105,9 @@ export const PANELS = [
   { id:'padre', state:STATE.FIN, rung:4, verified:true, src:null,
     name:'El padre', line:'', place:'ROSARIO', date:'08·VIII·2026',
     fact:'Jorge Messi, su padre y representante de toda la vida, murió a los 68 años tras una larga enfermedad. Nunca se lo representa: un objeto encendido, nada más.' },
+  { id:'monumental', state:STATE.FIN, rung:0, verified:true, src:null, pending:true,
+    name:'El último partido', line:'', place:'MONUMENTAL', date:'06·X·2026',
+    fact:'Partido despedida ante Benín, su número 208 con la Selección. Todavía no se jugó: este panel espera.' },
   { id:'camiseta', state:STATE.FIN, rung:4, verified:true, src:null,
     name:'La camiseta', line:'', place:'', date:'',
     fact:'No es un partido. Es la camiseta y el número, y lo que cuesta llevarlos.' }
@@ -155,6 +160,59 @@ function wrapCaps(c,text,x,y,size,color,maxW,lh){
   c.restore(); return yy;
 }
 
+/* ERAS. Every panel is made by a different hand depending on when it happened, the way a real
+ * shrine collects objects over decades. Older eras are more worn. Tin and brass, and the state
+ * line, stay what they are; the era only changes how the object was made and how it aged. */
+const AGE = { origen:30, promesa:22, cumbre:18, quiebre:20, liberacion:12, final:7 };
+
+function eraDress(c, era, brass){
+  const hi = brass ? 'rgba(233,206,126,' : 'rgba(217,213,200,';
+  c.save();
+  if (era === 'origen') {
+    // a hand-tinted card from the nineties: sepia wash and an edge chewed by handling
+    c.fillStyle='rgba(120,78,36,0.22)'; c.fillRect(0,0,W,H);
+    c.fillStyle='#0A0806';
+    for (let i=0;i<70;i++){
+      const t=i/70, side=i%4, r=2+Math.abs(Math.sin(i*7.3))*6;
+      const x= side===0? t*W*4%W : side===1? W : side===2? (t*W*4)%W : 0;
+      const y= side===0? 0 : side===1? (t*H*4)%H : side===2? H : (t*H*4)%H;
+      c.beginPath(); c.arc(x,y,r,0,Math.PI*2); c.fill();
+    }
+  } else if (era === 'promesa') {
+    // a kiosk estampita: gold double edge, the inner one printed a hair off register
+    c.strokeStyle='rgba(214,170,72,0.55)'; c.lineWidth=3; c.strokeRect(16,16,W-32,H-32);
+    c.strokeStyle='rgba(176,18,24,0.35)'; c.lineWidth=1.5; c.strokeRect(25,23,W-48,H-48);
+    c.strokeStyle='rgba(214,170,72,0.40)'; c.lineWidth=1.5; c.strokeRect(23,23,W-46,H-46);
+  } else if (era === 'cumbre') {
+    // beaten tin nailed to the wall: a nail in each corner and one at the top
+    for (const [x,y] of [[22,22],[W-22,22],[22,H-22],[W-22,H-22],[W/2,16]]) {
+      const g=c.createRadialGradient(x-2,y-2,1,x,y,7);
+      g.addColorStop(0,hi+'0.85)'); g.addColorStop(1,'rgba(20,18,16,0.9)');
+      c.fillStyle=g; c.beginPath(); c.arc(x,y,6,0,Math.PI*2); c.fill();
+    }
+  } else if (era === 'quiebre') {
+    // taped back up after a fall: two strips of tape and the scratches of the fall
+    c.fillStyle='rgba(222,206,160,0.20)';
+    c.translate(70,30); c.rotate(-0.5); c.fillRect(-60,-14,120,28); c.setTransform(1,0,0,1,0,0);
+    c.translate(W-70,30); c.rotate(0.5); c.fillRect(-60,-14,120,28); c.setTransform(1,0,0,1,0,0);
+    c.strokeStyle=hi+'0.16)'; c.lineWidth=1;
+    for (let i=0;i<9;i++){ const y=90+i*58, x=40+((i*97)%300);
+      c.beginPath(); c.moveTo(x,y); c.lineTo(x+60+((i*37)%80),y+18-((i*13)%30)); c.stroke(); }
+  } else if (era === 'liberacion') {
+    // a retablo: an arch over the top and small turned ornaments at the corners
+    c.strokeStyle=hi+'0.50)'; c.lineWidth=2.5;
+    c.beginPath(); c.moveTo(18,96); c.lineTo(18,40); c.quadraticCurveTo(W/2,-26,W-18,40); c.lineTo(W-18,96); c.stroke();
+    c.fillStyle=hi+'0.55)';
+    for (const [x,y] of [[18,H-18],[W-18,H-18],[18,104],[W-18,104]]) {
+      c.beginPath(); c.moveTo(x,y-7); c.lineTo(x+7,y); c.lineTo(x,y+7); c.lineTo(x-7,y); c.closePath(); c.fill();
+    }
+  } else if (era === 'final') {
+    // made this year and barely touched, with the thin black edge of mourning
+    c.strokeStyle='rgba(8,6,5,0.85)'; c.lineWidth=7; c.strokeRect(10,10,W-20,H-20);
+  }
+  c.restore();
+}
+
 /** Paint one panel. Returns an HTMLCanvasElement ready to become a texture. */
 export function paintPanel(p){
   const cv=document.createElement('canvas'); cv.width=W; cv.height=H;
@@ -173,7 +231,15 @@ export function paintPanel(p){
 
   const textCol = brass ? '#E9CE7E' : INK.tinText;
 
-  if(p.rung===3){
+  if(p.pending){
+    // NOT YET. An empty frame hung before the thing it is for: dashed, unpainted, waiting.
+    c.save(); c.setLineDash([14,10]); c.strokeStyle='rgba(217,213,200,0.30)'; c.lineWidth=2;
+    c.strokeRect(46,46,W-92,H*0.56); c.restore();
+    caps(c,'TODAVÍA NO',W/2,46+H*0.28,16,'rgba(217,213,200,0.34)',0.36,400);
+    let y=H*0.56+46+56;
+    caps(c,p.place,W/2,y,19,textCol,0.24); y+=32;
+    caps(c,p.date,W/2,y,14,'rgba(217,213,200,0.42)',0.24);
+  } else if(p.rung===3){
     // PLACA DE BRONCE — no image, ever. The absence is the panel.
     let y=H*0.40;
     if(p.line) y=wrapCaps(c,p.line,W/2,y,26,textCol,W*0.78,40)+52;
@@ -244,6 +310,8 @@ export function paintPanel(p){
     }
   }
 
-  grain(c,16);
+  const era = ERA_OF[p.id];
+  eraDress(c, era, brass);
+  grain(c, AGE[era] ?? 16);
   return cv;
 }

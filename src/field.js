@@ -3,7 +3,7 @@ import { PANELS, STATE, paintPanel } from './panels.js';
 import { buildAtmosphere } from './atmosphere.js';
 
 const NIGHT = 0x0A0806;
-// depth between panels. Tighter than it was at thirteen, so twenty-nine is still a walk, not a trek
+// depth between panels. Tighter than it was at thirteen, so thirty is still a walk, not a trek
 const GAP = 5.6;
 
 /* Deterministic layout: the same shrine every visit, entered in a different order.

@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { buildField } from './field.js';
 import { PANELS, STATE, TOTAL } from './panels.js';
 import { T, getLang, setLang, panelText } from './i18n.js';
+import { STORY, ERAS, ERA_OF } from './stories.js';
 
 const canvas = document.getElementById('scene');
 const ui = document.getElementById('ui');
@@ -20,7 +21,7 @@ function readLedger(){
 function writeLedger(v){ try { sessionStorage.setItem(LEDGER, JSON.stringify(v)); } catch (_) {} }
 
 /* ---- the floor: if WebGL is unavailable, or motion is refused, the shrine is a document ----
- * This is not a degraded version. It is the same twenty-nine objects, the same three states and
+ * This is not a degraded version. It is the same thirty objects, the same three states and
  * the same facts, held still and readable. A volumetric field has no natural linear fallback,
  * so one is authored rather than pretended. */
 let floorOn = false, floorWhy = '';
@@ -36,6 +37,7 @@ function documentFloor(reasonClass){
       <div class="nm">${p.room ? `<a href="${ROOM[p.room]}">${x.name}</a>` : x.name}</div>
       <div class="fx">${[p.place, p.date].filter(Boolean).join(' · ')}${
         (p.place || p.date) ? '<br>' : ''}${x.fact}</div>
+      ${STORY[p.id] ? `<p class="story">${STORY[p.id][lang]}</p>` : ''}
     </li>`; }).join('');
   readout.innerHTML = `
     <h1>${tt('h1')}</h1>
@@ -54,6 +56,7 @@ function applyLang(){
     el[el.hasAttribute('data-html') ? 'innerHTML' : 'textContent'] = tt(el.dataset.i);
   }
   canvas.setAttribute('aria-label', tt('canvas'));
+  document.getElementById('fichaClose').setAttribute('aria-label', tt('close'));
   langBtn.textContent = tt('toggle'); langBtn.setAttribute('aria-label', tt('toggleLabel'));
   langBtn.lang = lang === 'es' ? 'en' : 'es';
   const door = document.getElementById('door');
@@ -106,7 +109,7 @@ function start(){
     const P = m.userData.panel;
     if (!quiet) { const x = panelText(P, lang);
       said.textContent = [x.name, [P.place, P.date].filter(Boolean).join(', '), x.fact,
-        P.room ? tt('openIt') : ''].filter(Boolean).join('. '); }
+        tt('openIt')].filter(Boolean).join('. '); }
     found[m.userData.panel.state]++; total++;
     counts[m.userData.panel.state].textContent = found[m.userData.panel.state];
     nFound.textContent = total;
@@ -142,30 +145,69 @@ function start(){
                   at: { x: aim.x, y: aim.y, z: aim.z } });
     location.href = ROOM[m.userData.panel.room];
   }
-  // a room opens only once you have reached its panel; from afar a click just travels there
+  // a panel opens only once you have reached it; from afar a click just travels there
   const near = m => m.userData.lit && Math.abs(cur.z - m.position.z) < 11;
+  const nearest = () => {
+    let best = null, bd = Infinity;
+    for (const m of F.meshes) if (near(m)) {
+      const d = m.position.distanceTo(F.candle.position); if (d < bd) { bd = d; best = m; }
+    }
+    return best;
+  };
+
+  /* THE FICHA — a reached panel opens to the longer story of its moment. Movement holds
+   * still while it is open; Escape, the ×, or a click outside closes it. */
+  const ficha = document.getElementById('ficha'), fichaCard = ficha.querySelector('.ficha-card');
+  const fichaGo = document.getElementById('fichaGo');
+  let fichaOpen = false, fichaMesh = null;
+  function openFicha(m){
+    const P = m.userData.panel, x = panelText(P, lang);
+    fichaMesh = m;
+    fichaCard.className = 'ficha-card ' + P.state;
+    document.getElementById('fichaEra').textContent = ERAS[ERA_OF[P.id]]?.[lang] || '';
+    document.getElementById('fichaSt').textContent =
+      P.state === STATE.PIDO ? tt('stPido') : P.state === STATE.GRACIAS ? tt('stGracias') : tt('stFin');
+    document.getElementById('fichaName').textContent = x.name;
+    document.getElementById('fichaPd').textContent = [P.place, P.date].filter(Boolean).join(' · ');
+    document.getElementById('fichaStory').textContent = STORY[P.id]?.[lang] || x.fact;
+    fichaGo.hidden = !P.room;
+    ficha.hidden = false; fichaOpen = true;
+    document.getElementById('fichaClose').focus();
+  }
+  function closeFicha(){
+    if (!fichaOpen) return;
+    ficha.hidden = true; fichaOpen = false; fichaMesh = null;
+    canvas.focus?.();
+  }
+  document.getElementById('fichaClose').addEventListener('click', closeFicha);
+  ficha.addEventListener('click', e => { if (e.target === ficha) closeFicha(); });
+  fichaGo.addEventListener('click', () => { if (fichaMesh) enter(fichaMesh); });
 
   addEventListener('pointermove', e => {
+    if (fichaOpen) return;
     px = e.clientX / innerWidth; py = e.clientY / innerHeight;
     aim.x = (px - 0.5) * 22; aim.y = -(py - 0.5) * 13;
     if (!moved) { moved = true; hint.style.opacity = '0'; }
   }, { passive: true });
 
   addEventListener('wheel', e => {
+    if (fichaOpen) return;
     aim.z = THREE.MathUtils.clamp(aim.z - e.deltaY * 0.035, F.depth.far, F.depth.near);
     if (!moved) { moved = true; hint.style.opacity = '0'; }
   }, { passive: true });
 
   addEventListener('keydown', e => {
     if (e.ctrlKey || e.metaKey || e.altKey) return;  // browser shortcuts stay the browser's
+    if (fichaOpen) { if (e.key === 'Escape') { e.preventDefault(); closeFicha(); } return; }
     const k = e.key;
     if (k === 'ArrowUp' || k === 'w') aim.z -= 4;
     else if (k === 'ArrowDown' || k === 's') aim.z += 4;
     else if (k === 'ArrowLeft' || k === 'a') aim.x -= 3;
     else if (k === 'ArrowRight' || k === 'd') aim.x += 3;
     else if (k === 'Enter') {
-      const m = F.meshes.find(x => x.userData.panel.room && near(x));
-      if (m) enter(m);
+      if (e.target !== document.body && e.target !== canvas) return;  // a focused button handles its own Enter
+      const m = nearest();
+      if (m) { e.preventDefault(); openFicha(m); }
       return;
     }
     else return;
@@ -178,6 +220,7 @@ function start(){
   let tLast = null;
   addEventListener('touchstart', e => { tLast = e.touches[0]; }, { passive: true });
   addEventListener('touchmove', e => {
+    if (fichaOpen) return;
     const t = e.touches[0];
     if (tLast) {
       aim.x = THREE.MathUtils.clamp(aim.x - (t.clientX - tLast.clientX) * 0.05, -14, 14);
@@ -198,11 +241,12 @@ function start(){
     hover = ray.intersectObjects(F.meshes)[0]?.object || null;
   }, { passive: true });
   addEventListener('click', e => {
+    if (fichaOpen || e.target !== canvas) return;  // buttons and the open ficha are not the field
     const p = new THREE.Vector2((e.clientX / innerWidth) * 2 - 1, -(e.clientY / innerHeight) * 2 + 1);
     ray.setFromCamera(p, F.camera);
     const hit = ray.intersectObjects(F.meshes)[0];
     if (!hit) return;
-    if (hit.object.userData.panel.room && near(hit.object)) enter(hit.object);
+    if (near(hit.object)) openFicha(hit.object);
     else aim.z = hit.object.position.z + 7.4;
   });
 
@@ -247,8 +291,8 @@ function start(){
     }
 
     // the cursor says when a panel is a door
-    canvas.style.cursor = hover && hover.userData.panel.room && near(hover) ? 'pointer' : '';
-    const atDoor = F.meshes.some(m => m.userData.panel.room && near(m));
+    canvas.style.cursor = hover && near(hover) ? 'pointer' : '';
+    const atDoor = !fichaOpen && F.meshes.some(near);
     door.classList.toggle('on', atDoor);
     if (atDoor) hint.style.opacity = '0';
 

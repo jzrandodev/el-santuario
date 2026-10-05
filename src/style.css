@@ -93,3 +93,8 @@ body.released .found b{color:var(--celeste)}
 @media (max-width:760px){.ficha-card{padding:36px 22px 26px} #ficha h2{font-size:24px} .ficha-story{font-size:17px}}
 #readout .story{font-family:'Alegreya',serif;font-size:15px;line-height:1.6;color:rgba(232,220,192,.66);margin-top:8px}
 @media (max-width:760px){ #readout h1{padding-right:72px} }  /* clear of the language toggle */
+/* the way into Los números sits beside the document toggle */
+.numlink{left:calc(50% + 112px);transform:none;text-decoration:none}
+@media (max-width:760px){.numlink{top:112px;left:20px}}
+#readout .nums{display:inline-block;margin:-20px 0 36px;font-size:10px;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--brass-hi);text-decoration:none;border-bottom:1px solid rgba(228,196,106,.4)}

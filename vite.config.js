@@ -11,7 +11,8 @@ export default defineConfig({
     // the letter room is its own page; panel 11 in the field opens it
     rollupOptions: { input: {
       main: resolve(import.meta.dirname, 'index.html'),
-      carta: resolve(import.meta.dirname, 'drafts/la-carta.html')
+      carta: resolve(import.meta.dirname, 'drafts/la-carta.html'),
+      numeros: resolve(import.meta.dirname, 'numeros.html')
     } }
   }
 });

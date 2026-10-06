@@ -142,9 +142,13 @@ function start(){
     }
     moved = true; hint.style.opacity = '0';
   }
+  const saveLedger = () => writeLedger({
+    lit: F.meshes.filter(x => x.userData.lit).map(x => x.userData.panel.id),
+    at: { x: aim.x, y: aim.y, z: aim.z } });
+  // any way out of the field keeps the path: the letter, Los números, a reload, the back button
+  addEventListener('pagehide', saveLedger);
   function enter(m){
-    writeLedger({ lit: F.meshes.filter(x => x.userData.lit).map(x => x.userData.panel.id),
-                  at: { x: aim.x, y: aim.y, z: aim.z } });
+    saveLedger();
     location.href = ROOM[m.userData.panel.room];
   }
   // a panel opens only once you have reached it; from afar a click just travels there

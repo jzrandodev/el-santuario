@@ -57,7 +57,7 @@ body.released .found b{color:var(--celeste)}
 #readout li{border-top:1px solid rgba(232,220,192,.14);padding:18px 0}
 #readout .st{font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--red)}
 #readout li.gracias .st{color:var(--brass-hi)}
-#readout .st .era{color:rgba(232,220,192,.42)}
+#readout .st .era{color:rgba(232,220,192,.6)}
 #readout .nm{font-size:20px;font-weight:700;margin:6px 0 4px}
 #readout .nm a{color:inherit;text-decoration:underline;text-decoration-color:var(--red);text-underline-offset:4px}
 #readout .fx{font-size:12px;line-height:1.8;color:rgba(232,220,192,.5)}
@@ -77,12 +77,12 @@ body.released .found b{color:var(--celeste)}
 .ficha-card{position:relative;width:min(540px,100%);max-height:calc(100vh - 32px);overflow-y:auto;
   background:#15110D;border:1px solid rgba(232,220,192,.16);padding:40px 38px 34px;
   box-shadow:0 30px 90px rgba(0,0,0,.8)}
-.ficha-era{font-size:9px;letter-spacing:.32em;text-transform:uppercase;color:rgba(232,220,192,.42)}
+.ficha-era{font-size:9px;letter-spacing:.32em;text-transform:uppercase;color:rgba(232,220,192,.6)}
 .ficha-st{margin-top:18px;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--red)}
 .ficha-card.gracias .ficha-st{color:var(--brass-hi)}
 .ficha-card.fin .ficha-st{color:rgba(232,220,192,.6)}
 #ficha h2{margin-top:8px;font-size:28px;line-height:1.15;font-weight:700;color:var(--wax)}
-.ficha-pd{margin-top:8px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:rgba(232,220,192,.5)}
+.ficha-pd{margin-top:8px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:rgba(232,220,192,.64)}
 .ficha-story{margin-top:22px;font-family:'Alegreya',serif;font-size:19px;line-height:1.6;color:rgba(232,220,192,.82)}
 .ficha-x{position:absolute;top:12px;right:14px;width:40px;height:40px;background:none;border:0;
   color:rgba(232,220,192,.55);font-size:26px;line-height:1;cursor:pointer}

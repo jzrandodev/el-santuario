@@ -33,7 +33,7 @@ main{max-width:1080px;margin:0 auto;padding:24px 40px 80px}
 
 /* the world */
 .world{margin-top:72px}
-.world .k{font-size:9px;letter-spacing:.32em;color:rgba(232,220,192,.45)}
+.world .k{font-size:9px;letter-spacing:.32em;color:rgba(232,220,192,.6)}
 .world h2{margin-top:8px;font-size:30px;font-weight:700}
 .world .t{margin-top:10px;font-family:'Alegreya',serif;font-size:17px;line-height:1.55;color:rgba(232,220,192,.66);max-width:60ch}
 .map{position:relative;margin-top:24px}
@@ -53,13 +53,13 @@ main{max-width:1080px;margin:0 auto;padding:24px 40px 80px}
   text-transform:uppercase;color:rgba(232,220,192,.8)}
 .tip b{color:var(--brass-hi);font-size:14px;margin:0 2px}
 
-.world h3{margin-top:40px;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(232,220,192,.5);font-weight:700}
+.world h3{margin-top:40px;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(232,220,192,.62);font-weight:700}
 .sedes{list-style:none;margin-top:14px;columns:3 220px;column-gap:32px}
 .sedes li{display:flex;justify-content:space-between;gap:12px;break-inside:avoid;padding:8px 0;
   border-bottom:1px solid rgba(232,220,192,.08);font-size:14px;color:rgba(232,220,192,.78)}
 .sedes b{color:var(--brass-hi);font-weight:700}
 
-.src{margin-top:56px;font-size:11px;line-height:1.8;letter-spacing:.04em;color:rgba(232,220,192,.42);max-width:80ch}
+.src{margin-top:56px;font-size:11px;line-height:1.8;letter-spacing:.04em;color:rgba(232,220,192,.6);max-width:80ch}
 
 @media (max-width:760px){
   .top{padding:16px 16px} main{padding:12px 16px 64px}

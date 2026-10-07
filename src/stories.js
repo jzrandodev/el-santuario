@@ -107,8 +107,8 @@ export const STORY = {
     es:'Jorge Messi fue su padre y su representante de toda la vida. Murió el 8 de agosto de 2026 en Rosario, a los 68 años, después de una larga enfermedad. El 12 de agosto Messi le publicó una carta abierta. Acá no hay imagen de él: una vela, nada más.',
     en:'Jorge Messi was his father and lifelong representative. He died on 8 August 2026 in Rosario, aged 68, after a long illness. On 12 August Messi published an open letter to him. There is no image of him here: a candle, nothing more.' },
   monumental: {
-    es:'Después de la carta, la AFA lo convocó para un último partido en el país: un amistoso ante Benín en el Monumental, el martes 6 de octubre de 2026 a las 20. Sería su partido 208 con la Selección. Este panel queda sin pintar hasta que se juegue.',
-    en:'After the letter, the AFA called him up for one last match at home: a friendly against Benin at the Monumental, Tuesday 6 October 2026 at 8 pm. It would be his 208th for Argentina. This panel stays unpainted until it is played.' },
+    es:'Después de la carta, la AFA lo convocó para un último partido en el país: un amistoso ante Benín, con el Monumental lleno. A los 48′ tiró el córner que Nicolás Otamendi, que también se despedía de la Selección, cabeceó al gol. Después le dio el segundo a Nico Paz, y en el segundo tiempo convirtió de penal su gol 126. Argentina 3–0: estuvo en los tres goles de su partido 208, el último.',
+    en:'After the letter, the AFA called him up for one last match at home: a friendly against Benin, the Monumental full. In the 48th he took the corner that Nicolás Otamendi, also playing his last for Argentina, headed in. Then he set up Nico Paz for the second, and in the second half he scored his 126th from the penalty spot. Argentina 3–0: he was in all three goals of his 208th match, the last.' },
   camiseta: {
     es:'No es un partido. Es la camiseta celeste y blanca y el 10, y lo que pesó llevarlos durante más de veinte años.',
     en:'Not a match. It is the sky-blue and white shirt and the 10, and what it weighed to carry them for more than twenty years.' }

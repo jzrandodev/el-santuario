@@ -99,7 +99,7 @@ export const EN = {
   'miami': { name:'Miami',
     fact:'Leagues Cup: his goal and the first kick of the shootout, 10–9. Inter Miami’s first trophy. The MLS Cup followed in 2025, 3–1 against Vancouver.' },
   'monumental': { name:'The last match',
-    fact:'Farewell match against Benin, his 208th for Argentina. It has not been played yet: this panel is waiting.' },
+    fact:'Argentina 3–0 Benin. His 208th: the corner for the first, the pass for the second and the third from the spot, his 126th goal.' },
   'ocho': { name:'Eight',
     fact:'His eighth Ballon d’Or, a record. He won it on the World Cup.' },
   '2024': { name:'Crying on the bench',

@@ -276,13 +276,16 @@ without it. Club names appear in text only: no crests, no kit sponsors, plain co
 - Plaque: `GRACIAS · MIAMI GARDENS · 14·VII·2024` · **Rung 2.** Celeste permitted. The subject is
   the bench, not the trophy.
 
-#### 30 · El último partido — THE ENDING (pending)
-- **6 October 2026, 20:00 ART**, Estadio Monumental, Buenos Aires. Farewell friendly against
-  Benin, called by the AFA after the letter; his 208th match for Argentina. *Verified by search
-  2026-10-05 (Al Jazeera, La Nación, Yahoo Sports). Not yet played.*
+#### 30 · El último partido — THE ENDING
+- **6 October 2026**, Estadio Monumental, Buenos Aires. Farewell friendly: **Argentina 3–0 Benin.**
+  His corner for Nicolás Otamendi's header (48′; Otamendi was also playing his last for Argentina),
+  his pass for Nico Paz, and a penalty: his 126th goal, in his 208th match.
+- *Verified by search 2026-10-07: AP (via ClickOnDetroit), CNN en Español, El Heraldo, El Financiero,
+  Excélsior, Infobae. Sources disagree on the minutes of the second goal (49′ or 61′) and the
+  penalty (70′ or 71′), so only Otamendi's 48′ is used.*
 - Plaque: `MONUMENTAL · 06·X·2026`
-- **A placeholder by design:** an empty dashed frame lettered `TODAVÍA NO`. Once the match is
-  played, give it its result, its story, and a rung, and remove `pending`.
+- **Rung 2 — ex-voto pintado**, in the ending's hand: barely touched, the thin black edge. The
+  subject is the full stadium staying after the whistle, not a goal.
 
 ---
 

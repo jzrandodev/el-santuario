@@ -53,8 +53,8 @@ function documentFloor(reasonClass){
     ${reasonClass === 'chosen' ? `<button class="nums backfield" id="backField" type="button">${tt('backField')}</button>` : ''}
     <ol>${li}</ol>`;
   // the document is a choice, not a trap: going back reloads the field, and the ledger
-  // (written on pagehide) puts the visitor where they stood
-  document.getElementById('backField')?.addEventListener('click', () => location.reload());
+  // (written on pagehide) puts the visitor where they stood; ?doc is dropped so it stays the field
+  document.getElementById('backField')?.addEventListener('click', () => location.assign(location.pathname));
   canvas.style.display = 'none';
   ui.hidden = true;
 }
@@ -386,6 +386,8 @@ function start(){
     e.preventDefault(); documentFloor('context-lost');
   });
   document.getElementById('asDoc').addEventListener('click', () => documentFloor('chosen'));
+  // a link can ask for the document directly (the about page does): /?doc
+  if (new URLSearchParams(location.search).has('doc')) documentFloor('chosen');
 
   window.__santuario = { F, aim, cur, renderer, frame };
 }

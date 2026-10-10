@@ -60,7 +60,8 @@ export default defineConfig({
     rollupOptions: { input: {
       main: resolve(import.meta.dirname, 'index.html'),
       carta: resolve(import.meta.dirname, 'drafts/la-carta.html'),
-      numeros: resolve(import.meta.dirname, 'numeros.html')
+      numeros: resolve(import.meta.dirname, 'numeros.html'),
+      sobre: resolve(import.meta.dirname, 'sobre.html')
     } }
   }
 });

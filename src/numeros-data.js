@@ -3,8 +3,9 @@
  * a published match-by-venue table of his 207 senior matches for the map (36 countries and
  * territories, Hong Kong counted apart from China; Olé counts 35), plus the farewell against Benin
  * at the Monumental on 6 Oct 2026 (3-0: a penalty and two assists, verified 2026-10-07). The venue
- * counts sum to 208. Running totals after Benin (208, 126, 70, 54, 55 in friendlies) are the
- * published pre-match totals plus that one match.
+ * counts sum to 208. 208 / 126 / 55-in-friendlies are published post-match (Ámbito, CNN en
+ * Español, ESPN, checked 2026-10-10). Assists are not agreed (68, 69, 70) and are shown as a range.
+ * 54 at home is the venue table plus the farewell.
  * Two corrections to Olé, both checked against the map source: the World Cup runners-up are
  * 2014 and 2026 (Olé prints "2014 y 2014"). Nothing here is rounded or estimated. */
 
@@ -15,9 +16,9 @@ export const NUMS = [
   { n:'126', k:{ es:'Goles', en:'Goals' },
     t:{ es:'El máximo goleador; Gabriel Batistuta es segundo con 54. El primero, a Croacia en un amistoso de 2006; el último, de penal a Benín en la despedida. 55 en amistosos, 36 en Eliminatorias, 21 en Mundiales y 14 en Copa América. A Bolivia le hizo 11.',
         en:'The all-time top scorer; Gabriel Batistuta is second with 54. The first against Croatia in a 2006 friendly; the last a penalty against Benin at the farewell. 55 in friendlies, 36 in qualifiers, 21 at World Cups and 14 at the Copa América. Bolivia conceded 11.' } },
-  { n:'70', k:{ es:'Asistencias', en:'Assists' },
-    t:{ es:'Las dos últimas, en la despedida: el córner para Otamendi y el pase para Nico Paz. Antes, el centro a la cabeza de Lautaro Martínez en el 2–1 a Inglaterra, en la semifinal del Mundial 2026.',
-        en:'The last two at the farewell: the corner for Otamendi and the pass for Nico Paz. Before that, the cross onto Lautaro Martínez’s head in the 2–1 against England, the 2026 World Cup semi-final.' } },
+  { n:'68–70', k:{ es:'Asistencias', en:'Assists' },
+    t:{ es:'Los recuentos publicados después de la despedida no coinciden: 68, 69 o 70. Las dos últimas, en la despedida: el córner para Otamendi y el pase para Nico Paz. Antes, el centro a la cabeza de Lautaro Martínez en el 2–1 a Inglaterra, en la semifinal del Mundial 2026.',
+        en:'Published counts after the farewell disagree: 68, 69 or 70. The last two at the farewell: the corner for Otamendi and the pass for Nico Paz. Before that, the cross onto Lautaro Martínez’s head in the 2–1 against England, the 2026 World Cup semi-final.' } },
   { n:'6', k:{ es:'Títulos', en:'Titles' },
     t:{ es:'Copa América 2021 y 2024, Finalissima 2022 y Mundial 2022 con la mayor; Mundial Sub-20 2005 y oro olímpico en Pekín 2008. Y cinco subcampeonatos: Copa América 2007, 2015 y 2016, Mundial 2014 y 2026.',
         en:'Copa América 2021 and 2024, the 2022 Finalissima and the 2022 World Cup with the senior team; the 2005 U-20 World Cup and Olympic gold in Beijing 2008. And five runner-up finishes: Copa América 2007, 2015 and 2016, the World Cup in 2014 and 2026.' } },
@@ -70,7 +71,7 @@ export const COPY = {
     mapH:'Por el mundo', mapK:'UNA VELA POR CADA LUGAR DONDE JUGÓ',
     mapT:'Cada vela es un país o territorio; su tamaño, los partidos que jugó ahí. Tocá una para ver cuántos.',
     listH:'Las 36 sedes', partidos:'partidos', partido:'partido', toggle:'EN', toggleLabel:'Read in English',
-    src:'Fuentes: Olé, “10 números de Messi con la Selección”, 5·X·2026; tabla publicada de sedes de sus 207 partidos (36 países y territorios, con Hong Kong aparte de China; Olé cuenta 35), más la despedida ante Benín (AP, CNN en Español, 7·X·2026). 208, 126, 70 y 54 suman esa noche a los totales publicados antes. Partidos, goles, títulos y récords mundialistas contrastados con El Día, Telefe y FIFA. Los puntos del mapa representan países, no estadios.'
+    src:'Fuentes: Olé, “10 números de Messi con la Selección”, 5·X·2026; tabla publicada de sedes de sus 207 partidos (36 países y territorios, con Hong Kong aparte de China; Olé cuenta 35), más la despedida ante Benín (AP, CNN en Español, 7·X·2026). 208 partidos, 126 goles y 55 en amistosos, confirmados después por Ámbito, CNN en Español y ESPN; las asistencias publicadas van de 68 a 70; 54 en Argentina suma esa noche a la tabla de sedes. Partidos, goles, títulos y récords mundialistas contrastados con El Día, Telefe y FIFA. Los puntos del mapa representan países, no estadios.'
   },
   en: {
     title:'El Santuario — The numbers', mark:'THE NUMBERS', back:'back to the shrine',
@@ -78,6 +79,6 @@ export const COPY = {
     mapH:'Around the world', mapK:'A CANDLE FOR EVERY PLACE HE PLAYED',
     mapT:'Each candle is a country or territory; its size, the matches he played there. Tap one to see how many.',
     listH:'The 36 venues', partidos:'matches', partido:'match', toggle:'ES', toggleLabel:'Leer en español',
-    src:'Sources: Olé, “10 números de Messi con la Selección”, 5 October 2026; a published venue table of his 207 matches (36 countries and territories, Hong Kong apart from China; Olé counts 35), plus the farewell against Benin (AP, CNN en Español, 7 October 2026). 208, 126, 70 and 54 add that night to the totals published before it. Matches, goals, titles and World Cup records cross-checked with El Día, Telefe and FIFA. Map points stand for countries, not stadiums.'
+    src:'Sources: Olé, “10 números de Messi con la Selección”, 5 October 2026; a published venue table of his 207 matches (36 countries and territories, Hong Kong apart from China; Olé counts 35), plus the farewell against Benin (AP, CNN en Español, 7 October 2026). 208 matches, 126 goals and 55 in friendlies since confirmed by Ámbito, CNN en Español and ESPN; published assist counts range from 68 to 70; 54 in Argentina adds that night to the venue table. Matches, goals, titles and World Cup records cross-checked with El Día, Telefe and FIFA. Map points stand for countries, not stadiums.'
   }
 };

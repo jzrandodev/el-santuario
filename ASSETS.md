@@ -283,6 +283,8 @@ without it. Club names appear in text only: no crests, no kit sponsors, plain co
 - *Verified by search 2026-10-07: AP (via ClickOnDetroit), CNN en Español, El Heraldo, El Financiero,
   Excélsior, Infobae. Sources disagree on the minutes of the second goal (49′ or 61′) and the
   penalty (70′ or 71′), so only Otamendi's 48′ is used.*
+- His words after, from the centre circle: «No venir más va a ser un dolor muy grande». *Verified
+  2026-10-10 in La Nación, El Tiempo, El Espectador, Diario Panorama, CNN en Español.*
 - Plaque: `MONUMENTAL · 06·X·2026`
 - **Rung 2 — ex-voto pintado**, in the ending's hand: barely touched, the thin black edge. The
   subject is the full stadium staying after the whistle, not a goal.

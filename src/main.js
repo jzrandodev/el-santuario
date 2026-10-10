@@ -3,6 +3,7 @@ import { buildField } from './field.js';
 import { PANELS, STATE, TOTAL } from './panels.js';
 import { T, getLang, setLang, panelText } from './i18n.js';
 import { STORY, ERAS, ERA_OF } from './stories.js';
+import { CLIPS, embedOf, hostLabel } from './clips.js';
 
 const canvas = document.getElementById('scene');
 const ui = document.getElementById('ui');
@@ -199,13 +200,44 @@ function start(){
       } else ko.textContent = ms > -2.5 * 3.6e6 ? tt('koLive') : tt('koDone');
     }
     fichaGo.hidden = !P.room;
+    showClip(P, x.name);
     fichaFrom = document.activeElement;
     ficha.hidden = false; fichaOpen = true;
     document.getElementById('fichaClose').focus();
   }
+  /* the moment's real footage, if one has been linked: the platform's own player, credited,
+   * and loaded only on a tap (see clips.js) */
+  const fichaClip = document.getElementById('fichaClip'), fichaPlay = document.getElementById('fichaPlay');
+  const fichaFrame = document.getElementById('fichaFrame'), fichaSrc = document.getElementById('fichaSrc');
+  let clipNow = null;
+  function showClip(P, name){
+    const c = CLIPS[P.id];
+    fichaFrame.replaceChildren(); fichaFrame.hidden = true;
+    fichaClip.hidden = !c; clipNow = null;
+    if (!c) return;
+    const em = embedOf(c.url);
+    clipNow = em && { ...em, title: `${tt('clipTitle')} ${name}` };
+    fichaPlay.hidden = !em;
+    if (em) fichaPlay.textContent = `${tt('clipPlay')} · ${tt('clipOn')} ${em.label}`;
+    fichaSrc.href = c.url;
+    fichaSrc.textContent = [c.credit && `${tt('clipBy')} ${c.credit}`,
+      `${tt('clipOpen')} (${em ? em.label : hostLabel(c.url)}) ↗`].filter(Boolean).join(' · ');
+  }
+  fichaPlay.addEventListener('click', () => {
+    if (!clipNow) return;
+    const f = document.createElement('iframe');
+    f.src = clipNow.embed; f.title = clipNow.title;
+    f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    f.allowFullscreen = true; f.referrerPolicy = 'strict-origin-when-cross-origin';
+    fichaFrame.className = 'ficha-frame' + (clipNow.tall ? ' tall' : '');
+    fichaFrame.replaceChildren(f); fichaFrame.hidden = false;
+    fichaPlay.hidden = true;
+    fichaSrc.focus();  // the button is gone; keep focus on something real inside the card
+  });
   function closeFicha(){
     if (!fichaOpen) return;
     ficha.hidden = true; fichaOpen = false; fichaMesh = null;
+    fichaFrame.replaceChildren(); fichaFrame.hidden = true;  // closing the card stops the clip
     // give focus back to wherever it was before the card opened
     if (fichaFrom && fichaFrom !== document.body && document.contains(fichaFrom)) fichaFrom.focus();
     fichaFrom = null;
@@ -232,8 +264,8 @@ function start(){
     if (fichaOpen) {
       if (e.key === 'Escape') { e.preventDefault(); closeFicha(); }
       else if (e.key === 'Tab') {
-        // a modal keeps focus inside it: cycle between its own buttons
-        const f = [...ficha.querySelectorAll('button')].filter(b => !b.hidden);
+        // a modal keeps focus inside it: cycle between its own controls
+        const f = [...ficha.querySelectorAll('button, a[href], iframe')].filter(b => !b.closest('[hidden]'));
         const i = f.indexOf(document.activeElement);
         e.preventDefault();
         f[(i + (e.shiftKey ? -1 : 1) + f.length) % f.length].focus();

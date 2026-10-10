@@ -40,6 +40,11 @@ function documentFloor(reasonClass){
       <div class="fx">${[p.place, p.date].filter(Boolean).join(' · ')}${
         (p.place || p.date) && !STORY[p.id] ? '<br>' : ''}${STORY[p.id] ? '' : x.fact}</div>
       ${STORY[p.id] ? `<p class="story">${STORY[p.id][lang]}</p>` : ''}
+      ${p.src && (p.rung === 1 || p.rung === 2) && !p.pending
+        ? `<img class="lam" src="${import.meta.env.BASE_URL}${p.src}" alt="" loading="lazy">` : ''}
+      ${CLIPS[p.id] ? `<a class="clip" href="${CLIPS[p.id].url}" target="_blank" rel="noopener noreferrer">${
+        [CLIPS[p.id].credit && `${tt('clipBy')} ${CLIPS[p.id].credit}`,
+         `${tt('clipOpen')} (${embedOf(CLIPS[p.id].url)?.label || hostLabel(CLIPS[p.id].url)}) ↗`].filter(Boolean).join(' · ')}</a>` : ''}
     </li>`; }).join('');
   readout.innerHTML = `
     <h1>${tt('h1')}</h1>

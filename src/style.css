@@ -91,6 +91,8 @@ body.released .found b{color:var(--celeste)}
   font:inherit;font-size:10px;letter-spacing:.3em;text-transform:uppercase;padding:12px 18px;cursor:pointer}
 .ficha-go:hover,.ficha-go:focus-visible{border-color:var(--brass-hi);outline:none}
 @media (max-width:760px){.ficha-card{padding:36px 22px 26px} #ficha h2{font-size:24px} .ficha-story{font-size:17px}}
+#readout .lam{display:block;width:100%;max-width:420px;margin-top:14px;border:1px solid rgba(232,220,192,.14)}
+#readout .clip{display:inline-block;margin-top:10px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass-hi)}
 #readout .story{font-family:'Alegreya',serif;font-size:15px;line-height:1.6;color:rgba(232,220,192,.66);margin-top:8px}
 @media (max-width:760px){ #readout h1{padding-right:72px} }  /* clear of the language toggle */
 /* the way into Los números sits beside the document toggle */

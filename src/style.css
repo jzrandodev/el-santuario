@@ -98,6 +98,16 @@ body.released .found b{color:var(--celeste)}
 @media (max-width:760px){.numlink{top:112px;left:20px}}
 #readout .nums{display:inline-block;margin:-20px 0 36px;font-size:10px;letter-spacing:.3em;text-transform:uppercase;
   color:var(--brass-hi);text-decoration:none;border-bottom:1px solid rgba(228,196,106,.4)}
+.ficha-clip{margin-top:24px}
+.ficha-play{background:none;border:1px solid rgba(228,196,106,.45);color:var(--brass-hi);font:inherit;font-size:10px;
+  letter-spacing:.3em;text-transform:uppercase;padding:12px 18px;cursor:pointer}
+.ficha-play::before{content:"▶";margin-right:10px;font-size:9px}
+.ficha-play:hover,.ficha-play:focus-visible{color:var(--wax);border-color:var(--brass-hi);outline:none}
+.ficha-frame{position:relative;width:100%;aspect-ratio:16/9;background:#0A0806;border:1px solid rgba(232,220,192,.12)}
+.ficha-frame.tall{width:min(100%,340px);aspect-ratio:9/16;max-height:70vh;margin:0 auto}
+.ficha-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.ficha-src{display:block;margin-top:10px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(232,220,192,.64)}
+.ficha-src:hover,.ficha-src:focus-visible{color:var(--wax);outline:none}
 .ficha-ko{margin-top:18px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--brass-hi)}
 #readout .backfield{background:none;border:0;border-bottom:1px solid rgba(228,196,106,.4);margin-left:24px;
   font:inherit;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--brass-hi);cursor:pointer;padding:0}

@@ -51,6 +51,13 @@ export function buildField(renderer){
     const tex = new THREE.CanvasTexture(paintPanel(p));
     tex.colorSpace = THREE.SRGBColorSpace;
     tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+    /* a lámina, once drawn, is painted into the slot; until it arrives (or if it never does)
+     * the generated panel stands. Only the estampita and ex-voto rungs have a slot. */
+    if (p.src && (p.rung === 1 || p.rung === 2) && !p.pending) {
+      const img = new Image();
+      img.onload = () => { tex.image = paintPanel(p, img); tex.needsUpdate = true; };
+      img.src = import.meta.env.BASE_URL + p.src;
+    }
 
     const brass = p.state === STATE.GRACIAS || p.rung === 3;
     /* MeshPhongMaterial, not Standard: brass needs a specular highlight and there is no

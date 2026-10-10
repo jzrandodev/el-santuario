@@ -40,6 +40,21 @@ a printed holy card beside a stamped tin charm, and the heterogeneity is the aut
   invented votive objects about documented events, and the page says so rather than implying
   these are photographs of anything.
 
+### Delivering a drawn lámina
+
+Only the estampita and ex-voto rungs (1 and 2) have a slot. The lámina is **the scene only**: the
+frame, the hand-lettered line, place and date stay painted by the page. Drop the file in
+`public/art/<panel id>.webp` and set that panel's `src` to `'art/<panel id>.webp'` in
+`src/panels.js`. The slot is about **1200 × 1034** (a shade wider than square); anything else is
+cropped from its centre. The era's grain is laid over it, so it ages with its neighbours.
+
+### Real footage — embeds, never copies
+
+Decided 2026-10-10, by the user: **real clips live in the story cards as embeds, and the panels
+stay drawn.** A clip is never downloaded or re-hosted. Paste the public TikTok, Instagram or
+YouTube URL and the poster's handle into `src/clips.js` under the panel id. The card shows the
+platform's own player, credited, and loads nothing from the platform until the visitor taps.
+
 ---
 
 ## TE PIDO — the petitions

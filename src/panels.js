@@ -233,7 +233,7 @@ function eraDress(c, era, brass){
 }
 
 /** Paint one panel. Returns an HTMLCanvasElement ready to become a texture. */
-export function paintPanel(p){
+export function paintPanel(p, img){
   const cv=document.createElement('canvas'); cv.width=W; cv.height=H;
   const c=cv.getContext('2d');
   const brass = p.state===STATE.GRACIAS || p.rung===3;
@@ -312,8 +312,15 @@ export function paintPanel(p){
     const ig=c.createLinearGradient(0,iy,0,iy+ih);
     ig.addColorStop(0, brass?'#7A6220':'#2B2922'); ig.addColorStop(1, brass?'#4A3A0E':'#171613');
     c.fillStyle=ig; c.fillRect(ix,iy,iw,ih);
-    // the empty slot says what it is rather than pretending
-    caps(c,'SIN LÁMINA',W/2,iy+ih/2,13,'rgba(217,213,200,0.17)',0.34,400);
+    if(img){
+      // a drawn lámina, cropped to fill the slot from its centre; the era's grain still ages it
+      const k=Math.max(iw/img.naturalWidth, ih/img.naturalHeight);
+      const sw=iw/k, sh=ih/k;
+      c.drawImage(img,(img.naturalWidth-sw)/2,(img.naturalHeight-sh)/2,sw,sh,ix,iy,iw,ih);
+    } else {
+      // the empty slot says what it is rather than pretending
+      caps(c,'SIN LÁMINA',W/2,iy+ih/2,13,'rgba(217,213,200,0.17)',0.34,400);
+    }
     c.strokeStyle= brass?'rgba(228,196,106,0.22)':'rgba(217,213,200,0.10)';
     c.lineWidth=2; c.strokeRect(ix,iy,iw,ih);
 

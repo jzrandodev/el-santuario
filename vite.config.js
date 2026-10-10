@@ -12,6 +12,23 @@ function noscriptShrine(){
   return {
     name: 'noscript-shrine',
     async transformIndexHtml(html, ctx){
+      // Los números: prerender the Spanish plates and venue list into the markup; the script
+      // re-renders over them, and without scripts they are simply there. Only the map needs JS.
+      if (ctx.filename.endsWith('/numeros.html')) {
+        const { NUMS, SEDES, COPY } = await import('./src/numeros-data.js');
+        const c = COPY.es;
+        return html
+          .replace('<p class="lede" id="lede"></p>', `<p class="lede" id="lede">${esc(c.lede)}</p>`)
+          .replace('<ol class="plates" id="plates"></ol>', `<ol class="plates" id="plates">${NUMS.map(x => `
+    <li class="plate"><div class="n">${esc(x.n)}</div><div class="pk">${esc(x.k.es)}</div><p class="pt">${esc(x.t.es)}</p></li>`).join('')}
+  </ol>`)
+          .replace('<h3 id="listH"></h3>', `<h3 id="listH">${esc(c.listH)}</h3>`)
+          .replace('<ol class="sedes" id="sedes"></ol>', `<ol class="sedes" id="sedes">${SEDES.map(x => `
+      <li><span>${esc(x[0])}</span><b>${x[2]}</b></li>`).join('')}
+    </ol>`)
+          .replace('<p class="src" id="src"></p>', `<p class="src" id="src">${esc(c.src)}</p>`)
+          .replace('</head>', '<noscript><style>.lang,.world .map,.world .t{display:none}</style></noscript>\n</head>');
+      }
       if (!ctx.filename.endsWith('/index.html') || ctx.filename.includes('/drafts/')) return html;
       const { PANELS, STATE } = await import('./src/panels.js');
       const { STORY, ERAS, ERA_OF } = await import('./src/stories.js');

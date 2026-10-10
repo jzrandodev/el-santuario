@@ -44,7 +44,11 @@ function documentFloor(reasonClass){
     <h1>${tt('h1')}</h1>
     <p class="lede">${tt('lede')}</p>
     <a class="nums" href="${import.meta.env.BASE_URL}numeros.html">${tt('numbers')}</a>
+    ${reasonClass === 'chosen' ? `<button class="nums backfield" id="backField" type="button">${tt('backField')}</button>` : ''}
     <ol>${li}</ol>`;
+  // the document is a choice, not a trap: going back reloads the field, and the ledger
+  // (written on pagehide) puts the visitor where they stood
+  document.getElementById('backField')?.addEventListener('click', () => location.reload());
   canvas.style.display = 'none';
   ui.hidden = true;
 }
@@ -110,8 +114,9 @@ function start(){
     if (c && c > releaseAim) { releaseAim = c; document.body.classList.add('released'); }
     const P = m.userData.panel;
     if (!quiet) { const x = panelText(P, lang);
+      // each piece loses its own full stop, so the join never reads '..'
       said.textContent = [x.name, [P.place, P.date].filter(Boolean).join(', '), x.fact,
-        tt('openIt')].filter(Boolean).join('. '); }
+        tt('openIt')].filter(Boolean).map(s => s.replace(/\.+$/, '')).join('. ') + '.'; }
     found[m.userData.panel.state]++; total++;
     counts[m.userData.panel.state].textContent = found[m.userData.panel.state];
     nFound.textContent = total;
@@ -235,7 +240,7 @@ function start(){
       }
       return;
     }
-    const k = e.key;
+    const k = e.key.length === 1 ? e.key.toLowerCase() : e.key;  // Caps Lock still walks
     if (k === 'ArrowUp' || k === 'w') aim.z -= 4;
     else if (k === 'ArrowDown' || k === 's') aim.z += 4;
     else if (k === 'ArrowLeft' || k === 'a') aim.x -= 3;
@@ -249,6 +254,7 @@ function start(){
     else return;
     e.preventDefault();
     aim.z = THREE.MathUtils.clamp(aim.z, F.depth.far, F.depth.near);
+    aim.x = THREE.MathUtils.clamp(aim.x, -14, 14);  // the same walls touch has
     if (!moved) { moved = true; hint.style.opacity = '0'; }
   });
 

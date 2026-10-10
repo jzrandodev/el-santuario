@@ -99,3 +99,6 @@ body.released .found b{color:var(--celeste)}
 #readout .nums{display:inline-block;margin:-20px 0 36px;font-size:10px;letter-spacing:.3em;text-transform:uppercase;
   color:var(--brass-hi);text-decoration:none;border-bottom:1px solid rgba(228,196,106,.4)}
 .ficha-ko{margin-top:18px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--brass-hi)}
+#readout .backfield{background:none;border:0;border-bottom:1px solid rgba(228,196,106,.4);margin-left:24px;
+  font:inherit;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--brass-hi);cursor:pointer;padding:0}
+#readout .backfield:focus-visible{outline:1px solid var(--brass-hi);outline-offset:4px}

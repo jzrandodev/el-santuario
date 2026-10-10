@@ -131,11 +131,30 @@ const INK = {
 function rounded(c,x,y,w,h,r){c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);
   c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath();}
 
+/* GRAIN. One noise tile, made once, laid over every panel as a pattern at a random offset.
+ * Reading and writing every pixel of thirty panels cost ~250 ms at load on a desktop and over a
+ * second on a mid phone; this costs one small tile. White specks lighten, black ones darken,
+ * which is what per-pixel ± noise did. AGE scales it through globalAlpha. */
+const TILE = 256, TILE_MAX = 30;
+let noise = null;
+function noiseTile(){
+  const cv = document.createElement('canvas'); cv.width = cv.height = TILE;
+  const c = cv.getContext('2d'), im = c.createImageData(TILE, TILE), d = im.data;
+  for (let i = 0; i < d.length; i += 4) {
+    const n = Math.random() - 0.5, v = n > 0 ? 255 : 0;
+    d[i] = d[i+1] = d[i+2] = v;
+    d[i+3] = Math.round(Math.abs(n) * TILE_MAX / 110 * 255);
+  }
+  c.putImageData(im, 0, 0);
+  return cv;
+}
 function grain(c,alpha){
-  const im=c.getImageData(0,0,W,H), d=im.data;
-  for(let i=0;i<d.length;i+=4){const n=(Math.random()-0.5)*alpha;
-    d[i]+=n; d[i+1]+=n; d[i+2]+=n;}
-  c.putImageData(im,0,0);
+  noise ??= noiseTile();
+  const pat = c.createPattern(noise, 'repeat');
+  const ox = Math.random() * TILE, oy = Math.random() * TILE;
+  c.save(); c.globalAlpha = Math.min(1, alpha / TILE_MAX);
+  c.translate(-ox, -oy); c.fillStyle = pat; c.fillRect(ox, oy, W, H);
+  c.restore();
 }
 
 function caps(c,text,x,y,size,color,track=0.18,weight=700){

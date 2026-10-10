@@ -122,10 +122,11 @@ a printed holy card beside a stamped tin charm, and the heterogeneity is the aut
 
 ---
 
-## THE ENDING — state unnamed
+## DOLOR MUY GRANDE — the ending
 
-*The third state has no name yet. It is not remembrance; he is alive, and a placa recordatoria
-would be false. It should use his own words. Undecided by the user, deliberately.*
+*Named by the user 2026-10-10, in his own words: from the speech in the centre circle after his
+last match, «No venir más va a ser un dolor muy grande». Not remembrance; he is alive, and a placa
+recordatoria would be false. In English the label stays Spanish and adds "a very great pain".*
 
 ### 10 · MetLife, otra vez
 - **19 July 2026** · MetLife Stadium, New Jersey · Spain 1–0 Argentina after extra time

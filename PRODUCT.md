@@ -29,6 +29,8 @@ A **non-linear, explorable WebGL space** about Lionel Messi's whole football lif
 
 The content spine is **thematic, not chronological** — the weight of the 10, the crowd, the exile years, the homecoming. It is not a timeline and does not march 2005 → 2026.
 
+**Decided 2026-10-10, by the user: the walk stays in rough chronological order.** Panels hang deeper the later they happened (with the 2006 opening frame first). Non-linearity lives in how the visitor moves, lights and opens panels, not in a shuffled layout.
+
 **Updated 2026-09-01.** Messi published a handwritten letter retiring from the national team on 31 August 2026, and it is now the piece's ending. This is not a historical tribute; it is a response to something that happened days ago, and the facts will keep moving for a while.
 
 The user's stated ambition, in his words: *"incredibly modern"*, *"wow people"*, and **the centerpiece of his side projects**. That ambition is recorded here as product intent; the visual direction that delivers it is not decided in this file.
@@ -72,10 +74,11 @@ Both are WebGL. That is not the axis of difference and must not be treated as on
     outweighs the thanks" no longer reads at a glance. What still reads is **celeste**: it belongs
     to the Argentina shirt's senior releases alone (2021 on). Club and youth thanks hang in brass
     without it.
-  - **the ending** — 19 July 2026, the letter, and his father. The naming of this third state is
-    **undecided**; it should probably use Messi's own words rather than a liturgical term, since he
-    is alive and a remembrance plaque would be false. Do not settle it without the user.
-  The three states must stay legible without reading a word: tin, brass, and the unnamed ending.
+  - **dolor muy grande** — the ending: 19 July 2026, the letter, his father, and the farewell at
+    the Monumental. **Named by the user 2026-10-10** from Messi's own words in his farewell speech,
+    «No venir más va a ser un dolor muy grande». His words, not a liturgical term: he is alive and
+    a remembrance plaque would be false.
+  The three states must stay legible without reading a word: tin, brass, and the ending.
 - **The MetLife rhyme is factual, not a device.** He announced his first retirement after losing the
   Copa América Centenario final at MetLife Stadium, East Rutherford, New Jersey, on 26 June 2016
   (0–0, lost 4–2 on penalties to Chile, his own penalty over the bar). He retired for real after

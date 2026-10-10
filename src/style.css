@@ -102,3 +102,11 @@ body.released .found b{color:var(--celeste)}
 #readout .backfield{background:none;border:0;border-bottom:1px solid rgba(228,196,106,.4);margin-left:24px;
   font:inherit;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--brass-hi);cursor:pointer;padding:0}
 #readout .backfield:focus-visible{outline:1px solid var(--brass-hi);outline-offset:4px}
+/* the no-JavaScript list shares the document floor's look */
+.fallback ol{list-style:none;max-width:60ch}
+.fallback li{border-top:1px solid rgba(232,220,192,.14);padding:18px 0}
+.fallback .st{font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--red)}
+.fallback li.gracias .st{color:var(--brass-hi)}
+.fallback .nm{font-size:20px;font-weight:700;margin:6px 0 4px;color:var(--wax)}
+.fallback .fx{font-size:12px;line-height:1.8;color:rgba(232,220,192,.6)}
+.fallback .story{font-family:'Alegreya',serif;font-size:15px;line-height:1.6;color:rgba(232,220,192,.66);margin:8px 0 0}

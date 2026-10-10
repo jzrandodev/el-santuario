@@ -35,6 +35,8 @@ body{font-family:'Chivo',system-ui,sans-serif;color:var(--wax);
 body.released .found b{color:var(--celeste)}
 .colophon{left:40px;bottom:34px;font-size:8px;letter-spacing:.16em;text-transform:uppercase;
   color:rgba(232,220,192,0.58);line-height:2.2;max-width:430px}
+.colophon a{pointer-events:auto;white-space:nowrap;display:inline-block;color:var(--brass-hi);text-decoration:none;border-bottom:1px solid rgba(228,196,106,.4);margin-left:6px}
+.colophon a:focus-visible{outline:1px solid var(--brass-hi);outline-offset:3px}
 
 .lang{position:fixed;z-index:60;right:40px;bottom:30px;background:none;border:1px solid rgba(232,220,192,.22);
   color:rgba(232,220,192,.55);font:inherit;font-size:9px;letter-spacing:.28em;padding:7px 12px;cursor:pointer}

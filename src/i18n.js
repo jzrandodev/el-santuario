@@ -10,7 +10,7 @@ export function setLang(l){ try { localStorage.setItem(KEY, l); } catch (_) {} }
 
 export const T = {
   es: {
-    sub:'MESSI Y LA CAMISETA', gracias:'GRACIAS', fin:'SIN NOMBRE', pido:'TE PIDO',
+    sub:'MESSI Y LA CAMISETA', gracias:'GRACIAS', fin:'DOLOR MUY GRANDE', pido:'TE PIDO',
     hint:'movete · la vela va con vos', found:'DE', foundEnd:'ENCENDIDAS',
     asDoc:'leer como documento', numbers:'los números', backField:'volver al santuario',
     koIn:'Faltan', koH:'h', koM:'min', koLive:'Se está jugando ahora.', koDone:'Ya se jugó. El panel espera su resultado.', toggle:'EN', toggleLabel:'Read in English',
@@ -20,13 +20,13 @@ export const T = {
     canvas:'El santuario: treinta objetos votivos suspendidos en la oscuridad, encendidos por una vela que lleva el visitante.',
     colophon:'BORRADOR · SIN IMÁGENES TODAVÍA — CADA PANEL ESPERA SU LÁMINA.<br>NO AFILIADO NI AUTORIZADO POR LA AFA, LA FIFA NI NINGÚN CLUB.',
     openIt:'Enter para ver su historia.',
-    stFin:'SIN NOMBRE TODAVÍA', stGracias:'GRACIAS POR EL FAVOR CONCEDIDO', stPido:'TE PIDO',
+    stFin:'DOLOR MUY GRANDE', stGracias:'GRACIAS POR EL FAVOR CONCEDIDO', stPido:'TE PIDO',
     h1:'El Santuario · Messi y la camiseta',
     lede:'No es una línea de tiempo. Son treinta objetos en un santuario, y el orden lo elegís vos. Acá están todos, quietos.',
     title:'El Santuario — Messi y la camiseta'
   },
   en: {
-    sub:'MESSI AND THE SHIRT', gracias:'THANKS', fin:'UNNAMED', pido:'TE PIDO',
+    sub:'MESSI AND THE SHIRT', gracias:'THANKS', fin:'DOLOR MUY GRANDE', pido:'TE PIDO',
     hint:'move · the candle goes with you', found:'OF', foundEnd:'LIT',
     asDoc:'read as a document', numbers:'the numbers', backField:'back to the shrine',
     koIn:'Kick-off in', koH:'h', koM:'min', koLive:'It is being played now.', koDone:'It has been played. The panel is waiting for its result.', toggle:'ES', toggleLabel:'Leer en español',
@@ -36,7 +36,7 @@ export const T = {
     canvas:'The shrine: thirty votive objects hanging in the dark, lit by a candle the visitor carries.',
     colophon:'DRAFT · NO IMAGES YET - EVERY PANEL IS WAITING FOR ITS PLATE.<br>NOT AFFILIATED WITH OR AUTHORIZED BY THE AFA, FIFA OR ANY CLUB.',
     openIt:'Press Enter for its story.',
-    stFin:'NOT NAMED YET', stGracias:'THANKS FOR THE FAVOR GRANTED', stPido:'TE PIDO (I ASK OF YOU)',
+    stFin:'DOLOR MUY GRANDE (A VERY GREAT PAIN)', stGracias:'THANKS FOR THE FAVOR GRANTED', stPido:'TE PIDO (I ASK OF YOU)',
     h1:'El Santuario · Messi and the shirt',
     lede:'Not a timeline. Thirty objects in a shrine, and you choose the order. Here they all are, held still.',
     title:'El Santuario — Messi and the shirt'

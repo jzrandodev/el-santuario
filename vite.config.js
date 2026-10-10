@@ -33,7 +33,7 @@ function noscriptShrine(){
       const { PANELS, STATE } = await import('./src/panels.js');
       const { STORY, ERAS, ERA_OF } = await import('./src/stories.js');
       const st = { [STATE.PIDO]: 'TE PIDO', [STATE.GRACIAS]: 'GRACIAS POR EL FAVOR CONCEDIDO',
-                   [STATE.FIN]: 'SIN NOMBRE TODAVÍA' };
+                   [STATE.FIN]: 'DOLOR MUY GRANDE' };
       const li = PANELS.map(p => `
     <li class="${p.state}">
       <div class="st">${st[p.state]}${ERAS[ERA_OF[p.id]] ? ` · ${esc(ERAS[ERA_OF[p.id]].es)}` : ''}</div>
